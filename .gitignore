@@ -9,7 +9,8 @@ dist/
 test-results
 
 # Test
-test/js/
+tests/js/
+!tests/**/node_modules
 
 # IDE
 .vscode/*

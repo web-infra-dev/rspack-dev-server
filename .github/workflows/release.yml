@@ -1,0 +1,79 @@
+
+name: Release Full
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        description: "Release Version Type"
+        required: true
+        default: "patch"
+        options:
+          - major
+          - premajor
+          - minor
+          - preminor
+          - patch
+          - prepatch
+          - prerelease
+
+      tag:
+        type: choice
+        description: "Release Npm Tag"
+        required: true
+        default: "latest"
+        options:
+          - canary
+          - nightly
+          - latest
+          - beta
+          - alpha
+      
+      dry_run:
+        type: boolean
+        description: "DryRun release"
+        required: true
+        default: false
+
+permissions:
+  # To publish packages with provenance
+  id-token: write
+
+jobs:
+  release:
+    name: Release
+    permissions:
+      contents: write
+      # To publish packages with provenance
+      id-token: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Pnpm
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run Test
+        run: pnpm run test
+      
+      - name: Try release to npm
+        run: pnpm run release
+        env:
+          DRY_RUN: ${{ inputs.dry_run }}
+          TAG: ${{ inputs.tag }}
+          VERSION: ${{ inputs.version }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  

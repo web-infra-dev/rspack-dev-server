@@ -14,7 +14,7 @@ const escapedCwdRegExp = new RegExp(
 	"g"
 );
 const normalize = str => {
-	let normalizedStr = str;
+	let normalizedStr = str.split(CURRENT_CWD).join("<cwd>");
 	if (CURRENT_CWD.startsWith("/")) {
 		normalizedStr = normalizedStr.replace(
 			new RegExp(quoteMeta(CURRENT_CWD), "g"),

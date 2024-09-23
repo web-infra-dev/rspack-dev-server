@@ -9,7 +9,7 @@ const config = {
 	testMatch: [
 		"<rootDir>/tests/*.test.ts",
 		// TODO: enable after migrating to separated repo
-		["<rootDir>/tests/e2e/*.test.js"],
+		"<rootDir>/tests/e2e/*.test.js",
 	],
 	testPathIgnorePatterns: [
 		// TODO: check why http proxy server throw error with websocket server

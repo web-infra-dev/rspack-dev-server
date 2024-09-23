@@ -1,7 +1,7 @@
 const path = require("path");
 
 const CURRENT_CWD = process.cwd();
-const ROOT = path.resolve(__dirname, "../../../../");
+const ROOT = path.resolve(__dirname, "../../");
 
 const quoteMeta = str => str.replace(/[-[\]\\/{}()*+?.^$|]/g, "\\$&");
 const cwdRegExp = new RegExp(
@@ -36,6 +36,7 @@ const normalize = str => {
 		/@@ -\d+,\d+ \+\d+,\d+ @@/g,
 		"@@ ... @@"
 	);
+	normalizedStr = normalizedStr.replace(/\\/g, "/");
 	return normalizedStr;
 };
 

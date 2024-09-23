@@ -13,6 +13,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
+    name: Test - ${{ matrix.os }} - Node v${{ matrix.node }})
+
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]

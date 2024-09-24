@@ -3,40 +3,22 @@ const path = require("path");
 const CURRENT_CWD = process.cwd();
 const ROOT = path.resolve(__dirname, "../../");
 
-const quoteMeta = str => str.replace(/[-[\]\\/{}()*+?.^$|]/g, "\\$&");
-const cwdRegExp = new RegExp(
-	`${quoteMeta(CURRENT_CWD)}((?:\\\\)?(?:[a-zA-Z.\\-_]+\\\\)*)`,
-	"g"
-);
-const escapedCwd = JSON.stringify(CURRENT_CWD).slice(1, -1);
-const escapedCwdRegExp = new RegExp(
-	`${quoteMeta(escapedCwd)}((?:\\\\\\\\)?(?:[a-zA-Z.\\-_]+\\\\\\\\)*)`,
-	"g"
-);
 const normalize = str => {
-	let normalizedStr = str.split(CURRENT_CWD).join("<cwd>").split(CURRENT_CWD.replace("\\\\", "\\")).join("<cwd>");
-	if (CURRENT_CWD.startsWith("/")) {
-		normalizedStr = normalizedStr.replace(
-			new RegExp(quoteMeta(CURRENT_CWD), "g"),
-			"<cwd>"
-		);
-	} else {
-		normalizedStr = normalizedStr.replace(
-			cwdRegExp,
-			(_, g) => `<cwd>${g.replace(/\\/g, "/")}`
-		);
-		normalizedStr = normalizedStr.replace(
-			escapedCwdRegExp,
-			(_, g) => `<cwd>${g.replace(/\\\\/g, "/")}`
-		);
-	}
-	normalizedStr = normalizedStr.split(ROOT).join("<root>");
+	let normalizedStr = str.replace(/(\\)+/g, "/");
+	
+	normalizedStr = normalizedStr.split(
+		CURRENT_CWD.replace(/(\\)+/g, "/")
+	).join("<cwd>");
+
+	normalizedStr = normalizedStr.split(
+		ROOT.replace(/(\\)+/g, "/")
+	).join("<root>");
+
 	normalizedStr = normalizedStr.replace(/:\d+:\d+/g, ":<line>:<row>");
 	normalizedStr = normalizedStr.replace(
 		/@@ -\d+,\d+ \+\d+,\d+ @@/g,
 		"@@ ... @@"
 	);
-	normalizedStr = normalizedStr.replace(/\\/g, "/");
 	return normalizedStr;
 };
 

@@ -22,12 +22,12 @@ exports[`logging should work and log errors by default (sockjs) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;
@@ -40,12 +40,12 @@ exports[`logging should work and log errors by default (ws) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;
@@ -134,12 +134,12 @@ exports[`logging should work and log only error (sockjs) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;
@@ -150,12 +150,12 @@ exports[`logging should work and log only error (ws) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;
@@ -165,7 +165,7 @@ exports[`logging should work and log static changes (sockjs) 1`] = `
   [webpack-dev-server] Server started: Hot Module Replacement enabled, Live Reloading enabled, Progress disabled, Overlay enabled.,
   [HMR] Waiting for update signal from WDS...,
   Hey.,
-  [webpack-dev-server] "<cwd>/tests/fixtures/client-config/static/foo.txt" from static directory was changed. Reloading...,
+  [webpack-dev-server] "<root>/tests/fixtures/client-config/static/foo.txt" from static directory was changed. Reloading...,
   [webpack-dev-server] Server started: Hot Module Replacement enabled, Live Reloading enabled, Progress disabled, Overlay enabled.,
   [HMR] Waiting for update signal from WDS...,
   Hey.,
@@ -177,7 +177,7 @@ exports[`logging should work and log static changes (ws) 1`] = `
   [webpack-dev-server] Server started: Hot Module Replacement enabled, Live Reloading enabled, Progress disabled, Overlay enabled.,
   [HMR] Waiting for update signal from WDS...,
   Hey.,
-  [webpack-dev-server] "<cwd>/tests/fixtures/client-config/static/foo.txt" from static directory was changed. Reloading...,
+  [webpack-dev-server] "<root>/tests/fixtures/client-config/static/foo.txt" from static directory was changed. Reloading...,
   [webpack-dev-server] Server started: Hot Module Replacement enabled, Live Reloading enabled, Progress disabled, Overlay enabled.,
   [HMR] Waiting for update signal from WDS...,
   Hey.,
@@ -190,22 +190,22 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;
@@ -216,22 +216,22 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;
@@ -244,12 +244,12 @@ exports[`logging should work and log warnings by default (sockjs) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;
@@ -262,12 +262,12 @@ exports[`logging should work and log warnings by default (ws) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<cwd>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<cwd>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at <cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>
-  │     at last.function (<cwd>/node_modules/.pnpm/@rspack+core-canary@1.0.6-canary-45a39973-20240923010001/node_modules/@rspack/core-canary/dist/Compiler.js:<line>:<row>)
+  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at <rspack>/dist/Compiler.js:<line>:<row>
+  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
 ]
 `;

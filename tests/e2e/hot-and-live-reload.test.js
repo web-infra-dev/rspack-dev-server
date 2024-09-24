@@ -16,6 +16,7 @@ const runBrowser = require("../helpers/run-browser");
 const port = require("../helpers/ports-map")["hot-and-live-reload"];
 const config = require("../fixtures/client-config/webpack.config");
 const multiCompilerConfig = require("../fixtures/multi-compiler-one-configuration/webpack.config");
+require("../helpers/normalize");
 
 const cssFilePath = path.resolve(
 	__dirname,

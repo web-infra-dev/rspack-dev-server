@@ -3,8 +3,10 @@ const path = require("path");
 const CURRENT_CWD = process.cwd();
 const ROOT = path.resolve(__dirname, "../../");
 
-let RSPACK = "";
+const CSS_LOADER = path.dirname(require.resolve("css-loader"));
+const RELATIVE_CSS_LOADER = path.relative(path.dirname(path.resolve(__dirname, "../fixtures/reload-config/webpack.config")), CSS_LOADER);
 
+let RSPACK = "";
 try {
 	RSPACK = path.dirname(require.resolve("@rspack/core-canary/package.json"));
 } catch(e) {
@@ -17,6 +19,14 @@ const normalize = str => {
 	normalizedStr = normalizedStr.split(
 		RSPACK.replace(/(\\)+/g, "/")
 	).join("<rspack>");
+
+	normalizedStr = normalizedStr.split(
+		CSS_LOADER.replace(/(\\)+/g, "/")
+	).join("<cssloader>");
+
+	normalizedStr = normalizedStr.split(
+		RELATIVE_CSS_LOADER.replace(/(\\)+/g, "/")
+	).join("<cssloader>");
 
 	normalizedStr = normalizedStr.split(
 		ROOT.replace(/(\\)+/g, "/")

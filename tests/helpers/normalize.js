@@ -5,13 +5,7 @@ const ROOT = path.resolve(__dirname, "../../");
 
 const CSS_LOADER = path.dirname(require.resolve("css-loader"));
 const RELATIVE_CSS_LOADER = path.relative(path.dirname(path.resolve(__dirname, "../fixtures/reload-config/webpack.config")), CSS_LOADER);
-
-let RSPACK = "";
-try {
-	RSPACK = path.dirname(require.resolve("@rspack/core-canary/package.json"));
-} catch(e) {
-	RSPACK = path.dirname(require.resolve("@rspack/core/package.json"));
-}
+const RSPACK = path.dirname(require.resolve("@rspack/core/package.json"));
 
 const normalize = str => {
 	let normalizedStr = str.replace(/(\\)+/g, "/");

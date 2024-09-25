@@ -6,6 +6,12 @@ exports[`client option configure client entry should disable client entry: page 
 
 exports[`client option configure client entry should disable client entry: response status 1`] = `200`;
 
+exports[`client option configure client entry should redirect client entry to rspack: console messages 1`] = `[]`;
+
+exports[`client option configure client entry should redirect client entry to rspack: page errors 1`] = `[]`;
+
+exports[`client option configure client entry should redirect client entry to rspack: response status 1`] = `200`;
+
 exports[`client option default behaviour responds with a 200 status code for /ws path: console messages 1`] = `[]`;
 
 exports[`client option default behaviour responds with a 200 status code for /ws path: page errors 1`] = `[]`;

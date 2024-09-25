@@ -216,6 +216,7 @@ var overlay =
 		: {
 				send: function send() {}
 			};
+/* Rspack dev server runtime client */
 var onSocketMessage = {
 	hot: function hot() {
 		if (parsedResourceQuery.hot === "false") {

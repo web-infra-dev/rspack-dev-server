@@ -193,6 +193,66 @@ describe("client option", () => {
 		});
 	});
 
+	describe("configure client entry", () => {
+		let compiler;
+		let server;
+		let page;
+		let browser;
+		let pageErrors;
+		let consoleMessages;
+
+		beforeEach(async () => {
+			compiler = webpack({
+				...config,
+				devtool: false
+			});
+
+			server = new Server(
+				{
+					port
+				},
+				compiler
+			);
+
+			await server.start();
+
+			({ page, browser } = await runBrowser());
+
+			pageErrors = [];
+			consoleMessages = [];
+		});
+
+		afterEach(async () => {
+			await browser.close();
+			await server.stop();
+		});
+
+		it("should redirect client entry to rspack", async () => {
+			page
+				.on("console", message => {
+					consoleMessages.push(message);
+				})
+				.on("pageerror", error => {
+					pageErrors.push(error);
+				});
+
+			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
+				waitUntil: "networkidle0"
+			});
+
+			expect(await response.text()).toContain("/* Rspack dev server runtime client */")
+
+			expect(response.status()).toMatchSnapshot("response status");
+
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
+			);
+
+			expect(pageErrors).toMatchSnapshot("page errors");
+		});
+	});
+
+
 	describe("webSocketTransport", () => {
 		const clientModes = [
 			{

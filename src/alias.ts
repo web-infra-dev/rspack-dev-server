@@ -1,3 +1,5 @@
+const Module = require("module");
+const MODULE_MAP: Record<string, typeof Module._resolveFilename> = {};
 const RESOLVER_MAP: Record<string, typeof require.resolve> = {};
 export const addResolveAlias = (
 	name: string,
@@ -18,6 +20,13 @@ export const addResolveAlias = (
 			id,
 			options
 		])) as typeof require.resolve;
+	MODULE_MAP[modulePath] = Module._resolveFilename;
+	Module._resolveFilename = Module._resolveFilename = (request: string, mod: NodeModule, ...args: unknown[]) => {
+			if (mod.filename === modulePath && aliasMap[request]) {
+				return aliasMap[request];
+			}
+			return MODULE_MAP[modulePath](request, mod, ...args);
+	};
 };
 
 export const removeResolveAlias = (name: string) => {
@@ -30,6 +39,7 @@ export const removeResolveAlias = (name: string) => {
 		throw new Error("Failed to resolve webpack-dev-server");
 	}
 	if (RESOLVER_MAP[modulePath]) {
+		Module._resolveFilename = RESOLVER_MAP[modulePath]!;
 		m.require.resolve = RESOLVER_MAP[modulePath]!;
 		delete RESOLVER_MAP[modulePath];
 	}

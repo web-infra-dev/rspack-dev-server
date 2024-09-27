@@ -23,9 +23,9 @@ exports[`logging should work and log errors by default (sockjs) 1`] = `
   [webpack-dev-server] ERROR
   × Error: Error from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -41,9 +41,9 @@ exports[`logging should work and log errors by default (ws) 1`] = `
   [webpack-dev-server] ERROR
   × Error: Error from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -135,9 +135,9 @@ exports[`logging should work and log only error (sockjs) 1`] = `
   [webpack-dev-server] ERROR
   × Error: Error from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -151,9 +151,9 @@ exports[`logging should work and log only error (ws) 1`] = `
   [webpack-dev-server] ERROR
   × Error: Error from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -191,9 +191,9 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -201,9 +201,9 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   [webpack-dev-server] ERROR
   × Error: Error from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -217,9 +217,9 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -227,9 +227,9 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   [webpack-dev-server] ERROR
   × Error: Error from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -245,9 +245,9 @@ exports[`logging should work and log warnings by default (sockjs) 1`] = `
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,
@@ -263,9 +263,9 @@ exports[`logging should work and log warnings by default (ws) 1`] = `
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
   │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
-  │     at QueriedHook.call (<root>/node_modules/.pnpm/@rspack+lite-tapable@1.0.0/node_modules/@rspack/lite-tapable/dist/index.js:<line>:<row>)
+  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
+  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
+  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
   │     at <rspack>/dist/Compiler.js:<line>:<row>
   │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
 ,

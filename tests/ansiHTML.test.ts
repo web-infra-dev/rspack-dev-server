@@ -1,4 +1,4 @@
-import ansiHTML from "../src/ansiHTML";
+import ansiHTML from "../client-src/utils/ansiHTML";
 
 describe("ansi-html", () => {
 	it("should transform 24-bit rgb ansi colors", () => {

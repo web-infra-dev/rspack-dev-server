@@ -7,8 +7,6 @@
  * Copyright (c) JS Foundation and other contributors
  * https://github.com/webpack/webpack-dev-server/blob/b0f15ace0123c125d5870609ef4691c141a6d187/LICENSE
  */
-import path from "node:path";
-
 import type { Server } from "node:http";
 import type { Socket } from "node:net";
 import { type Compiler, MultiCompiler } from "@rspack/core";
@@ -91,7 +89,7 @@ export class RspackDevServer extends WebpackDevServer {
 				}
 
 				compiler.options.resolve.alias = {
-					"ansi-html-community": path.resolve(__dirname, "./ansiHTML"),
+					"ansi-html-community": require.resolve("@rspack/dev-server/client/utils/ansiHTML"),
 					...compiler.options.resolve.alias
 				};
 			}

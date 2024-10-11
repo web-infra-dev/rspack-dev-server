@@ -2,10 +2,12 @@
 .DS_Store
 *.local
 *.log*
+*.tsbuildinfo
 
 # Dist
 node_modules
 dist/
+client/
 test-results
 
 # Test

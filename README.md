@@ -9,7 +9,7 @@
   <a href="https://npmjs.com/package/@rspack/dev-server?activeTab=readme"><img src="https://img.shields.io/npm/v/@rspack/dev-server?style=flat-square&colorA=564341&colorB=EDED91" alt="npm version" /></a>
   <a href="https://npmcharts.com/compare/@rspack/dev-server?minimal=true"><img src="https://img.shields.io/npm/dm/@rspack/dev-server.svg?style=flat-square&colorA=564341&colorB=EDED91" alt="downloads" /></a>
   <a href="https://nodejs.org/en/about/previous-releases"><img src="https://img.shields.io/node/v/@rspack/dev-server.svg?style=flat-square&colorA=564341&colorB=EDED91" alt="node version"></a>
-  <a href="https://github.com/web-infra-dev/rsbuild/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&colorA=564341&colorB=EDED91" alt="license" /></a>
+  <a href="https://github.com/web-infra-dev/rspack-dev-server/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square&colorA=564341&colorB=EDED91" alt="license" /></a>
 </p>
 
 Use Rspack with a development server that provides live reloading. This should be used for development only.

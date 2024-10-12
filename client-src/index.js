@@ -1,3 +1,4 @@
+// @ts-nocheck
 function ownKeys(object, enumerableOnly) {
 	var keys = Object.keys(object);
 	if (Object.getOwnPropertySymbols) {

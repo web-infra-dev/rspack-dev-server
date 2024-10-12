@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import hotEmitter from "@rspack/core/hot/emitter.js";
 import { log } from "webpack-dev-server/client/utils/log.js";
 

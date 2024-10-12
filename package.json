@@ -19,7 +19,9 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "tsc -b ./tsconfig.build.json",
+    "build": "pnpm run build:server && pnpm run build:client",
+    "build:server": "tsc -b ./tsconfig.build.json",
+    "build:client": "tsc -b ./tsconfig.client.json",
     "dev": "tsc -b -w",
     "lint": "biome check .",
     "lint:write": "biome check . --write",

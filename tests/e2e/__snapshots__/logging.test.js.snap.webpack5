@@ -26,8 +26,8 @@ exports[`logging should work and log errors by default (sockjs) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;
@@ -44,8 +44,8 @@ exports[`logging should work and log errors by default (ws) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;
@@ -138,8 +138,8 @@ exports[`logging should work and log only error (sockjs) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;
@@ -154,8 +154,8 @@ exports[`logging should work and log only error (ws) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;
@@ -194,8 +194,8 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
@@ -204,8 +204,8 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;
@@ -220,8 +220,8 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
@@ -230,8 +230,8 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;
@@ -248,8 +248,8 @@ exports[`logging should work and log warnings by default (sockjs) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;
@@ -266,8 +266,8 @@ exports[`logging should work and log warnings by default (ws) 1`] = `
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/Compiler.js:<line>:<row>
-  │     at last.function (<rspack>/dist/Compiler.js:<line>:<row>)
+  │     at <rspack>/dist/index.js:<line>:<row>
+  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
 ,
 ]
 `;

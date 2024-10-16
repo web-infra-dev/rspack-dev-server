@@ -608,9 +608,9 @@ exports[`overlay should show a warning after invalidation: overlay html 1`] = `
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -724,9 +724,9 @@ exports[`overlay should show a warning and error for initial compilation and pro
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
       <div
@@ -762,9 +762,9 @@ exports[`overlay should show a warning and error for initial compilation and pro
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -878,9 +878,9 @@ exports[`overlay should show a warning and error for initial compilation: overla
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
       <div
@@ -916,9 +916,9 @@ exports[`overlay should show a warning and error for initial compilation: overla
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
       <div
@@ -955,9 +955,9 @@ exports[`overlay should show a warning and error for initial compilation: overla
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
       <div
@@ -994,9 +994,9 @@ exports[`overlay should show a warning and error for initial compilation: overla
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
       <div
@@ -1033,9 +1033,9 @@ exports[`overlay should show a warning and error for initial compilation: overla
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -1149,9 +1149,9 @@ exports[`overlay should show a warning and hide them after closing connection: o
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -1273,9 +1273,9 @@ exports[`overlay should show a warning for initial compilation: overlay html 1`]
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -1389,9 +1389,9 @@ exports[`overlay should show a warning when "client.overlay" is "true": overlay 
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -1505,9 +1505,9 @@ exports[`overlay should show a warning when "client.overlay.errors" is "true": o
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -1621,9 +1621,9 @@ exports[`overlay should show a warning when "client.overlay.warnings" is "true":
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -1757,9 +1757,9 @@ exports[`overlay should show an ansi formatted error for initial compilation: ov
             │ at QueriedHook.call
             (<tapable>/index.js:<line>:<row>)
             │ at
-            <rspack>/dist/Compiler.js:<line>:<row>
+            <rspack>/dist/index.js:<line>:<row>
             │ at last.function
-            (<rspack>/dist/Compiler.js:<line>:<row>)
+            (<rspack>/dist/index.js:<line>:<row>)
           </span>
         </div>
       </div>
@@ -1874,9 +1874,9 @@ exports[`overlay should show an error after invalidation: overlay html 1`] = `
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -1991,9 +1991,9 @@ exports[`overlay should show an error for initial compilation: overlay html 1`] 
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -2108,9 +2108,9 @@ exports[`overlay should show an error when "client.overlay" is "true": overlay h
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -2225,9 +2225,9 @@ exports[`overlay should show an error when "client.overlay.errors" is "true": ov
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -2341,9 +2341,9 @@ exports[`overlay should show an error when "client.overlay.warnings" is "true": 
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -2626,9 +2626,9 @@ exports[`overlay should show error when it is not filtered: overlay html 1`] = `
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -2743,9 +2743,9 @@ exports[`overlay should show overlay when "Content-Security-Policy" is "default-
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -2860,9 +2860,9 @@ exports[`overlay should show overlay when Trusted Types are enabled and the "req
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -2977,9 +2977,9 @@ exports[`overlay should show overlay when Trusted Types are enabled: overlay htm
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>
@@ -3093,9 +3093,9 @@ exports[`overlay should show warning when it is not filtered: overlay html 1`] =
           │ at QueriedHook.call
           (<tapable>/index.js:<line>:<row>)
           │ at
-          <rspack>/dist/Compiler.js:<line>:<row>
+          <rspack>/dist/index.js:<line>:<row>
           │ at last.function
-          (<rspack>/dist/Compiler.js:<line>:<row>)
+          (<rspack>/dist/index.js:<line>:<row>)
         </div>
       </div>
     </div>

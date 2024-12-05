@@ -26,7 +26,7 @@ const getFreePort = async function getFreePort(port: string, host: string) {
 		return port;
 	}
 
-	const pRetry = require("p-retry");
+	const { default: pRetry } = await import("p-retry");
 	const getPort = require("webpack-dev-server/lib/getPort");
 	const basePort =
 		typeof process.env.WEBPACK_DEV_SERVER_BASE_PORT !== "undefined"

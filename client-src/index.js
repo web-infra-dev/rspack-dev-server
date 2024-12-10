@@ -243,9 +243,13 @@ var onSocketMessage = {
 		sendMessage("Invalid");
 	},
 	/**
-	 * @param {string} hash
+	 * @param {string | undefined} _hash
 	 */
 	hash: function hash(_hash) {
+		if (!_hash) {
+			return;
+		}
+
 		status.previousHash = status.currentHash;
 		status.currentHash = _hash;
 	},

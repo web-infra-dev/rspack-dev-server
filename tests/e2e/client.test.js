@@ -1,5 +1,3 @@
-"use strict";
-
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 const config = require("../fixtures/simple-config-other/webpack.config");
@@ -21,12 +19,12 @@ describe("client option", () => {
 			server = new Server(
 				{
 					client: {
-						webSocketTransport: "sockjs"
+						webSocketTransport: "sockjs",
 					},
 					webSocketServer: "sockjs",
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -44,15 +42,15 @@ describe("client option", () => {
 
 		it("responds with a 200 status code for /ws path", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/ws`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			// overlay should be true by default
@@ -60,8 +58,8 @@ describe("client option", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -82,19 +80,19 @@ describe("client option", () => {
 			server = new Server(
 				{
 					client: {
-						webSocketTransport: "sockjs"
+						webSocketTransport: "sockjs",
 					},
 					webSocketServer: {
 						type: "sockjs",
 						options: {
 							host: "localhost",
 							port,
-							path: "/foo/test/bar"
-						}
+							path: "/foo/test/bar",
+						},
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -112,24 +110,24 @@ describe("client option", () => {
 
 		it("responds with a 200 status code for /foo/test/bar path", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(
 				`http://127.0.0.1:${port}/foo/test/bar`,
 				{
-					waitUntil: "networkidle0"
-				}
+					waitUntil: "networkidle0",
+				},
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -150,9 +148,9 @@ describe("client option", () => {
 			server = new Server(
 				{
 					client: false,
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -170,23 +168,23 @@ describe("client option", () => {
 
 		it("should disable client entry", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).not.toMatch(/client\/index\.js/);
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -204,14 +202,14 @@ describe("client option", () => {
 		beforeEach(async () => {
 			compiler = webpack({
 				...config,
-				devtool: false
+				devtool: false,
 			});
 
 			server = new Server(
 				{
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -229,88 +227,143 @@ describe("client option", () => {
 
 		it("should redirect client entry to rspack", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
-			expect(await response.text()).toContain("/* Rspack dev server runtime client */")
+			expect(await response.text()).toContain(
+				"/* Rspack dev server runtime client */",
+			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
 		});
 	});
 
+	describe("override client entry", () => {
+		let compiler;
+		let server;
+		let page;
+		let browser;
+
+		class OverrideServer extends Server {
+			// eslint-disable-next-line class-methods-use-this
+			getClientEntry() {
+				return require.resolve(
+					"../fixtures/custom-client/CustomClientEntry.js",
+				);
+			}
+			// eslint-disable-next-line class-methods-use-this
+			getClientHotEntry() {
+				return require.resolve(
+					"../fixtures/custom-client/CustomClientHotEntry.js",
+				);
+			}
+		}
+
+		beforeEach(async () => {
+			compiler = webpack(config);
+
+			server = new OverrideServer(
+				{
+					port,
+				},
+				compiler,
+			);
+
+			await server.start();
+
+			({ page, browser } = await runBrowser());
+		});
+
+		afterEach(async () => {
+			await browser.close();
+			await server.stop();
+		});
+
+		it("should disable client entry", async () => {
+			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
+				waitUntil: "networkidle0",
+			});
+
+			expect(response.status()).toMatchSnapshot("response status");
+
+			const content = await response.text();
+			expect(content).toContain("CustomClientEntry.js");
+			expect(content).toContain("CustomClientHotEntry.js");
+		});
+	});
 
 	describe("webSocketTransport", () => {
 		const clientModes = [
 			{
 				title: 'as a string ("sockjs")',
 				client: {
-					webSocketTransport: "sockjs"
+					webSocketTransport: "sockjs",
 				},
 				webSocketServer: "sockjs",
-				shouldThrow: false
+				shouldThrow: false,
 			},
 			{
 				title: 'as a string ("ws")',
 				client: {
-					webSocketTransport: "ws"
+					webSocketTransport: "ws",
 				},
 				webSocketServer: "ws",
-				shouldThrow: false
+				shouldThrow: false,
 			},
 			{
 				title: 'as a path ("sockjs")',
 				client: {
 					webSocketTransport: require.resolve(
-						"webpack-dev-server/client/clients/SockJSClient"
-					)
+						"webpack-dev-server/client/clients/SockJSClient",
+					),
 				},
 				webSocketServer: "sockjs",
-				shouldThrow: false
+				shouldThrow: false,
 			},
 			{
 				title: 'as a path ("ws")',
 				client: {
 					webSocketTransport: require.resolve(
-						"webpack-dev-server/client/clients/WebSocketClient"
-					)
+						"webpack-dev-server/client/clients/WebSocketClient",
+					),
 				},
 				webSocketServer: "ws",
-				shouldThrow: false
+				shouldThrow: false,
 			},
 			{
 				title: "as a nonexistent path (sockjs)",
 				client: {
-					webSocketTransport: "/bad/path/to/implementation"
+					webSocketTransport: "/bad/path/to/implementation",
 				},
 				webSocketServer: "sockjs",
-				shouldThrow: true
+				shouldThrow: true,
 			},
 			{
 				title: "as a nonexistent path (ws)",
 				client: {
-					webSocketTransport: "/bad/path/to/implementation"
+					webSocketTransport: "/bad/path/to/implementation",
 				},
 				webSocketServer: "ws",
-				shouldThrow: true
-			}
+				shouldThrow: true,
+			},
 		];
 
 		describe("passed to server", () => {
-			clientModes.forEach(data => {
+			for (const data of clientModes) {
 				it(`${data.title} ${
 					data.shouldThrow ? "should throw" : "should not throw"
 				}`, async () => {
@@ -319,9 +372,9 @@ describe("client option", () => {
 					const server = new Server(
 						{
 							client: data.client,
-							port
+							port,
 						},
-						compiler
+						compiler,
 					);
 
 					let thrownError;
@@ -334,13 +387,13 @@ describe("client option", () => {
 
 					if (data.shouldThrow) {
 						expect(thrownError.message).toMatch(
-							/client\.webSocketTransport must be a string/
+							/client\.webSocketTransport must be a string/,
 						);
 					}
 
 					await server.stop();
 				});
-			});
+			}
 		});
 	});
 });

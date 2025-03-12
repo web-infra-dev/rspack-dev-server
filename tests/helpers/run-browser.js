@@ -1,5 +1,3 @@
-"use strict";
-
 const puppeteer = require("puppeteer");
 const { puppeteerArgs } = require("./puppeteer-constants");
 
@@ -30,14 +28,14 @@ function runBrowser(config) {
 				// because of invalid localhost certificate
 				acceptInsecureCerts: true,
 				// args come from: https://github.com/alixaxel/chrome-aws-lambda/blob/master/source/index.js
-				args: puppeteerArgs
+				args: puppeteerArgs,
 			})
-			.then(launchedBrowser => {
+			.then((launchedBrowser) => {
 				browser = launchedBrowser;
 
 				return runPage(launchedBrowser, config);
 			})
-			.then(newPage => {
+			.then((newPage) => {
 				page = newPage;
 
 				resolve({ page, browser });
@@ -55,33 +53,33 @@ function runPage(browser, config) {
 	const options = {
 		viewport: {
 			width: 500,
-			height: 500
+			height: 500,
 		},
 		userAgent: "",
-		...config
+		...config,
 	};
 
 	return Promise.resolve()
 		.then(() => browser.newPage())
-		.then(newPage => {
+		.then((newPage) => {
 			page = newPage;
 			page.emulate(options);
 
 			return page.setRequestInterception(true);
 		})
 		.then(() => {
-			page.on("request", interceptedRequest => {
+			page.on("request", (interceptedRequest) => {
 				if (interceptedRequest.isInterceptResolutionHandled()) return;
 				if (interceptedRequest.url().includes("favicon.ico")) {
 					interceptedRequest.respond({
 						status: 200,
 						contentType: "image/png",
-						body: "Empty"
+						body: "Empty",
 					});
 				} else {
 					interceptedRequest.continue(
 						interceptedRequest.continueRequestOverrides(),
-						10
+						10,
 					);
 				}
 			});

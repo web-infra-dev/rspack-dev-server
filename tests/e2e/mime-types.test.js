@@ -1,5 +1,3 @@
-"use strict";
-
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 const config = require("../fixtures/mime-types-config/webpack.config");
@@ -22,12 +20,12 @@ describe("mimeTypes option", () => {
 				{
 					devMiddleware: {
 						mimeTypes: {
-							js: "text/plain"
-						}
+							js: "text/plain",
+						},
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -45,25 +43,25 @@ describe("mimeTypes option", () => {
 
 		it("should request file with different js mime type", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -85,12 +83,12 @@ describe("mimeTypes option", () => {
 				{
 					devMiddleware: {
 						mimeTypes: {
-							custom: "text/html"
-						}
+							custom: "text/html",
+						},
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -108,25 +106,25 @@ describe("mimeTypes option", () => {
 
 		it("should request file with different js mime type", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/file.custom`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");

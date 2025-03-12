@@ -1,6 +1,4 @@
-"use strict";
-
-const os = require("os");
+const os = require("node:os");
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 const config = require("../fixtures/simple-config/webpack.config");
@@ -14,7 +12,7 @@ describe("bonjour option", () => {
 
 	beforeEach(() => {
 		mockPublish = jest.fn();
-		mockUnpublishAll = jest.fn(callback => {
+		mockUnpublishAll = jest.fn((callback) => {
 			callback();
 		});
 		mockDestroy = jest.fn();
@@ -35,9 +33,9 @@ describe("bonjour option", () => {
 						return {
 							publish: mockPublish,
 							unpublishAll: mockUnpublishAll,
-							destroy: mockDestroy
+							destroy: mockDestroy,
 						};
-					})
+					}),
 				};
 			});
 
@@ -64,15 +62,15 @@ describe("bonjour option", () => {
 
 		it("should call bonjour with correct params", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(mockPublish).toHaveBeenCalledTimes(1);
@@ -81,7 +79,7 @@ describe("bonjour option", () => {
 				name: `Webpack Dev Server ${os.hostname()}:${port}`,
 				port,
 				type: "http",
-				subtypes: ["webpack"]
+				subtypes: ["webpack"],
 			});
 
 			expect(mockUnpublishAll).toHaveBeenCalledTimes(0);
@@ -89,8 +87,8 @@ describe("bonjour option", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -112,9 +110,9 @@ describe("bonjour option", () => {
 						return {
 							publish: mockPublish,
 							unpublishAll: mockUnpublishAll,
-							destroy: mockDestroy
+							destroy: mockDestroy,
 						};
-					})
+					}),
 				};
 			});
 
@@ -137,15 +135,15 @@ describe("bonjour option", () => {
 
 		it("should call bonjour with 'https' type", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`https://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(mockPublish).toHaveBeenCalledTimes(1);
@@ -154,7 +152,7 @@ describe("bonjour option", () => {
 				name: `Webpack Dev Server ${os.hostname()}:${port}`,
 				port,
 				type: "https",
-				subtypes: ["webpack"]
+				subtypes: ["webpack"],
 			});
 
 			expect(mockUnpublishAll).toHaveBeenCalledTimes(0);
@@ -162,8 +160,8 @@ describe("bonjour option", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -185,9 +183,9 @@ describe("bonjour option", () => {
 						return {
 							publish: mockPublish,
 							unpublishAll: mockUnpublishAll,
-							destroy: mockDestroy
+							destroy: mockDestroy,
 						};
-					})
+					}),
 				};
 			});
 
@@ -198,10 +196,10 @@ describe("bonjour option", () => {
 					port,
 					bonjour: {
 						type: "https",
-						protocol: "udp"
-					}
+						protocol: "udp",
+					},
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -219,15 +217,15 @@ describe("bonjour option", () => {
 
 		it("should apply bonjour options", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(mockPublish).toHaveBeenCalledTimes(1);
@@ -237,7 +235,7 @@ describe("bonjour option", () => {
 				port,
 				type: "https",
 				protocol: "udp",
-				subtypes: ["webpack"]
+				subtypes: ["webpack"],
 			});
 
 			expect(mockUnpublishAll).toHaveBeenCalledTimes(0);
@@ -245,8 +243,8 @@ describe("bonjour option", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -268,9 +266,9 @@ describe("bonjour option", () => {
 						return {
 							publish: mockPublish,
 							unpublishAll: mockUnpublishAll,
-							destroy: mockDestroy
+							destroy: mockDestroy,
 						};
-					})
+					}),
 				};
 			});
 
@@ -281,13 +279,13 @@ describe("bonjour option", () => {
 					port,
 					bonjour: {
 						type: "http",
-						protocol: "udp"
+						protocol: "udp",
 					},
 					server: {
-						type: "https"
-					}
+						type: "https",
+					},
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -305,15 +303,15 @@ describe("bonjour option", () => {
 
 		it("should apply bonjour options", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`https://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(mockPublish).toHaveBeenCalledTimes(1);
@@ -323,7 +321,7 @@ describe("bonjour option", () => {
 				port,
 				type: "http",
 				protocol: "udp",
-				subtypes: ["webpack"]
+				subtypes: ["webpack"],
 			});
 
 			expect(mockUnpublishAll).toHaveBeenCalledTimes(0);
@@ -331,8 +329,8 @@ describe("bonjour option", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");

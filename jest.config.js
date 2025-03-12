@@ -4,7 +4,7 @@ const isWin = os.platform() === "win32";
 const config = {
 	preset: "ts-jest",
 	testEnvironmentOptions: {
-		url: "http://localhost/"
+		url: "http://localhost/",
 	},
 	testMatch: [
 		"<rootDir>/tests/*.test.ts",
@@ -19,7 +19,7 @@ const config = {
 		// TODO: check why this test throw error when run with other tests
 		"<rootDir>/tests/e2e/watch-files.test.js",
 		// TODO: check why this test timeout
-		"<rootDir>/tests/e2e/web-socket-server-url.test.js"
+		"<rootDir>/tests/e2e/web-socket-server-url.test.js",
 	],
 	cache: false,
 	testTimeout: process.env.CI ? 120000 : 30000,
@@ -27,9 +27,9 @@ const config = {
 		"(.*)\\.{js,ts}": [
 			"ts-jest",
 			{
-				tsconfig: "<rootDir>/tests/tsconfig.json"
-			}
-		]
+				tsconfig: "<rootDir>/tests/tsconfig.json",
+			},
+		],
 	},
 	// Add this to find out which test timeouts
 	// testSequencer: "<rootDir>/tests/helpers/sequencer.js",
@@ -37,8 +37,8 @@ const config = {
 	setupFilesAfterEnv: ["<rootDir>/tests/helpers/setup-test.js"],
 	globalSetup: "<rootDir>/tests/helpers/global-setup-test.js",
 	moduleNameMapper: {
-		"^uuid$": require.resolve("uuid")
-	}
+		"^uuid$": require.resolve("uuid"),
+	},
 };
 
 module.exports = config;

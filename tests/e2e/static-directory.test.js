@@ -1,6 +1,4 @@
-"use strict";
-
-const path = require("path");
+const path = require("node:path");
 const fs = require("graceful-fs");
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
@@ -31,11 +29,11 @@ describe("static.directory option", () => {
 				{
 					static: {
 						directory: publicDirectory,
-						watch: true
+						watch: true,
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -54,23 +52,23 @@ describe("static.directory option", () => {
 
 		it("should handle request to index route", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -78,29 +76,29 @@ describe("static.directory option", () => {
 
 		it("should handle request to other file", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/other.html`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
 		});
 
-		it("Watches folder recursively", done => {
+		it("Watches folder recursively", (done) => {
 			// chokidar emitted a change,
 			// meaning it watched the file correctly
 			server.staticWatchers[0].on("change", () => {
@@ -113,7 +111,7 @@ describe("static.directory option", () => {
 			}, 1000);
 		});
 
-		it("Watches node_modules", done => {
+		it("Watches node_modules", (done) => {
 			const filePath = path.join(publicDirectory, "node_modules", "index.html");
 
 			fs.writeFileSync(filePath, "foo", "utf8");
@@ -149,11 +147,11 @@ describe("static.directory option", () => {
 					static: {
 						directory: publicDirectory,
 						watch: true,
-						serveIndex: false
+						serveIndex: false,
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -171,23 +169,23 @@ describe("static.directory option", () => {
 
 		it("should not list the files inside the assets folder (404)", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/assets`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -195,23 +193,23 @@ describe("static.directory option", () => {
 
 		it("should show Heyo. because bar has index.html inside it (200)", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/bar`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -234,11 +232,11 @@ describe("static.directory option", () => {
 					static: {
 						directory: publicDirectory,
 						watch: true,
-						serveIndex: true
+						serveIndex: true,
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -256,15 +254,15 @@ describe("static.directory option", () => {
 
 		it("should list the files inside the assets folder (200)", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/assets/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			const text = await response.text();
@@ -274,8 +272,8 @@ describe("static.directory option", () => {
 			expect(text).toContain("example.txt");
 			expect(text).toContain("other.txt");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -283,23 +281,23 @@ describe("static.directory option", () => {
 
 		it("should show Heyo. because bar has index.html inside it (200)", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/bar/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -321,11 +319,11 @@ describe("static.directory option", () => {
 				{
 					static: {
 						directory: publicDirectory,
-						watch: true
+						watch: true,
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -343,15 +341,15 @@ describe("static.directory option", () => {
 
 		it("should list the files inside the assets folder (200)", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/assets`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			const text = await response.text();
@@ -361,8 +359,8 @@ describe("static.directory option", () => {
 			expect(text).toContain("example.txt");
 			expect(text).toContain("other.txt");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -370,23 +368,23 @@ describe("static.directory option", () => {
 
 		it("should show Heyo. because bar has index.html inside it (200)", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/bar`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -407,9 +405,9 @@ describe("static.directory option", () => {
 			server = new Server(
 				{
 					static: [publicDirectory, otherPublicDirectory],
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -427,23 +425,23 @@ describe("static.directory option", () => {
 
 		it("should handle request first directory", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -451,23 +449,23 @@ describe("static.directory option", () => {
 
 		it("should handle request to second directory", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo.html`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -477,31 +475,31 @@ describe("static.directory option", () => {
 	describe("testing single & multiple external paths", () => {
 		let server;
 
-		afterEach(done => {
+		afterEach((done) => {
 			testServer.close(() => {
 				done();
 			});
 		});
 
-		it("Should throw exception (external url)", done => {
+		it("Should throw exception (external url)", (done) => {
 			expect.assertions(1);
 
 			server = testServer.start(
 				config,
 				{
-					static: "https://example.com/"
+					static: "https://example.com/",
 				},
-				error => {
+				(error) => {
 					expect(error.message).toBe(
-						"Using a URL as static.directory is not supported"
+						"Using a URL as static.directory is not supported",
 					);
 
 					server.stopCallback(done);
-				}
+				},
 			);
 		});
 
-		it("Should not throw exception (local path with lower case first character)", done => {
+		it("Should not throw exception (local path with lower case first character)", (done) => {
 			testServer.start(
 				config,
 				{
@@ -509,55 +507,55 @@ describe("static.directory option", () => {
 						directory:
 							publicDirectory.charAt(0).toLowerCase() +
 							publicDirectory.substring(1),
-						watch: true
+						watch: true,
 					},
-					port
+					port,
 				},
-				done
+				done,
 			);
 		});
 
-		it("Should not throw exception (local path with lower case first character & has '-')", done => {
+		it("Should not throw exception (local path with lower case first character & has '-')", (done) => {
 			testServer.start(
 				config,
 				{
 					static: {
 						directory: "c:\\absolute\\path\\to\\content-base",
-						watch: true
+						watch: true,
 					},
-					port
+					port,
 				},
-				done
+				done,
 			);
 		});
 
-		it("Should not throw exception (local path with upper case first character & has '-')", done => {
+		it("Should not throw exception (local path with upper case first character & has '-')", (done) => {
 			testServer.start(
 				config,
 				{
 					static: {
 						directory: "C:\\absolute\\path\\to\\content-base",
-						watch: true
+						watch: true,
 					},
-					port
+					port,
 				},
-				done
+				done,
 			);
 		});
 
-		it("Should throw exception (array with absolute url)", done => {
+		it("Should throw exception (array with absolute url)", (done) => {
 			server = testServer.start(
 				config,
 				{
-					static: [publicDirectory, "https://example.com/"]
+					static: [publicDirectory, "https://example.com/"],
 				},
-				error => {
+				(error) => {
 					expect(error.message).toBe(
-						"Using a URL as static.directory is not supported"
+						"Using a URL as static.directory is not supported",
 					);
 
 					server.stopCallback(done);
-				}
+				},
 			);
 		});
 	});
@@ -580,9 +578,9 @@ describe("static.directory option", () => {
 				{
 					// eslint-disable-next-line no-undefined
 					static: undefined,
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -600,23 +598,23 @@ describe("static.directory option", () => {
 
 		it("should handle request to /index.html", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/index.html`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -641,9 +639,9 @@ describe("static.directory option", () => {
 			server = new Server(
 				{
 					static: false,
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -661,23 +659,23 @@ describe("static.directory option", () => {
 
 		it("should not handle request to /other.html (404)", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/index.html`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");

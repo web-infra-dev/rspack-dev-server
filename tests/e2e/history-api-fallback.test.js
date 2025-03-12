@@ -1,6 +1,4 @@
-"use strict";
-
-const path = require("path");
+const path = require("node:path");
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 const config = require("../fixtures/historyapifallback-config/webpack.config");
@@ -24,9 +22,9 @@ describe("historyApiFallback option", () => {
 			server = new Server(
 				{
 					historyApiFallback: true,
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -44,27 +42,27 @@ describe("historyApiFallback option", () => {
 
 		it("should handle GET request to directory", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -85,11 +83,11 @@ describe("historyApiFallback option", () => {
 			server = new Server(
 				{
 					historyApiFallback: {
-						index: "/bar.html"
+						index: "/bar.html",
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -107,27 +105,27 @@ describe("historyApiFallback option", () => {
 
 		it("should handle GET request to directory", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -149,14 +147,14 @@ describe("historyApiFallback option", () => {
 				{
 					static: path.resolve(
 						__dirname,
-						"../fixtures/historyapifallback-2-config"
+						"../fixtures/historyapifallback-2-config",
 					),
 					historyApiFallback: {
-						index: "/bar.html"
+						index: "/bar.html",
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -174,27 +172,27 @@ describe("historyApiFallback option", () => {
 
 		it("should handle GET request to directory", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -202,30 +200,30 @@ describe("historyApiFallback option", () => {
 
 		it("should prefer static file over historyApiFallback", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(
 				`http://127.0.0.1:${port}/random-file.txt`,
 				{
-					waitUntil: "networkidle2"
-				}
+					waitUntil: "networkidle2",
+				},
 			);
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -247,11 +245,11 @@ describe("historyApiFallback option", () => {
 				{
 					static: false,
 					historyApiFallback: {
-						index: "/bar.html"
+						index: "/bar.html",
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -269,27 +267,27 @@ describe("historyApiFallback option", () => {
 
 		it("historyApiFallback should work and ignore static content", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/index.html`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -312,22 +310,22 @@ describe("historyApiFallback option", () => {
 					port,
 					static: path.resolve(
 						__dirname,
-						"../fixtures/historyapifallback-2-config"
+						"../fixtures/historyapifallback-2-config",
 					),
 					historyApiFallback: {
 						rewrites: [
 							{
 								from: /other/,
-								to: "/other.html"
+								to: "/other.html",
 							},
 							{
 								from: /.*/,
-								to: "/bar.html"
-							}
-						]
-					}
+								to: "/bar.html",
+							},
+						],
+					},
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -345,27 +343,27 @@ describe("historyApiFallback option", () => {
 
 		it("historyApiFallback respect rewrites for index", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -373,27 +371,27 @@ describe("historyApiFallback option", () => {
 
 		it("historyApiFallback respect rewrites and shows index for unknown urls", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/acme`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -401,27 +399,27 @@ describe("historyApiFallback option", () => {
 
 		it("historyApiFallback respect any other specified rewrites", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/other`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -446,11 +444,11 @@ describe("historyApiFallback option", () => {
 				{
 					historyApiFallback: {
 						index: "/bar.html",
-						verbose: true
+						verbose: true,
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -469,19 +467,19 @@ describe("historyApiFallback option", () => {
 
 		it("request to directory and log", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
@@ -493,11 +491,11 @@ describe("historyApiFallback option", () => {
 				"GET",
 				"/foo",
 				"to",
-				"/bar.html"
+				"/bar.html",
 			);
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -522,11 +520,11 @@ describe("historyApiFallback option", () => {
 				{
 					historyApiFallback: {
 						index: "/bar.html",
-						logger: consoleSpy
+						logger: consoleSpy,
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -545,19 +543,19 @@ describe("historyApiFallback option", () => {
 
 		it("request to directory and log", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
@@ -569,11 +567,11 @@ describe("historyApiFallback option", () => {
 				"GET",
 				"/foo",
 				"to",
-				"/bar.html"
+				"/bar.html",
 			);
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -595,12 +593,12 @@ describe("historyApiFallback option", () => {
 				{
 					static: path.resolve(
 						__dirname,
-						"../fixtures/historyapifallback-3-config"
+						"../fixtures/historyapifallback-3-config",
 					),
 					historyApiFallback: true,
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -618,27 +616,27 @@ describe("historyApiFallback option", () => {
 
 		it("should take precedence over static files", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["content-type"]).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			expect(await response.text()).toMatchSnapshot("response text");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -646,7 +644,7 @@ describe("historyApiFallback option", () => {
 
 		it("should perform HEAD request in same way as GET", async () => {
 			await page.goto(`http://127.0.0.1:${port}/foo`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			const responseGet = await page.evaluate(async () => {
@@ -655,12 +653,12 @@ describe("historyApiFallback option", () => {
 				return {
 					contentType: response.headers.get("content-type"),
 					statusText: response.statusText,
-					text: await response.text()
+					text: await response.text(),
 				};
 			});
 
 			expect(responseGet.contentType).toMatchSnapshot(
-				"response headers content-type"
+				"response headers content-type",
 			);
 
 			expect(responseGet.statusText).toMatchSnapshot("response status");
@@ -673,14 +671,14 @@ describe("historyApiFallback option", () => {
 				return {
 					contentType: response.headers.get("content-type"),
 					statusText: response.statusText,
-					text: await response.text()
+					text: await response.text(),
 				};
 			});
 
 			expect(responseHead).toMatchObject({
 				...responseGet,
 				// HEAD response has an empty body
-				text: ""
+				text: "",
 			});
 		});
 	});

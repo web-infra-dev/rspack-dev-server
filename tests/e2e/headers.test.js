@@ -1,5 +1,3 @@
-"use strict";
-
 const request = require("supertest");
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
@@ -22,9 +20,9 @@ describe("headers option", () => {
 			server = new Server(
 				{
 					headers: { "X-Foo": "dev-server headers" },
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -42,25 +40,25 @@ describe("headers option", () => {
 
 		it("should handle GET request with headers", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["x-foo"]).toMatchSnapshot(
-				"response headers x-foo"
+				"response headers x-foo",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -83,16 +81,16 @@ describe("headers option", () => {
 					headers: [
 						{
 							key: "X-Foo",
-							value: "value1"
+							value: "value1",
 						},
 						{
 							key: "X-Bar",
-							value: "value2"
-						}
+							value: "value2",
+						},
 					],
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -110,29 +108,29 @@ describe("headers option", () => {
 
 		it("should handle GET request with headers", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["x-foo"]).toMatchSnapshot(
-				"response headers x-foo"
+				"response headers x-foo",
 			);
 
 			expect(response.headers()["x-bar"]).toMatchSnapshot(
-				"response headers x-bar"
+				"response headers x-bar",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -153,9 +151,9 @@ describe("headers option", () => {
 			server = new Server(
 				{
 					headers: { "X-Bar": ["key1=value1", "key2=value2"] },
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -173,25 +171,25 @@ describe("headers option", () => {
 
 		it("should handle GET request with headers as an array", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["x-bar"]).toMatchSnapshot(
-				"response headers x-bar"
+				"response headers x-bar",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -214,9 +212,9 @@ describe("headers option", () => {
 					headers: () => {
 						return { "X-Bar": ["key1=value1", "key2=value2"] };
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -234,25 +232,25 @@ describe("headers option", () => {
 
 		it("should handle GET request with headers as a function", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["x-bar"]).toMatchSnapshot(
-				"response headers x-bar"
+				"response headers x-bar",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -275,16 +273,16 @@ describe("headers option", () => {
 					headers: () => [
 						{
 							key: "X-Foo",
-							value: "value1"
+							value: "value1",
 						},
 						{
 							key: "X-Bar",
-							value: "value2"
-						}
+							value: "value2",
+						},
 					],
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -302,29 +300,29 @@ describe("headers option", () => {
 
 		it("should handle GET request with headers", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["x-foo"]).toMatchSnapshot(
-				"response headers x-foo"
+				"response headers x-foo",
 			);
 
 			expect(response.headers()["x-bar"]).toMatchSnapshot(
-				"response headers x-bar"
+				"response headers x-bar",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -346,11 +344,11 @@ describe("headers option", () => {
 				{
 					headers: { "X-Foo": "dev-server-headers" },
 					devMiddleware: {
-						headers: { "X-Foo": "dev-middleware-headers" }
+						headers: { "X-Foo": "dev-middleware-headers" },
 					},
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -368,25 +366,25 @@ describe("headers option", () => {
 
 		it("should handle GET request with headers as a function", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["x-foo"]).toMatchSnapshot(
-				"response headers x-foo"
+				"response headers x-foo",
 			);
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -408,9 +406,9 @@ describe("headers option", () => {
 			server = new Server(
 				{
 					headers: { "X-Foo": "dev-server headers" },
-					port
+					port,
 				},
-				compiler
+				compiler,
 			);
 
 			await server.start();
@@ -430,27 +428,27 @@ describe("headers option", () => {
 
 		it("should handle HEAD request with headers", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			expect(response.headers()["x-foo"]).toMatchSnapshot(
-				"response headers x-foo"
+				"response headers x-foo",
 			);
 			expect(response.status()).toMatchSnapshot("response status");
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 			expect(pageErrors).toMatchSnapshot("page errors");
 
-			const responseForHead = await req.get(`/`);
+			const responseForHead = await req.get("/");
 
 			expect(responseForHead.headers["x-foo"]).toBe("dev-server headers");
 		});

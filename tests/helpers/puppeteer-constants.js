@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = {
 	reloadReadyDelay: 5000,
 	completeReloadDelay: 10000,
@@ -48,6 +46,6 @@ module.exports = {
 		"--prerender-from-omnibox=disabled",
 		"--use-gl=swiftshader",
 		"--use-mock-keychain",
-		"--disable-field-trial-config"
-	]
+		"--disable-field-trial-config",
+	],
 };

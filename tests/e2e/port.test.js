@@ -1,5 +1,3 @@
-"use strict";
-
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 const config = require("../fixtures/client-config/webpack.config");
@@ -16,7 +14,7 @@ describe("port", () => {
 		`${port}`,
 		0,
 		"-1",
-		"99999"
+		"99999",
 	];
 
 	for (const testedPort of ports) {
@@ -52,14 +50,10 @@ describe("port", () => {
 			}
 
 			if (testedPort === "-1" || testedPort === "99999") {
-				const errorMessageRegExp = new RegExp(
-					`options.port should be >= 0 and < 65536`
-				);
+				const errorMessageRegExp = /options.port should be >= 0 and < 65536/;
 
 				try {
 					expect(errored.message).toMatch(errorMessageRegExp);
-				} catch (error) {
-					throw error;
 				} finally {
 					await server.stop();
 				}
@@ -82,23 +76,21 @@ describe("port", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", message => {
+					.on("console", (message) => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", error => {
+					.on("pageerror", (error) => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://127.0.0.1:${address.port}/`, {
-					waitUntil: "networkidle0"
+					waitUntil: "networkidle0",
 				});
 
-				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-					"console messages"
-				);
+				expect(
+					consoleMessages.map((message) => message.text()),
+				).toMatchSnapshot("console messages");
 				expect(pageErrors).toMatchSnapshot("page errors");
-			} catch (error) {
-				throw error;
 			} finally {
 				await browser.close();
 				await server.stop();
@@ -108,7 +100,7 @@ describe("port", () => {
 				testedPort === "<not-specified>" ||
 				typeof testedPort === "undefined"
 			) {
-				delete process.env.WEBPACK_DEV_SERVER_BASE_PORT;
+				process.env.WEBPACK_DEV_SERVER_BASE_PORT = undefined;
 			}
 		});
 	}

@@ -1,5 +1,3 @@
-"use strict";
-
-const customHTTP = require("http");
+const customHTTP = require("node:http");
 
 module.exports = customHTTP;

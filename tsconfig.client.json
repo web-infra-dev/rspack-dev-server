@@ -1,14 +1,14 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "module": "ES2020",
-    "target": "ES5",
-    "outDir": "client",
-    "rootDir": "client-src",
-    "composite": false,
-    "sourceMap": false,
-    "declarationMap": false,
-    "declaration": false
-  },
-  "include": ["client-src"]
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"module": "ES2020",
+		"target": "ES5",
+		"outDir": "client",
+		"rootDir": "client-src",
+		"composite": false,
+		"sourceMap": false,
+		"declarationMap": false,
+		"declaration": false
+	},
+	"include": ["client-src"]
 }

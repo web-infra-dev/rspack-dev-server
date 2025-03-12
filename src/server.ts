@@ -41,7 +41,7 @@ const getFreePort = async function getFreePort(port: string, host: string) {
 			: 3;
 
 	return pRetry(() => getPort(basePort, host), {
-		retries: defaultPortRetry
+		retries: defaultPortRetry,
 	});
 };
 
@@ -68,6 +68,7 @@ export class RspackDevServer extends WebpackDevServer {
 	static version: string = version;
 
 	constructor(options: DevServer, compiler: Compiler | MultiCompiler) {
+		// biome-ignore lint/suspicious/noExplicitAny: _
 		super(options, compiler as any);
 		// override
 	}
@@ -84,13 +85,15 @@ export class RspackDevServer extends WebpackDevServer {
 				if (mode === "production") {
 					this.logger.warn(
 						"Hot Module Replacement (HMR) is enabled for the production build. \n" +
-							"Make sure to disable HMR for production by setting `devServer.hot` to `false` in the configuration."
+							"Make sure to disable HMR for production by setting `devServer.hot` to `false` in the configuration.",
 					);
 				}
 
 				compiler.options.resolve.alias = {
-					"ansi-html-community": require.resolve("@rspack/dev-server/client/utils/ansiHTML"),
-					...compiler.options.resolve.alias
+					"ansi-html-community": require.resolve(
+						"@rspack/dev-server/client/utils/ansiHTML",
+					),
+					...compiler.options.resolve.alias,
 				};
 			}
 		}
@@ -104,9 +107,9 @@ export class RspackDevServer extends WebpackDevServer {
 		addResolveAlias("webpack-dev-server", {
 			"../client/index.js": require.resolve("@rspack/dev-server/client/index"),
 			"webpack/hot/only-dev-server": require.resolve(
-				"@rspack/core/hot/only-dev-server"
+				"@rspack/core/hot/only-dev-server",
 			),
-			"webpack/hot/dev-server": require.resolve("@rspack/core/hot/dev-server")
+			"webpack/hot/dev-server": require.resolve("@rspack/core/hot/dev-server"),
 		});
 		try {
 			// @ts-expect-error

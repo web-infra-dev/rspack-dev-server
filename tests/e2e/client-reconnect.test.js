@@ -1,5 +1,3 @@
-"use strict";
-
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 const config = require("../fixtures/simple-config/webpack.config");
@@ -34,31 +32,29 @@ describe("client.reconnect option", () => {
 
 		it("should try to reconnect unlimited times", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			try {
 				expect(response.status()).toMatchSnapshot("response status");
-			} catch (error) {
-				throw error;
 			} finally {
 				await server.stop();
 			}
 
 			let interval;
 
-			await new Promise(resolve => {
+			await new Promise((resolve) => {
 				interval = setInterval(() => {
-					const retryingMessages = consoleMessages.filter(message =>
-						message.text().includes("Trying to reconnect...")
+					const retryingMessages = consoleMessages.filter((message) =>
+						message.text().includes("Trying to reconnect..."),
 					);
 
 					if (retryingMessages.length >= 5) {
@@ -100,38 +96,36 @@ describe("client.reconnect option", () => {
 
 		it("should not try to reconnect", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			try {
 				expect(response.status()).toMatchSnapshot("response status");
-			} catch (error) {
-				throw error;
 			} finally {
 				await server.stop();
 			}
 
 			// Can't wait to check for unlimited times so wait only for couple retries
-			await new Promise(resolve =>
+			await new Promise((resolve) =>
 				setTimeout(
 					() => {
 						resolve();
 					},
 					// eslint-disable-next-line no-restricted-properties
-					1000 * Math.pow(2, 3)
-				)
+					1000 * 2 ** 3,
+				),
 			);
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -165,38 +159,36 @@ describe("client.reconnect option", () => {
 
 		it("should try to reconnect 2 times", async () => {
 			page
-				.on("console", message => {
+				.on("console", (message) => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", error => {
+				.on("pageerror", (error) => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0"
+				waitUntil: "networkidle0",
 			});
 
 			try {
 				expect(response.status()).toMatchSnapshot("response status");
-			} catch (error) {
-				throw error;
 			} finally {
 				await server.stop();
 			}
 
 			// Can't wait to check for unlimited times so wait only for couple retries
-			await new Promise(resolve =>
+			await new Promise((resolve) =>
 				setTimeout(
 					() => {
 						resolve();
 					},
 					// eslint-disable-next-line no-restricted-properties
-					1000 * Math.pow(2, 3)
-				)
+					1000 * 2 ** 3,
+				),
 			);
 
-			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-				"console messages"
+			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+				"console messages",
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");

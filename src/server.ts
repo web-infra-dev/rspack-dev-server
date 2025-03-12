@@ -15,7 +15,6 @@ import WebpackDevServer from "webpack-dev-server";
 // @ts-ignore 'package.json' is not under 'rootDir'
 import { version } from "../package.json";
 
-import { addResolveAlias, removeResolveAlias } from "./alias";
 import type { DevServer, ResolvedDevServer } from "./config";
 import { applyDevServerPatch } from "./patch";
 
@@ -102,20 +101,16 @@ export class RspackDevServer extends WebpackDevServer {
 		await super.initialize();
 	}
 
-	// @ts-ignore
-	private override addAdditionalEntries(compiler: Compiler) {
-		addResolveAlias("webpack-dev-server", {
-			"../client/index.js": require.resolve("@rspack/dev-server/client/index"),
-			"webpack/hot/only-dev-server": require.resolve(
-				"@rspack/core/hot/only-dev-server",
-			),
-			"webpack/hot/dev-server": require.resolve("@rspack/core/hot/dev-server"),
-		});
-		try {
-			// @ts-expect-error
-			super.addAdditionalEntries(compiler);
-		} finally {
-			removeResolveAlias("webpack-dev-server");
+	getClientEntry(): string {
+		return require.resolve("@rspack/dev-server/client/index");
+	}
+
+	getClientHotEntry(): string | undefined {
+		if (this.options.hot === "only") {
+			return require.resolve("@rspack/core/hot/only-dev-server");
+		}
+		if (this.options.hot) {
+			return require.resolve("@rspack/core/hot/dev-server");
 		}
 	}
 }

@@ -1,6 +1,4 @@
-"use strict";
-
-const path = require("path");
+const path = require("node:path");
 const fs = require("graceful-fs");
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
@@ -10,7 +8,7 @@ const port = require("../helpers/ports-map").progress;
 
 const cssFilePath = path.resolve(
 	__dirname,
-	"../fixtures/reload-config-2/main.css"
+	"../fixtures/reload-config-2/main.css",
 );
 
 describe("progress", () => {
@@ -21,8 +19,8 @@ describe("progress", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				progress: true
-			}
+				progress: true,
+			},
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -37,10 +35,10 @@ describe("progress", () => {
 				let doHotUpdate = false;
 
 				page
-					.on("console", message => {
+					.on("console", (message) => {
 						consoleMessages.push(message);
 					})
-					.on("request", interceptedRequest => {
+					.on("request", (interceptedRequest) => {
 						if (interceptedRequest.isInterceptResolutionHandled()) return;
 
 						if (/\.hot-update\.(json|js)$/.test(interceptedRequest.url())) {
@@ -49,15 +47,15 @@ describe("progress", () => {
 					});
 
 				await page.goto(`http://localhost:${port}/`, {
-					waitUntil: "networkidle0"
+					waitUntil: "networkidle0",
 				});
 
 				fs.writeFileSync(
 					cssFilePath,
-					"body { background-color: rgb(255, 0, 0); }"
+					"body { background-color: rgb(255, 0, 0); }",
 				);
 
-				await new Promise(resolve => {
+				await new Promise((resolve) => {
 					const timer = setInterval(() => {
 						if (doHotUpdate) {
 							clearInterval(timer);
@@ -66,21 +64,17 @@ describe("progress", () => {
 						}
 					}, 100);
 				});
-			} catch (error) {
-				throw error;
 			} finally {
 				await browser.close();
 			}
 
-			const progressConsoleMessage = consoleMessages.filter(message =>
+			const progressConsoleMessage = consoleMessages.filter((message) =>
 				/^\[webpack-dev-server\] (\[[a-zA-Z]+\] )?[0-9]{1,3}% - /.test(
-					message.text()
-				)
+					message.text(),
+				),
 			);
 
 			expect(progressConsoleMessage.length > 0).toBe(true);
-		} catch (error) {
-			throw error;
 		} finally {
 			fs.unlinkSync(cssFilePath);
 

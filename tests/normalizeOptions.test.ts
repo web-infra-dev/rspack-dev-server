@@ -1,5 +1,5 @@
-import { RspackOptions, rspack } from "@rspack/core";
-import { Configuration, RspackDevServer } from "@rspack/dev-server";
+import { type RspackOptions, rspack } from "@rspack/core";
+import { type Configuration, RspackDevServer } from "@rspack/dev-server";
 import ReactRefreshPlugin from "@rspack/plugin-react-refresh";
 // @ts-expect-error
 import serializer from "jest-serializer-path";
@@ -22,14 +22,14 @@ describe.skip("normalize options snapshot", () => {
 	it("port string", async () => {
 		await match({
 			devServer: {
-				port: "9000"
-			}
+				port: "9000",
+			},
 		});
 	});
 
 	it("additional entires should added", async () => {
 		expect(
-			await getAdditionEntries({}, { entry: ["something"] })
+			await getAdditionEntries({}, { entry: ["something"] }),
 		).toMatchSnapshot();
 	});
 
@@ -40,48 +40,48 @@ describe.skip("normalize options snapshot", () => {
 			{},
 			{
 				mode: "production",
-				entry: ["something"]
-			}
+				entry: ["something"],
+			},
 		);
-		expect(entries1["undefined"]).not.toContain(reactRefreshEntry);
+		expect(entries1.undefined).not.toContain(reactRefreshEntry);
 		const entries2 = await getAdditionEntries(
 			{},
 			{
 				mode: "production",
 				entry: ["something"],
-				plugins: [new ReactRefreshPlugin({ forceEnable: true })]
-			}
+				plugins: [new ReactRefreshPlugin({ forceEnable: true })],
+			},
 		);
-		expect(entries2["undefined"]).toContain(reactRefreshEntry);
+		expect(entries2.undefined).toContain(reactRefreshEntry);
 		const entries3 = await getAdditionEntries(
 			{},
 			{
 				mode: "development",
 				entry: ["something"],
-				plugins: [new ReactRefreshPlugin()]
-			}
+				plugins: [new ReactRefreshPlugin()],
+			},
 		);
-		expect(entries3["undefined"]).toContain(reactRefreshEntry);
+		expect(entries3.undefined).toContain(reactRefreshEntry);
 		const entries4 = await getAdditionEntries(
 			{},
 			{
 				mode: "production",
 				entry: ["something"],
-				plugins: [new ReactRefreshPlugin()]
-			}
+				plugins: [new ReactRefreshPlugin()],
+			},
 		);
-		expect(entries4["undefined"]).not.toContain(reactRefreshEntry);
+		expect(entries4.undefined).not.toContain(reactRefreshEntry);
 	});
 
 	it("should apply HMR plugin by default", async () => {
 		const compiler = rspack({
 			entry: ENTRY,
-			stats: "none"
+			stats: "none",
 		});
 		const server = new RspackDevServer({}, compiler);
 		await server.start();
 		const hmrPlugins = compiler.__internal__builtinPlugins.filter(
-			p => p.name === "HotModuleReplacementPlugin"
+			(p) => p.name === "HotModuleReplacementPlugin",
 		);
 		expect(hmrPlugins.length).toBe(1);
 		expect(server.options.hot).toBe(true);
@@ -92,12 +92,12 @@ describe.skip("normalize options snapshot", () => {
 		const compiler = rspack([
 			{
 				entry: ENTRY,
-				stats: "none"
+				stats: "none",
 			},
 			{
 				entry: ENTRY1,
-				stats: "none"
-			}
+				stats: "none",
+			},
 		]);
 		const server = new RspackDevServer({}, compiler);
 		await server.start();
@@ -109,10 +109,10 @@ describe.skip("normalize options snapshot", () => {
 		const devServerOptions = {
 			client: {
 				webSocketTransport: require.resolve(
-					"./fixtures/custom-client/CustomSockJSClient"
-				)
+					"./fixtures/custom-client/CustomSockJSClient",
+				),
 			},
-			webSocketServer: "sockjs"
+			webSocketServer: "sockjs",
 		};
 		const server = new RspackDevServer(devServerOptions, compiler);
 		await server.start();
@@ -124,36 +124,37 @@ async function match(config: RspackOptions) {
 	const compiler = rspack({
 		...config,
 		entry: ENTRY,
-		stats: "none"
+		stats: "none",
 	});
 	const server = new RspackDevServer(
 		compiler.options.devServer ?? {},
-		compiler
+		compiler,
 	);
 	await server.start();
 	// it will break ci
 	//@ts-ignore
-	delete server.options.port;
+	server.options.port = undefined;
 	expect(server.options).toMatchSnapshot();
 	await server.stop();
 }
 
 async function getAdditionEntries(
 	serverConfig: Configuration,
-	config: RspackOptions
+	config: RspackOptions,
 ) {
 	const compiler = rspack({
 		...config,
 		stats: "none",
-		entry: ENTRY
+		entry: ENTRY,
 	});
 
 	const server = new RspackDevServer(serverConfig, compiler);
 	await server.start();
 	const entries = compiler.__internal__builtinPlugins
-		.filter(p => p.name === "EntryPlugin")
-		.map(p => p.options)
-		.reduce<Object>((acc: any, cur: any) => {
+		.filter((p) => p.name === "EntryPlugin")
+		.map((p) => p.options)
+		// biome-ignore lint/suspicious/noExplicitAny: _
+		.reduce<Record<string, any>>((acc: any, cur: any) => {
 			const name = cur.options.name;
 			const request = cur.entry;
 			if (acc[name]) {
@@ -167,15 +168,15 @@ async function getAdditionEntries(
 	const value = Object.fromEntries(
 		Object.entries(entries).map(([key, item]) => {
 			// @ts-expect-error
-			const replaced = item.import?.map(entry => {
+			const replaced = item.import?.map((entry) => {
 				const array = entry
 					.replace(/\\/g, "/")
 					.replace(/port=\d+/g, "")
 					.split("/");
-				return "<prefix>" + "/" + array.slice(-3).join("/");
+				return `<prefix>/${array.slice(-3).join("/")}`;
 			});
 			return [key, replaced];
-		})
+		}),
 	);
 	await server.stop();
 	return value;

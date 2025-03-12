@@ -7,6 +7,7 @@ import type { RequestHandler, Response } from "express";
 import mime from "mime-types";
 import type wdm from "webpack-dev-middleware";
 
+// biome-ignore lint/suspicious/noExplicitAny: _
 function etag(buf: any) {
 	const hash = crypto.createHash("sha256").update(buf).digest("hex");
 	const etag = hash;
@@ -29,7 +30,7 @@ function createPublicPathGetter(compiler: Compiler) {
 
 export function getRspackMemoryAssets(
 	compiler: Compiler,
-	rdm: ReturnType<typeof wdm>
+	rdm: ReturnType<typeof wdm>,
 ): RequestHandler {
 	const getPublicPath = createPublicPathGetter(compiler);
 

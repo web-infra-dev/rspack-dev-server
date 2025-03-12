@@ -1,5 +1,3 @@
-"use strict";
-
 // eslint-disable-next-line import/no-extraneous-dependencies
 const tcpPortUsed = require("tcp-port-used");
 const { webpackVersion } = require("@rspack/core/package.json");
@@ -11,20 +9,20 @@ console.log(`\n Running tests for webpack @${webpackVersion} \n`);
 async function validatePorts() {
 	const samples = [];
 
-	Object.keys(ports).forEach(key => {
+	for (const key of Object.keys(ports)) {
 		const value = ports[key];
 		const arr = Array.isArray(value) ? value : [value];
 
-		arr.forEach(port => {
-			const check = tcpPortUsed.check(port, "localhost").then(inUse => {
+		for (const port of arr) {
+			const check = tcpPortUsed.check(port, "localhost").then((inUse) => {
 				if (inUse) {
 					throw new Error(`${port} has already used. [${key}]`);
 				}
 			});
 
 			samples.push(check);
-		});
-	});
+		}
+	}
 
 	try {
 		await Promise.all(samples);

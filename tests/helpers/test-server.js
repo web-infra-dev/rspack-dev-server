@@ -1,6 +1,4 @@
-"use strict";
-
-const webpack = require("webpack");
+const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 
 let server;
@@ -13,14 +11,14 @@ function startFullSetup(config, options, done) {
 		options.static = false;
 	} else if (options.static === null) {
 		// this provides a way of using the default static value
-		delete options.static;
+		options.static = undefined;
 	}
 
 	const compiler = webpack(config);
 
 	server = new Server(options, compiler);
 
-	server.startCallback(error => {
+	server.startCallback((error) => {
 		if (error && done) {
 			return done(error);
 		}
@@ -32,14 +30,14 @@ function startFullSetup(config, options, done) {
 
 	return {
 		server,
-		compiler
+		compiler,
 	};
 }
 
 function startAwaitingCompilationFullSetup(config, options, done) {
 	let readyCount = 0;
 
-	const ready = error => {
+	const ready = (error) => {
 		if (error && done) {
 			done(error);
 
@@ -91,5 +89,5 @@ function close(done) {
 
 module.exports = {
 	start,
-	close
+	close,
 };

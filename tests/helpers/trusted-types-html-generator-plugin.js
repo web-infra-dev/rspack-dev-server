@@ -1,5 +1,3 @@
-"use strict";
-
 const HTMLContentForIndex = `
 <!DOCTYPE html>
 <html>
@@ -40,14 +38,14 @@ module.exports = class HTMLGeneratorPlugin {
 	apply(compiler) {
 		const pluginName = "html-generator-plugin";
 
-		compiler.hooks.thisCompilation.tap(pluginName, compilation => {
+		compiler.hooks.thisCompilation.tap(pluginName, (compilation) => {
 			if (compiler.webpack) {
 				const { RawSource } = compiler.webpack.sources;
 
 				compilation.hooks.processAssets.tap(
 					{
 						name: pluginName,
-						stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL
+						stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
 					},
 					() => {
 						const indexSource = new RawSource(HTMLContentForIndex);
@@ -55,7 +53,7 @@ module.exports = class HTMLGeneratorPlugin {
 
 						compilation.emitAsset("index.html", indexSource);
 						compilation.emitAsset("test.html", testSource);
-					}
+					},
 				);
 			} else {
 				compilation.hooks.additionalAssets.tap(pluginName, () => {
@@ -65,7 +63,7 @@ module.exports = class HTMLGeneratorPlugin {
 						},
 						size() {
 							return HTMLContentForIndex.length;
-						}
+						},
 					});
 					compilation.emitAsset("test.html", {
 						source() {
@@ -73,7 +71,7 @@ module.exports = class HTMLGeneratorPlugin {
 						},
 						size() {
 							return HTMLContentForTest.length;
-						}
+						},
 					});
 				});
 			}

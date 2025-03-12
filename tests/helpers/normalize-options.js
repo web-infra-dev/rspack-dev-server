@@ -1,5 +1,3 @@
-"use strict";
-
 function normalizeOptions(options) {
 	const normalizedOptions = {};
 
@@ -8,13 +6,11 @@ function normalizeOptions(options) {
 		let value = options[propertyName];
 
 		if (Array.isArray(value)) {
-			value = value.map(item => {
+			value = value.map((item) => {
 				if (Buffer.isBuffer(item)) {
 					return "<Buffer>";
-				} else if (
-					typeof item.pem !== "undefined" &&
-					Buffer.isBuffer(item.pem)
-				) {
+				}
+				if (typeof item.pem !== "undefined" && Buffer.isBuffer(item.pem)) {
 					item.pem = "<Buffer>";
 				} else if (
 					typeof item.buf !== "undefined" &&

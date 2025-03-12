@@ -1,9 +1,7 @@
-"use strict";
-
-const os = require("os");
-const net = require("net");
-const path = require("path");
-const http = require("http");
+const os = require("node:os");
+const net = require("node:net");
+const path = require("node:path");
+const http = require("node:http");
 const webpack = require("@rspack/core");
 const httpProxy = require("http-proxy");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
@@ -26,7 +24,7 @@ describe("web socket server URL", () => {
 			const compiler = webpack(config);
 			const devServerOptions = {
 				webSocketServer,
-				ipc: true
+				ipc: true,
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -34,7 +32,7 @@ describe("web socket server URL", () => {
 
 			function startProxy(callback) {
 				const proxy = httpProxy.createProxyServer({
-					target: { socketPath: server.options.ipc }
+					target: { socketPath: server.options.ipc },
 				});
 
 				const proxyServer = http.createServer((request, response) => {
@@ -50,7 +48,7 @@ describe("web socket server URL", () => {
 				return proxyServer.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise(resolve => {
+			const proxy = await new Promise((resolve) => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -63,10 +61,10 @@ describe("web socket server URL", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", message => {
+					.on("console", (message) => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", error => {
+					.on("pageerror", (error) => {
 						pageErrors.push(error);
 					});
 
@@ -75,19 +73,19 @@ describe("web socket server URL", () => {
 				if (webSocketServer === "ws") {
 					const session = await page.target().createCDPSession();
 
-					session.on("Network.webSocketCreated", test => {
+					session.on("Network.webSocketCreated", (test) => {
 						webSocketRequests.push(test);
 					});
 
 					await session.send("Target.setAutoAttach", {
 						autoAttach: true,
 						flatten: true,
-						waitForDebuggerOnStart: true
+						waitForDebuggerOnStart: true,
 					});
 
 					sessionSubscribe(session);
 				} else {
-					page.on("request", request => {
+					page.on("request", (request) => {
 						if (/\/ws\//.test(request.url())) {
 							webSocketRequests.push({ url: request.url() });
 						}
@@ -95,20 +93,18 @@ describe("web socket server URL", () => {
 				}
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0"
+					waitUntil: "networkidle0",
 				});
 
 				const webSocketRequest = webSocketRequests[0];
 
 				expect(webSocketRequest.url).toContain(
-					`${websocketURLProtocol}://${devServerHost}:${proxyPort}/ws`
+					`${websocketURLProtocol}://${devServerHost}:${proxyPort}/ws`,
 				);
-				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-					"console messages"
-				);
+				expect(
+					consoleMessages.map((message) => message.text()),
+				).toMatchSnapshot("console messages");
 				expect(pageErrors).toMatchSnapshot("page errors");
-			} catch (error) {
-				throw error;
 			} finally {
 				proxy.close();
 
@@ -130,7 +126,7 @@ describe("web socket server URL", () => {
 			const compiler = webpack(config);
 			const devServerOptions = {
 				webSocketServer,
-				ipc
+				ipc,
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -138,7 +134,7 @@ describe("web socket server URL", () => {
 
 			function startProxy(callback) {
 				const proxy = httpProxy.createProxyServer({
-					target: { socketPath: ipc }
+					target: { socketPath: ipc },
 				});
 
 				const proxyServer = http.createServer((request, response) => {
@@ -154,7 +150,7 @@ describe("web socket server URL", () => {
 				return proxyServer.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise(resolve => {
+			const proxy = await new Promise((resolve) => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -167,10 +163,10 @@ describe("web socket server URL", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", message => {
+					.on("console", (message) => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", error => {
+					.on("pageerror", (error) => {
 						pageErrors.push(error);
 					});
 
@@ -179,19 +175,19 @@ describe("web socket server URL", () => {
 				if (webSocketServer === "ws") {
 					const session = await page.target().createCDPSession();
 
-					session.on("Network.webSocketCreated", test => {
+					session.on("Network.webSocketCreated", (test) => {
 						webSocketRequests.push(test);
 					});
 
 					await session.send("Target.setAutoAttach", {
 						autoAttach: true,
 						flatten: true,
-						waitForDebuggerOnStart: true
+						waitForDebuggerOnStart: true,
 					});
 
 					sessionSubscribe(session);
 				} else {
-					page.on("request", request => {
+					page.on("request", (request) => {
 						if (/\/ws\//.test(request.url())) {
 							webSocketRequests.push({ url: request.url() });
 						}
@@ -199,20 +195,18 @@ describe("web socket server URL", () => {
 				}
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0"
+					waitUntil: "networkidle0",
 				});
 
 				const webSocketRequest = webSocketRequests[0];
 
 				expect(webSocketRequest.url).toContain(
-					`${websocketURLProtocol}://${devServerHost}:${proxyPort}/ws`
+					`${websocketURLProtocol}://${devServerHost}:${proxyPort}/ws`,
 				);
-				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-					"console messages"
-				);
+				expect(
+					consoleMessages.map((message) => message.text()),
+				).toMatchSnapshot("console messages");
 				expect(pageErrors).toMatchSnapshot("page errors");
-			} catch (error) {
-				throw error;
 			} finally {
 				proxy.close();
 
@@ -232,7 +226,7 @@ describe("web socket server URL", () => {
 			const ipcServer = await new Promise((resolve, reject) => {
 				const server = net.Server();
 
-				server.on("error", error => {
+				server.on("error", (error) => {
 					reject(error);
 				});
 
@@ -249,7 +243,7 @@ describe("web socket server URL", () => {
 			const devServerOptions = {
 				webSocketServer,
 				host: devServerHost,
-				ipc
+				ipc,
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -257,7 +251,7 @@ describe("web socket server URL", () => {
 
 			function startProxy(callback) {
 				const proxy = httpProxy.createProxyServer({
-					target: { socketPath: ipc }
+					target: { socketPath: ipc },
 				});
 
 				const proxyServer = http.createServer((request, response) => {
@@ -273,7 +267,7 @@ describe("web socket server URL", () => {
 				return proxyServer.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise(resolve => {
+			const proxy = await new Promise((resolve) => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -286,10 +280,10 @@ describe("web socket server URL", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", message => {
+					.on("console", (message) => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", error => {
+					.on("pageerror", (error) => {
 						pageErrors.push(error);
 					});
 
@@ -298,19 +292,19 @@ describe("web socket server URL", () => {
 				if (webSocketServer === "ws") {
 					const session = await page.target().createCDPSession();
 
-					session.on("Network.webSocketCreated", test => {
+					session.on("Network.webSocketCreated", (test) => {
 						webSocketRequests.push(test);
 					});
 
 					await session.send("Target.setAutoAttach", {
 						autoAttach: true,
 						flatten: true,
-						waitForDebuggerOnStart: true
+						waitForDebuggerOnStart: true,
 					});
 
 					sessionSubscribe(session);
 				} else {
-					page.on("request", request => {
+					page.on("request", (request) => {
 						if (/\/ws\//.test(request.url())) {
 							webSocketRequests.push({ url: request.url() });
 						}
@@ -318,25 +312,23 @@ describe("web socket server URL", () => {
 				}
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0"
+					waitUntil: "networkidle0",
 				});
 
 				const webSocketRequest = webSocketRequests[0];
 
 				expect(webSocketRequest.url).toContain(
-					`${websocketURLProtocol}://${devServerHost}:${proxyPort}/ws`
+					`${websocketURLProtocol}://${devServerHost}:${proxyPort}/ws`,
 				);
-				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-					"console messages"
-				);
+				expect(
+					consoleMessages.map((message) => message.text()),
+				).toMatchSnapshot("console messages");
 				expect(pageErrors).toMatchSnapshot("page errors");
-			} catch (error) {
-				throw error;
 			} finally {
 				proxy.close();
 
 				await new Promise((resolve, reject) => {
-					ipcServer.close(error => {
+					ipcServer.close((error) => {
 						if (error) {
 							reject(error);
 

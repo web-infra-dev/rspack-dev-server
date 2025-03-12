@@ -1,5 +1,3 @@
-"use strict";
-
 const webpack = require("@rspack/core");
 const { RspackDevServer: Server } = require("@rspack/dev-server");
 const config = require("../fixtures/client-config/webpack.config");
@@ -19,7 +17,7 @@ describe("onListening option", () => {
 		compiler = webpack(config);
 		server = new Server(
 			{
-				onListening: devServer => {
+				onListening: (devServer) => {
 					if (!devServer) {
 						throw new Error("webpack-dev-server is not defined");
 					}
@@ -34,9 +32,9 @@ describe("onListening option", () => {
 						response.send("listening POST");
 					});
 				},
-				port
+				port,
 			},
-			compiler
+			compiler,
 		);
 
 		await server.start();
@@ -54,32 +52,32 @@ describe("onListening option", () => {
 
 	it("should handle GET request to /listening/some/path route", async () => {
 		page
-			.on("console", message => {
+			.on("console", (message) => {
 				consoleMessages.push(message);
 			})
-			.on("pageerror", error => {
+			.on("pageerror", (error) => {
 				pageErrors.push(error);
 			});
 
 		const response = await page.goto(
 			`http://127.0.0.1:${port}/listening/some/path`,
 			{
-				waitUntil: "networkidle0"
-			}
+				waitUntil: "networkidle0",
+			},
 		);
 
 		expect(onListeningIsRunning).toBe(true);
 
 		expect(response.headers()["content-type"]).toMatchSnapshot(
-			"response headers content-type"
+			"response headers content-type",
 		);
 
 		expect(response.status()).toMatchSnapshot("response status");
 
 		expect(await response.text()).toMatchSnapshot("response text");
 
-		expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-			"console messages"
+		expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+			"console messages",
 		);
 
 		expect(pageErrors).toMatchSnapshot("page errors");
@@ -89,13 +87,13 @@ describe("onListening option", () => {
 		await page.setRequestInterception(true);
 
 		page
-			.on("console", message => {
+			.on("console", (message) => {
 				consoleMessages.push(message);
 			})
-			.on("pageerror", error => {
+			.on("pageerror", (error) => {
 				pageErrors.push(error);
 			})
-			.on("request", interceptedRequest => {
+			.on("request", (interceptedRequest) => {
 				if (interceptedRequest.isInterceptResolutionHandled()) return;
 
 				interceptedRequest.continue({ method: "POST" });
@@ -104,22 +102,22 @@ describe("onListening option", () => {
 		const response = await page.goto(
 			`http://127.0.0.1:${port}/listening/some/path`,
 			{
-				waitUntil: "networkidle0"
-			}
+				waitUntil: "networkidle0",
+			},
 		);
 
 		expect(onListeningIsRunning).toBe(true);
 
 		expect(response.headers()["content-type"]).toMatchSnapshot(
-			"response headers content-type"
+			"response headers content-type",
 		);
 
 		expect(response.status()).toMatchSnapshot("response status");
 
 		expect(await response.text()).toMatchSnapshot("response text");
 
-		expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
-			"console messages"
+		expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
+			"console messages",
 		);
 
 		expect(pageErrors).toMatchSnapshot("page errors");

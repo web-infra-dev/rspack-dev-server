@@ -1,0 +1,5 @@
+{
+  "files": {
+    "ignore": ["client-src/**/*.js"]
+  }
+}

@@ -1,23 +1,24 @@
 // @ts-nocheck
+
 /* global __resourceQuery, __webpack_hash__ */
 /* Rspack dev server runtime client */
 /// <reference types="webpack/module" />
 import webpackHotLog from "@rspack/core/hot/log.js";
-import stripAnsi from "webpack-dev-server/client/utils/stripAnsi.js";
-import parseURL from "webpack-dev-server/client/utils/parseURL.js";
-import socket from "webpack-dev-server/client/socket.js";
 import {
+	createOverlay,
 	formatProblem,
-	createOverlay
 } from "webpack-dev-server/client/overlay.js";
+import socket from "webpack-dev-server/client/socket.js";
+import createSocketURL from "webpack-dev-server/client/utils/createSocketURL.js";
 import {
 	log,
 	logEnabledFeatures,
-	setLogLevel
+	setLogLevel,
 } from "webpack-dev-server/client/utils/log.js";
+import parseURL from "webpack-dev-server/client/utils/parseURL.js";
 import sendMessage from "webpack-dev-server/client/utils/sendMessage.js";
+import stripAnsi from "webpack-dev-server/client/utils/stripAnsi.js";
 import reloadApp from "./utils/reloadApp.js";
-import createSocketURL from "webpack-dev-server/client/utils/createSocketURL.js";
 
 /**
  * @typedef {Object} OverlayOptions
@@ -161,17 +162,17 @@ self.addEventListener("beforeunload", () => {
 const overlay =
 	typeof window !== "undefined"
 		? createOverlay(
-			typeof options.overlay === "object"
-				? {
-					trustedTypesPolicyName: options.overlay.trustedTypesPolicyName,
-					catchRuntimeError: options.overlay.runtimeErrors,
-				}
-				: {
-					trustedTypesPolicyName: false,
-					catchRuntimeError: options.overlay,
-				},
-		)
-		: { send: () => { } };
+				typeof options.overlay === "object"
+					? {
+							trustedTypesPolicyName: options.overlay.trustedTypesPolicyName,
+							catchRuntimeError: options.overlay.runtimeErrors,
+						}
+					: {
+							trustedTypesPolicyName: false,
+							catchRuntimeError: options.overlay,
+						},
+			)
+		: { send: () => {} };
 
 const onSocketMessage = {
 	hot() {
@@ -242,7 +243,8 @@ const onSocketMessage = {
 	"progress-update": function progressUpdate(data) {
 		if (options.progress) {
 			log.info(
-				`${data.pluginName ? `[${data.pluginName}] ` : ""}${data.percent}% - ${data.msg
+				`${data.pluginName ? `[${data.pluginName}] ` : ""}${data.percent}% - ${
+					data.msg
 				}.`,
 			);
 		}
@@ -272,7 +274,8 @@ const onSocketMessage = {
 	 */
 	"static-changed": function staticChanged(file) {
 		log.info(
-			`${file ? `"${file}"` : "Content"
+			`${
+				file ? `"${file}"` : "Content"
 			} from static directory was changed. Reloading...`,
 		);
 

@@ -14,7 +14,6 @@ import {
 	defineProgressElement,
 	isProgressSupported,
 } from "webpack-dev-server/client/progress.js";
-import socket from "webpack-dev-server/client/socket.js";
 import { log, setLogLevel } from "webpack-dev-server/client/utils/log.js";
 import sendMessage from "webpack-dev-server/client/utils/sendMessage.js";
 

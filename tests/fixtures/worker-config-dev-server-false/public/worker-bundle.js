@@ -27,17 +27,18 @@ return module.exports;
 /************************************************************************/
 // webpack/runtime/rspack_version
 (() => {
-__webpack_require__.rv = function () {
-	return "1.0.11";
-};
-
+__webpack_require__.rv = () => ("1.3.6-canary-ece12b8c-20250422072221")
 })();
 // webpack/runtime/rspack_unique_id
 (() => {
-__webpack_require__.ruid = "bundler=rspack@1.0.11";
+__webpack_require__.ruid = "bundler=rspack@1.3.6-canary-ece12b8c-20250422072221";
 
 })();
 /************************************************************************/
+
+/*!*******************!*\
+  !*** ./worker.js ***!
+  \*******************/
 postMessage("I'm working before postMessage");
 
 onmessage = (event) => {

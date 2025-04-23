@@ -13,7 +13,7 @@ export interface ResolvedDevServer extends DevServer {
 	magicHtml: boolean;
 	liveReload: boolean;
 	webSocketServer: false | WebpackDevServer.WebSocketServerConfiguration;
-	proxy: WebpackDevServer.ProxyConfigArray;
+	proxy: Required<DevServer["proxy"]>;
 	client: WebpackDevServer.ClientConfiguration;
 	allowedHosts: "auto" | string[] | "all";
 	bonjour: false | Record<string, never> | WebpackDevServer.BonjourOptions;

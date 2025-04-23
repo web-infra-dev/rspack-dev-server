@@ -51,6 +51,7 @@ export class RspackDevServer extends WebpackDevServer {
 	/**
 	 * resolved after `normalizedOptions`
 	 */
+	/** @ts-ignore: types of path data of rspack is not compatible with webpack */
 	declare options: ResolvedDevServer;
 
 	declare staticWatchers: FSWatcher[];
@@ -68,7 +69,7 @@ export class RspackDevServer extends WebpackDevServer {
 
 	constructor(options: DevServer, compiler: Compiler | MultiCompiler) {
 		// biome-ignore lint/suspicious/noExplicitAny: _
-		super(options, compiler as any);
+		super(options as WebpackDevServer.Configuration, compiler as any);
 		// override
 	}
 

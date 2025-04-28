@@ -259,7 +259,7 @@ describe("Module federation", () => {
 			const remoteEntryTextContent = await response.text();
 
 			expect(remoteEntryTextContent).toMatch(
-				/@rspack(-canary?)\/core\/hot\/dev-server\.js/,
+				/@rspack(-canary)?\/core\/hot\/dev-server\.js/,
 			);
 
 			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
@@ -285,7 +285,7 @@ describe("Module federation", () => {
 			const mainEntryTextContent = await response.text();
 
 			expect(mainEntryTextContent).toMatch(
-				/@rspack(-canary?)\/core\/hot\/dev-server\.js/,
+				/@rspack(-canary)?\/core\/hot\/dev-server\.js/,
 			);
 
 			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(

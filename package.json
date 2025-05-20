@@ -1,6 +1,6 @@
 {
   "name": "@rspack/dev-server",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "MIT",
   "description": "Development server for rspack",
   "main": "./dist/index.js",
@@ -92,11 +92,9 @@
     "webpack": "^5.94.0",
     "webpack-dev-middleware": "^7.4.2",
     "express": "^4.21.2"
-
   },
   "dependencies": {
     "chokidar": "^3.6.0",
-    
     "http-proxy-middleware": "^2.0.7",
     "p-retry": "^6.2.0",
     "webpack-dev-server": "5.2.0",

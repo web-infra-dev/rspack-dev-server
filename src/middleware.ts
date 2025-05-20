@@ -18,8 +18,12 @@ function createPublicPathGetter(compiler: Compiler) {
 	const raw = compiler.options.output.publicPath || "/";
 
 	if (typeof raw === "function") {
-		return (compilation?: Compilation) =>
-			compilation ? compilation.getPath(raw) : raw({ hash: "XXXX" }, undefined);
+		// FIXME: this is a temporary workaround and we may support raw as function in the future
+		throw new Error(
+			'"publicPath" cannot be a function in Rspack, which may cause deadlock issue, use string instead',
+		);
+		// return (compilation?: Compilation) =>
+		// 	compilation ? compilation.getPath(raw) : raw({ hash: "XXXX" }, undefined);
 	}
 	if (/\[(hash|fullhash)[:\]]/.test(raw)) {
 		return (compilation?: Compilation) =>

@@ -599,8 +599,10 @@ exports[`overlay should show a warning after invalidation: overlay html 1`] = `
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -715,8 +717,10 @@ exports[`overlay should show a warning and error for initial compilation and pro
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: &lt;strong&gt;strong&lt;/strong&gt; │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: &lt;strong&gt;strong&lt;/strong&gt; │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -753,8 +757,10 @@ exports[`overlay should show a warning and error for initial compilation and pro
             font-family: Menlo, Consolas, monospace;
           "
         >
-          × Error: &lt;strong&gt;strong&lt;/strong&gt; │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          × Error: &lt;strong&gt;strong&lt;/strong&gt; │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -869,8 +875,10 @@ exports[`overlay should show a warning and error for initial compilation: overla
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -907,86 +915,10 @@ exports[`overlay should show a warning and error for initial compilation: overla
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
-          │ at SyncHook.callAsyncStageRange
-          (<tapable>/index.js:<line>:<row>)
-          │ at SyncHook.callStageRange
-          (<tapable>/index.js:<line>:<row>)
-          │ at QueriedHook.call
-          (<tapable>/index.js:<line>:<row>)
-          │ at
-          <rspack>/dist/index.js:<line>:<row>
-          │ at last.function
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
           (<rspack>/dist/index.js:<line>:<row>)
-        </div>
-      </div>
-      <div
-        style="
-          background-color: rgba(206, 17, 38, 0.1);
-          color: rgb(252, 207, 207);
-          padding: 1rem 1rem 1.5rem;
-        "
-      >
-        <div
-          style="
-            color: rgb(232, 59, 70);
-            font-size: 1.2em;
-            margin-bottom: 1rem;
-            font-family: sans-serif;
-          "
-        >
-          ERROR
-        </div>
-        <div
-          style="
-            line-height: 1.5;
-            font-size: 1rem;
-            font-family: Menlo, Consolas, monospace;
-          "
-        >
-          × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
-          │ at SyncHook.callAsyncStageRange
-          (<tapable>/index.js:<line>:<row>)
-          │ at SyncHook.callStageRange
-          (<tapable>/index.js:<line>:<row>)
-          │ at QueriedHook.call
-          (<tapable>/index.js:<line>:<row>)
-          │ at
-          <rspack>/dist/index.js:<line>:<row>
-          │ at last.function
-          (<rspack>/dist/index.js:<line>:<row>)
-        </div>
-      </div>
-      <div
-        style="
-          background-color: rgba(206, 17, 38, 0.1);
-          color: rgb(252, 207, 207);
-          padding: 1rem 1rem 1.5rem;
-        "
-      >
-        <div
-          style="
-            color: rgb(232, 59, 70);
-            font-size: 1.2em;
-            margin-bottom: 1rem;
-            font-family: sans-serif;
-          "
-        >
-          ERROR
-        </div>
-        <div
-          style="
-            line-height: 1.5;
-            font-size: 1rem;
-            font-family: Menlo, Consolas, monospace;
-          "
-        >
-          × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1024,8 +956,89 @@ exports[`overlay should show a warning and error for initial compilation: overla
           "
         >
           × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
+          │ at SyncHook.callAsyncStageRange
+          (<tapable>/index.js:<line>:<row>)
+          │ at SyncHook.callStageRange
+          (<tapable>/index.js:<line>:<row>)
+          │ at QueriedHook.call
+          (<tapable>/index.js:<line>:<row>)
+          │ at
+          <rspack>/dist/index.js:<line>:<row>
+          │ at last.function
+          (<rspack>/dist/index.js:<line>:<row>)
+        </div>
+      </div>
+      <div
+        style="
+          background-color: rgba(206, 17, 38, 0.1);
+          color: rgb(252, 207, 207);
+          padding: 1rem 1rem 1.5rem;
+        "
+      >
+        <div
+          style="
+            color: rgb(232, 59, 70);
+            font-size: 1.2em;
+            margin-bottom: 1rem;
+            font-family: sans-serif;
+          "
+        >
+          ERROR
+        </div>
+        <div
+          style="
+            line-height: 1.5;
+            font-size: 1rem;
+            font-family: Menlo, Consolas, monospace;
+          "
+        >
+          × Error: Error from compilation. Can't find 'test' module. │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
+          │ at SyncHook.callAsyncStageRange
+          (<tapable>/index.js:<line>:<row>)
+          │ at SyncHook.callStageRange
+          (<tapable>/index.js:<line>:<row>)
+          │ at QueriedHook.call
+          (<tapable>/index.js:<line>:<row>)
+          │ at
+          <rspack>/dist/index.js:<line>:<row>
+          │ at last.function
+          (<rspack>/dist/index.js:<line>:<row>)
+        </div>
+      </div>
+      <div
+        style="
+          background-color: rgba(206, 17, 38, 0.1);
+          color: rgb(252, 207, 207);
+          padding: 1rem 1rem 1.5rem;
+        "
+      >
+        <div
+          style="
+            color: rgb(232, 59, 70);
+            font-size: 1.2em;
+            margin-bottom: 1rem;
+            font-family: sans-serif;
+          "
+        >
+          ERROR
+        </div>
+        <div
+          style="
+            line-height: 1.5;
+            font-size: 1rem;
+            font-family: Menlo, Consolas, monospace;
+          "
+        >
+          × Error: Error from compilation. Can't find 'test' module. │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1140,8 +1153,10 @@ exports[`overlay should show a warning and hide them after closing connection: o
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1264,8 +1279,10 @@ exports[`overlay should show a warning for initial compilation: overlay html 1`]
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1380,8 +1397,10 @@ exports[`overlay should show a warning when "client.overlay" is "true": overlay 
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1496,8 +1515,10 @@ exports[`overlay should show a warning when "client.overlay.errors" is "true": o
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1612,8 +1633,10 @@ exports[`overlay should show a warning when "client.overlay.warnings" is "true":
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1748,8 +1771,10 @@ exports[`overlay should show an ansi formatted error for initial compilation: ov
               background: #transparent;
             "
           >
+            │ at
+            <root>/tests/e2e/overlay.test.js:<line>:<row>
             │ at Object.fn
-            (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+            (<rspack>/dist/index.js:<line>:<row>)
             │ at SyncHook.callAsyncStageRange
             (<tapable>/index.js:<line>:<row>)
             │ at SyncHook.callStageRange
@@ -1865,8 +1890,10 @@ exports[`overlay should show an error after invalidation: overlay html 1`] = `
             font-family: Menlo, Consolas, monospace;
           "
         >
-          × Error: Error from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          × Error: Error from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -1982,8 +2009,9 @@ exports[`overlay should show an error for initial compilation: overlay html 1`] 
           "
         >
           × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -2099,8 +2127,9 @@ exports[`overlay should show an error when "client.overlay" is "true": overlay h
           "
         >
           × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -2216,8 +2245,9 @@ exports[`overlay should show an error when "client.overlay.errors" is "true": ov
           "
         >
           × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -2332,8 +2362,10 @@ exports[`overlay should show an error when "client.overlay.warnings" is "true": 
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Warning from compilation │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Warning from compilation │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -2617,8 +2649,10 @@ exports[`overlay should show error when it is not filtered: overlay html 1`] = `
             font-family: Menlo, Consolas, monospace;
           "
         >
-          × Error: Unfiltered error │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          × Error: Unfiltered error │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -2734,8 +2768,9 @@ exports[`overlay should show overlay when "Content-Security-Policy" is "default-
           "
         >
           × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -2851,8 +2886,9 @@ exports[`overlay should show overlay when Trusted Types are enabled and the "req
           "
         >
           × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -2968,8 +3004,9 @@ exports[`overlay should show overlay when Trusted Types are enabled: overlay htm
           "
         >
           × Error: Error from compilation. Can't find 'test' module. │ at
-          Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange
@@ -3084,8 +3121,10 @@ exports[`overlay should show warning when it is not filtered: overlay html 1`] =
             font-family: Menlo, Consolas, monospace;
           "
         >
-          ⚠ Error: Unfiltered warning │ at Object.fn
-          (<root>/tests/e2e/overlay.test.js:<line>:<row>)
+          ⚠ Error: Unfiltered warning │ at
+          <root>/tests/e2e/overlay.test.js:<line>:<row>
+          │ at Object.fn
+          (<rspack>/dist/index.js:<line>:<row>)
           │ at SyncHook.callAsyncStageRange
           (<tapable>/index.js:<line>:<row>)
           │ at SyncHook.callStageRange

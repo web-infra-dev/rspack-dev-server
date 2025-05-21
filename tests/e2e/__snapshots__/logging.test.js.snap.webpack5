@@ -22,7 +22,8 @@ exports[`logging should work and log errors by default (sockjs) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -40,7 +41,8 @@ exports[`logging should work and log errors by default (ws) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -134,7 +136,8 @@ exports[`logging should work and log only error (sockjs) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -150,7 +153,8 @@ exports[`logging should work and log only error (ws) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -190,7 +194,8 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -200,7 +205,8 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -216,7 +222,8 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -226,7 +233,8 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
   × Error: Error from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -244,7 +252,8 @@ exports[`logging should work and log warnings by default (sockjs) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
@@ -262,7 +271,8 @@ exports[`logging should work and log warnings by default (ws) 1`] = `
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
   ⚠ Error: Warning from compilation
-  │     at Object.fn (<root>/tests/e2e/logging.test.js:<line>:<row>)
+  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
+  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
   │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
   │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
   │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)

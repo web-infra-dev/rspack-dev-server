@@ -27,11 +27,11 @@ return module.exports;
 /************************************************************************/
 // webpack/runtime/rspack_version
 (() => {
-__webpack_require__.rv = () => ("1.3.6-canary-ece12b8c-20250422072221")
+__webpack_require__.rv = () => ("1.3.11")
 })();
 // webpack/runtime/rspack_unique_id
 (() => {
-__webpack_require__.ruid = "bundler=rspack@1.3.6-canary-ece12b8c-20250422072221";
+__webpack_require__.ruid = "bundler=rspack@1.3.11";
 
 })();
 /************************************************************************/

@@ -97,7 +97,7 @@
     "chokidar": "^3.6.0",
     "http-proxy-middleware": "^2.0.7",
     "p-retry": "^6.2.0",
-    "webpack-dev-server": "5.2.0",
+    "webpack-dev-server": "5.2.1",
     "ws": "^8.18.0"
   },
   "peerDependencies": {

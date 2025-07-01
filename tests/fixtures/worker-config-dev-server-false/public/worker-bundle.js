@@ -27,12 +27,7 @@ return module.exports;
 /************************************************************************/
 // webpack/runtime/rspack_version
 (() => {
-__webpack_require__.rv = () => ("1.3.11")
-})();
-// webpack/runtime/rspack_unique_id
-(() => {
-__webpack_require__.ruid = "bundler=rspack@1.3.11";
-
+__webpack_require__.rv = () => ("1.4.1")
 })();
 /************************************************************************/
 

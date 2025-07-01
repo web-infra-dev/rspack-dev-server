@@ -21,6 +21,13 @@ module.exports = [
 			},
 		},
 		plugins: [new HTMLGeneratorPlugin()],
+		experiments: {
+			rspackFuture: {
+				bundlerInfo: {
+					force: ["version"]
+				}
+			}
+		}
 	},
 	{
 		name: "worker",
@@ -41,5 +48,12 @@ module.exports = [
 			},
 		},
 		devServer: false,
+		experiments: {
+			rspackFuture: {
+				bundlerInfo: {
+					force: ["version"]
+				}
+			}
+		}
 	},
 ];

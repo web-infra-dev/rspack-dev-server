@@ -21,14 +21,7 @@ exports[`logging should work and log errors by default (sockjs) 1`] = `
   Hey.,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
-  × Error: Error from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  × Error from compilation
 ,
 ]
 `;
@@ -40,14 +33,7 @@ exports[`logging should work and log errors by default (ws) 1`] = `
   Hey.,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
-  × Error: Error from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  × Error from compilation
 ,
 ]
 `;
@@ -135,14 +121,7 @@ exports[`logging should work and log only error (sockjs) 1`] = `
   Hey.,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
-  × Error: Error from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  × Error from compilation
 ,
 ]
 `;
@@ -152,14 +131,7 @@ exports[`logging should work and log only error (ws) 1`] = `
   Hey.,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
-  × Error: Error from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  × Error from compilation
 ,
 ]
 `;
@@ -193,25 +165,11 @@ exports[`logging should work and log warning and errors (sockjs) 1`] = `
   Hey.,
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
-  ⚠ Error: Warning from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  ⚠ Warning from compilation
 ,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
-  × Error: Error from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  × Error from compilation
 ,
 ]
 `;
@@ -221,25 +179,11 @@ exports[`logging should work and log warning and errors (ws) 1`] = `
   Hey.,
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
-  ⚠ Error: Warning from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  ⚠ Warning from compilation
 ,
   [webpack-dev-server] Errors while compiling. Reload prevented.,
   [webpack-dev-server] ERROR
-  × Error: Error from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  × Error from compilation
 ,
 ]
 `;
@@ -251,14 +195,7 @@ exports[`logging should work and log warnings by default (sockjs) 1`] = `
   Hey.,
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
-  ⚠ Error: Warning from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  ⚠ Warning from compilation
 ,
 ]
 `;
@@ -270,14 +207,7 @@ exports[`logging should work and log warnings by default (ws) 1`] = `
   Hey.,
   [webpack-dev-server] Warnings while compiling.,
   [webpack-dev-server] WARNING
-  ⚠ Error: Warning from compilation
-  │     at <root>/tests/e2e/logging.test.js:<line>:<row>
-  │     at Object.fn (<rspack>/dist/index.js:<line>:<row>)
-  │     at SyncHook.callAsyncStageRange (<tapable>/index.js:<line>:<row>)
-  │     at SyncHook.callStageRange (<tapable>/index.js:<line>:<row>)
-  │     at QueriedHook.call (<tapable>/index.js:<line>:<row>)
-  │     at <rspack>/dist/index.js:<line>:<row>
-  │     at last.function (<rspack>/dist/index.js:<line>:<row>)
+  ⚠ Warning from compilation
 ,
 ]
 `;

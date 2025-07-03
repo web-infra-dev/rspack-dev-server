@@ -24,7 +24,7 @@ module.exports = [
 		experiments: {
 			rspackFuture: {
 				bundlerInfo: {
-					force: ["version"]
+					force: false
 				}
 			}
 		}
@@ -51,7 +51,7 @@ module.exports = [
 		experiments: {
 			rspackFuture: {
 				bundlerInfo: {
-					force: ["version"]
+					force: false
 				}
 			}
 		}

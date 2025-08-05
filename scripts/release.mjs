@@ -36,7 +36,6 @@ try {
 	console.error(`Publish failed: ${e.message}`);
 	process.exit(1);
 } finally {
-	fs.removeSync(npmrcPath);
 }
 
 // Push tag to github

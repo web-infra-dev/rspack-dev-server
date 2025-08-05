@@ -73,12 +73,12 @@ $ rspack serve -c ./your.config.js
 While starting the development server, you can specify the configuration by the `devServer` field of your Rspack config file:
 
 ```js
-// rspack.config.js
-module.exports = {
+// rspack.config.mjs
+export default {
   // ...
   devServer: {
     // the configuration of the development server
-    port: 8080
+    port: 8080,
   },
 };
 ```
@@ -92,19 +92,19 @@ While it's recommended to run `@rspack/dev-server` via the CLI, you may also cho
 ```js
 import { RspackDevServer } from "@rspack/dev-server";
 import rspack from "@rspack/core";
-import rspackConfig from './rspack.config.js';
+import rspackConfig from "./rspack.config.mjs";
 
 const compiler = rspack(rspackConfig);
 const devServerOptions = {
   ...rspackConfig.devServer,
   // override
-  port: 8888
+  port: 8888,
 };
 
 const server = new RspackDevServer(devServerOptions, compiler);
 
 server.startCallback(() => {
-  console.log('Successfully started server on http://localhost:8888');
+  console.log("Successfully started server on http://localhost:8888");
 });
 ```
 

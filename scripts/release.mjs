@@ -7,7 +7,6 @@ import { inc } from "semver";
 const RELEASE_TAG = process.env.TAG || "beta";
 const RELEASE_DRY_RUN = process.env.DRY_RUN || "true";
 const RELEASE_VERSION_TYPE = process.env.VERSION || "prerelease";
-const RELEASE_NPM_TOKEN = process.env.NPM_TOKEN || "";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const PKG_PATH = path.resolve(__dirname, "../package.json");
@@ -26,14 +25,6 @@ console.info(`Release ${RELEASE_TAG} version ${nextVersion}`);
 console.info(`Updating version from ${currentVersion} to ${nextVersion}`);
 pkg.version = nextVersion;
 fs.writeJsonSync(PKG_PATH, pkg, { spaces: 2 });
-
-// Write npmrc
-const npmrcPath = `${process.env.HOME}/.npmrc`;
-console.info(`Writing npmrc to ${npmrcPath}`);
-fs.writeFileSync(
-	npmrcPath,
-	`//registry.npmjs.org/:_authToken=${RELEASE_NPM_TOKEN}`,
-);
 
 // Publish to npm
 console.info(`Publishing to npm with tag ${RELEASE_TAG}`);

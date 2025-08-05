@@ -7,8 +7,7 @@
   "types": "./dist/index.d.ts",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "provenance": true
+    "registry": "https://registry.npmjs.org/"
   },
   "exports": {
     ".": {

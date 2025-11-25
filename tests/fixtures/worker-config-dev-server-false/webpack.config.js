@@ -12,13 +12,13 @@ module.exports = [
 		context: __dirname,
 		stats: "none",
 		output: {
-			path: path.resolve(__dirname, "./dist/"),
+			path: path.resolve(__dirname, "./dist/")
 		},
 		infrastructureLogging: {
 			level: "info",
 			stream: {
-				write: () => {},
-			},
+				write: () => {}
+			}
 		},
 		plugins: [new HTMLGeneratorPlugin()],
 		experiments: {
@@ -39,13 +39,13 @@ module.exports = [
 		stats: "none",
 		output: {
 			path: path.resolve(__dirname, "public"),
-			filename: "worker-bundle.js",
+			filename: "worker-bundle.js"
 		},
 		infrastructureLogging: {
 			level: "info",
 			stream: {
-				write: () => {},
-			},
+				write: () => {}
+			}
 		},
 		devServer: false,
 		experiments: {
@@ -55,5 +55,5 @@ module.exports = [
 				}
 			}
 		}
-	},
+	}
 ];

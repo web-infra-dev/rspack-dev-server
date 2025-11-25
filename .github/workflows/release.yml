@@ -1,4 +1,3 @@
-
 name: Release Full
 
 on:
@@ -29,7 +28,7 @@ on:
           - latest
           - beta
           - alpha
-      
+
       dry_run:
         type: boolean
         description: "DryRun release"
@@ -72,7 +71,7 @@ jobs:
 
       - name: Run Test
         run: pnpm run test
-      
+
       - name: Try release to npm
         run: pnpm run release
         env:

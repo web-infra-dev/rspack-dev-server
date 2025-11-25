@@ -7,12 +7,12 @@ import hotEmitter from "@rspack/core/hot/emitter.js";
 import webpackHotLog from "@rspack/core/hot/log.js";
 import {
 	createOverlay,
-	formatProblem,
+	formatProblem
 } from "webpack-dev-server/client/overlay.js";
 import socket from "webpack-dev-server/client/socket.js";
 import {
 	defineProgressElement,
-	isProgressSupported,
+	isProgressSupported
 } from "webpack-dev-server/client/progress.js";
 import { log, setLogLevel } from "webpack-dev-server/client/utils/log.js";
 import sendMessage from "webpack-dev-server/client/utils/sendMessage.js";
@@ -45,19 +45,19 @@ import sendMessage from "webpack-dev-server/client/utils/sendMessage.js";
 /**
  * @param {boolean | { warnings?: boolean | string; errors?: boolean | string; runtimeErrors?: boolean | string; }} overlayOptions
  */
-const decodeOverlayOptions = (overlayOptions) => {
+const decodeOverlayOptions = overlayOptions => {
 	if (typeof overlayOptions === "object") {
-		["warnings", "errors", "runtimeErrors"].forEach((property) => {
+		["warnings", "errors", "runtimeErrors"].forEach(property => {
 			if (typeof overlayOptions[property] === "string") {
 				const overlayFilterFunctionString = decodeURIComponent(
-					overlayOptions[property],
+					overlayOptions[property]
 				);
 
 				// eslint-disable-next-line no-new-func
 				overlayOptions[property] = new Function(
 					"message",
 					`var callback = ${overlayFilterFunctionString}
-				return callback(message)`,
+				return callback(message)`
 				);
 			}
 		});
@@ -68,7 +68,7 @@ const decodeOverlayOptions = (overlayOptions) => {
  * @param {string} resourceQuery
  * @returns {{ [key: string]: string | boolean }}
  */
-const parseURL = (resourceQuery) => {
+const parseURL = resourceQuery => {
 	/** @type {{ [key: string]: string }} */
 	let result = {};
 
@@ -111,7 +111,7 @@ const parseURL = (resourceQuery) => {
 const status = {
 	isUnloading: false,
 	// eslint-disable-next-line camelcase
-	currentHash: __webpack_hash__,
+	currentHash: __webpack_hash__
 };
 
 /**
@@ -128,7 +128,7 @@ const getCurrentScriptSource = () => {
 	const scriptElements = document.scripts || [];
 	const scriptElementsWithSrc = Array.prototype.filter.call(
 		scriptElements,
-		(element) => element.getAttribute("src"),
+		element => element.getAttribute("src")
 	);
 
 	if (scriptElementsWithSrc.length > 0) {
@@ -148,7 +148,7 @@ const enabledFeatures = {
 	"Hot Module Replacement": false,
 	"Live Reloading": false,
 	Progress: false,
-	Overlay: false,
+	Overlay: false
 };
 
 /** @type {Options} */
@@ -156,7 +156,7 @@ const options = {
 	hot: false,
 	liveReload: false,
 	progress: false,
-	overlay: false,
+	overlay: false
 };
 
 if (parsedResourceQuery.hot === "true") {
@@ -187,7 +187,7 @@ if (parsedResourceQuery.overlay) {
 			errors: true,
 			warnings: true,
 			runtimeErrors: true,
-			...options.overlay,
+			...options.overlay
 		};
 
 		decodeOverlayOptions(options.overlay);
@@ -206,10 +206,10 @@ if (typeof parsedResourceQuery.reconnect !== "undefined") {
 /**
  * @param {string} level
  */
-const setAllLogLevel = (level) => {
+const setAllLogLevel = level => {
 	// This is needed because the HMR logger operate separately from dev server logger
 	webpackHotLog.setLogLevel(
-		level === "verbose" || level === "log" ? "info" : level,
+		level === "verbose" || level === "log" ? "info" : level
 	);
 	setLogLevel(level);
 };
@@ -218,7 +218,7 @@ if (options.logging) {
 	setAllLogLevel(options.logging);
 }
 
-const logEnabledFeatures = (features) => {
+const logEnabledFeatures = features => {
 	const listEnabledFeatures = Object.keys(features);
 	if (!features || listEnabledFeatures.length === 0) {
 		return;
@@ -249,12 +249,12 @@ const overlay =
 				typeof options.overlay === "object"
 					? {
 							trustedTypesPolicyName: options.overlay.trustedTypesPolicyName,
-							catchRuntimeError: options.overlay.runtimeErrors,
+							catchRuntimeError: options.overlay.runtimeErrors
 						}
 					: {
 							trustedTypesPolicyName: false,
-							catchRuntimeError: options.overlay,
-						},
+							catchRuntimeError: options.overlay
+						}
 			)
 		: { send: () => {} };
 
@@ -326,9 +326,9 @@ const reloadApp = ({ hot, liveReload }, currentStatus) => {
 const ansiRegex = new RegExp(
 	[
 		"[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
-		"(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]))",
+		"(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]))"
 	].join("|"),
-	"g",
+	"g"
 );
 
 /**
@@ -340,7 +340,7 @@ const ansiRegex = new RegExp(
  * @param {string} string
  * @return {string}
  */
-const stripAnsi = (string) => {
+const stripAnsi = string => {
 	if (typeof string !== "string") {
 		throw new TypeError(`Expected a \`string\`, got \`${typeof string}\``);
 	}
@@ -419,7 +419,7 @@ const onSocketMessage = {
 			log.info(
 				`${data.pluginName ? `[${data.pluginName}] ` : ""}${data.percent}% - ${
 					data.msg
-				}.`,
+				}.`
 			);
 		}
 
@@ -463,7 +463,7 @@ const onSocketMessage = {
 		log.info(
 			`${
 				file ? `"${file}"` : "Content"
-			} from static directory was changed. Reloading...`,
+			} from static directory was changed. Reloading...`
 		);
 
 		self.location.reload();
@@ -475,7 +475,7 @@ const onSocketMessage = {
 	warnings(warnings, params) {
 		log.warn("Warnings while compiling.");
 
-		const printableWarnings = warnings.map((error) => {
+		const printableWarnings = warnings.map(error => {
 			const { header, body } = formatProblem("warning", error);
 
 			return `${header}\n${stripAnsi(body)}`;
@@ -502,7 +502,7 @@ const onSocketMessage = {
 				overlay.send({
 					type: "BUILD_ERROR",
 					level: "warning",
-					messages: warnings,
+					messages: warnings
 				});
 			}
 		}
@@ -519,7 +519,7 @@ const onSocketMessage = {
 	errors(errors) {
 		log.error("Errors while compiling. Reload prevented.");
 
-		const printableErrors = errors.map((error) => {
+		const printableErrors = errors.map(error => {
 			const { header, body } = formatProblem("error", error);
 
 			return `${header}\n${stripAnsi(body)}`;
@@ -546,7 +546,7 @@ const onSocketMessage = {
 				overlay.send({
 					type: "BUILD_ERROR",
 					level: "error",
-					messages: errors,
+					messages: errors
 				});
 			}
 		}
@@ -565,14 +565,14 @@ const onSocketMessage = {
 		}
 
 		sendMessage("Close");
-	},
+	}
 };
 
 /**
  * @param {{ protocol?: string, auth?: string, hostname?: string, port?: string, pathname?: string, search?: string, hash?: string, slashes?: boolean }} objURL
  * @returns {string}
  */
-const formatURL = (objURL) => {
+const formatURL = objURL => {
 	let protocol = objURL.protocol || "";
 
 	if (protocol && protocol.substr(-1) !== ":") {
@@ -631,7 +631,7 @@ const formatURL = (objURL) => {
 		 * @param {string} match
 		 * @returns {string}
 		 */
-		(match) => encodeURIComponent(match),
+		match => encodeURIComponent(match)
 	);
 	search = search.replace("#", "%23");
 
@@ -642,7 +642,7 @@ const formatURL = (objURL) => {
  * @param {URL & { fromCurrentScript?: boolean }} parsedURL
  * @returns {string}
  */
-const createSocketURL = (parsedURL) => {
+const createSocketURL = parsedURL => {
 	let { hostname } = parsedURL;
 
 	// Node.js module parses it as `::`
@@ -673,7 +673,7 @@ const createSocketURL = (parsedURL) => {
 
 	socketURLProtocol = socketURLProtocol.replace(
 		/^(?:http|.+-extension|file)/i,
-		"ws",
+		"ws"
 	);
 
 	let socketURLAuth = "";
@@ -726,7 +726,7 @@ const createSocketURL = (parsedURL) => {
 		hostname: socketURLHostname,
 		port: socketURLPort,
 		pathname: socketURLPathname,
-		slashes: true,
+		slashes: true
 	});
 };
 

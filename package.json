@@ -24,7 +24,7 @@
     "dev": "tsc -b -w",
     "lint": "biome check .",
     "lint:write": "biome check . --write",
-    "format": "node ./node_modules/prettier/bin/prettier.cjs \"packages/**/src/**/*.{ts,tsx,js}\" \"crates/rspack_plugin_runtime/**/*.{ts,js}\" \"x.mjs\" --check",
+    "format": "prettier --write .",
     "test:install": "cross-env ./node_modules/.bin/puppeteer browsers install chrome",
     "test": "pnpm run test:install && pnpm run build && cross-env NO_COLOR=1 node --expose-gc --max-old-space-size=8192 --experimental-vm-modules ./node_modules/jest-cli/bin/jest --colors",
     "release": "node ./scripts/release.mjs"
@@ -37,10 +37,7 @@
       "biome check --write --no-errors-on-unmatched"
     ]
   },
-  "files": [
-    "dist",
-    "client"
-  ],
+  "files": ["dist", "client"],
   "engines": {
     "node": ">= 18.12.0"
   },

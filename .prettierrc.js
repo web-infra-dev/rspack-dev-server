@@ -8,14 +8,14 @@ module.exports = {
 			files: "*.json",
 			options: {
 				parser: "json",
-				useTabs: false,
-			},
+				useTabs: false
+			}
 		},
 		{
 			files: "*.ts",
 			options: {
-				parser: "typescript",
-			},
-		},
-	],
+				parser: "typescript"
+			}
+		}
+	]
 };

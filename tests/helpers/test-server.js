@@ -18,7 +18,7 @@ function startFullSetup(config, options, done) {
 
 	server = new Server(options, compiler);
 
-	server.startCallback((error) => {
+	server.startCallback(error => {
 		if (error && done) {
 			return done(error);
 		}
@@ -30,14 +30,14 @@ function startFullSetup(config, options, done) {
 
 	return {
 		server,
-		compiler,
+		compiler
 	};
 }
 
 function startAwaitingCompilationFullSetup(config, options, done) {
 	let readyCount = 0;
 
-	const ready = (error) => {
+	const ready = error => {
 		if (error && done) {
 			done(error);
 
@@ -89,5 +89,5 @@ function close(done) {
 
 module.exports = {
 	start,
-	close,
+	close
 };

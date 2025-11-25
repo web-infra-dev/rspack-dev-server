@@ -9,7 +9,7 @@ const port = require("../helpers/ports-map").app;
 
 const staticDirectory = path.resolve(
 	__dirname,
-	"../fixtures/static-config/public",
+	"../fixtures/static-config/public"
 );
 
 const apps = [
@@ -26,14 +26,14 @@ const apps = [
 		() => new (require("hono").Hono)(),
 		(options, app) =>
 			require("@hono/node-server").createAdaptorServer({
-				fetch: app.fetch,
+				fetch: app.fetch
 			}),
 		(_, devServer) => [
 			{
 				name: "webpack-dev-middleware",
-				middleware: wdm.honoWrapper(devServer.compiler),
-			},
-		],
+				middleware: wdm.honoWrapper(devServer.compiler)
+			}
+		]
 	],
 	[
 		"hono",
@@ -44,19 +44,19 @@ const apps = [
 				createServer: require("node:https").createServer,
 				serverOptions: {
 					key: fs.readFileSync(
-						path.resolve(__dirname, "../fixtures/ssl/localhost-privkey.pem"),
+						path.resolve(__dirname, "../fixtures/ssl/localhost-privkey.pem")
 					),
 					cert: fs.readFileSync(
-						path.resolve(__dirname, "../fixtures/ssl/localhost-cert.pem"),
-					),
-				},
+						path.resolve(__dirname, "../fixtures/ssl/localhost-cert.pem")
+					)
+				}
 			}),
 		(_, devServer) => [
 			{
 				name: "webpack-dev-middleware",
-				middleware: wdm.honoWrapper(devServer.compiler),
-			},
-		],
+				middleware: wdm.honoWrapper(devServer.compiler)
+			}
+		]
 	],
 	[
 		"hono",
@@ -66,25 +66,25 @@ const apps = [
 				require("@hono/node-server").createAdaptorServer({
 					fetch: app.fetch,
 					createServer: require("node:http2").createSecureServer,
-					serverOptions: options,
+					serverOptions: options
 				}),
 			options: {
 				allowHTTP1: true,
 				key: fs.readFileSync(
-					path.resolve(__dirname, "../fixtures/ssl/localhost-privkey.pem"),
+					path.resolve(__dirname, "../fixtures/ssl/localhost-privkey.pem")
 				),
 				cert: fs.readFileSync(
-					path.resolve(__dirname, "../fixtures/ssl/localhost-cert.pem"),
-				),
-			},
+					path.resolve(__dirname, "../fixtures/ssl/localhost-cert.pem")
+				)
+			}
 		},
 		(_, devServer) => [
 			{
 				name: "webpack-dev-middleware",
-				middleware: wdm.honoWrapper(devServer.compiler),
-			},
-		],
-	],
+				middleware: wdm.honoWrapper(devServer.compiler)
+			}
+		]
+	]
 ];
 
 describe("app option", () => {
@@ -104,7 +104,7 @@ describe("app option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						app,
 						server,
@@ -113,9 +113,9 @@ describe("app option", () => {
 							typeof setupMiddlewares !== "undefined"
 								? setupMiddlewares
 								: // eslint-disable-next-line no-undefined
-									undefined,
+									undefined
 					},
-					compiler,
+					compiler
 				);
 
 				await devServer.start();
@@ -129,7 +129,7 @@ describe("app option", () => {
 			afterEach(async () => {
 				await browser.close();
 				await devServer.stop();
-				await new Promise((resolve) => {
+				await new Promise(resolve => {
 					compiler.close(() => {
 						resolve();
 					});
@@ -138,10 +138,10 @@ describe("app option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
@@ -150,11 +150,11 @@ describe("app option", () => {
 					: `http://127.0.0.1:${port}/`;
 
 				const response = await page.goto(pageUrl, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const HTTPVersion = await page.evaluate(
-					() => performance.getEntries()[0].nextHopProtocol,
+					() => performance.getEntries()[0].nextHopProtocol
 				);
 
 				if (
@@ -169,9 +169,9 @@ describe("app option", () => {
 
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});

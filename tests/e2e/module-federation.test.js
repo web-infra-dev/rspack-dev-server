@@ -36,15 +36,15 @@ describe("Module federation", () => {
 
 		it("should use the last entry export", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const textContent = await response.text();
@@ -59,8 +59,8 @@ describe("Module federation", () => {
 
 			expect(exports).toEqual("entry2");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -94,15 +94,15 @@ describe("Module federation", () => {
 
 		it("should use the last entry export", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const textContent = await response.text();
@@ -117,8 +117,8 @@ describe("Module federation", () => {
 
 			expect(exports).toEqual("entry2");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -126,15 +126,15 @@ describe("Module federation", () => {
 
 		it("should support the named entry export", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/foo.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const textContent = await response.text();
@@ -149,8 +149,8 @@ describe("Module federation", () => {
 
 			expect(exports).toEqual("entry1");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -184,15 +184,15 @@ describe("Module federation", () => {
 
 		it("should use the last entry export", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const textContent = await response.text();
@@ -207,8 +207,8 @@ describe("Module federation", () => {
 
 			expect(exports).toEqual("entry2");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -242,28 +242,28 @@ describe("Module federation", () => {
 
 		it("should contain hot script in remoteEntry.js", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(
 				`http://127.0.0.1:${port}/remoteEntry.js`,
 				{
-					waitUntil: "networkidle0",
-				},
+					waitUntil: "networkidle0"
+				}
 			);
 
 			const remoteEntryTextContent = await response.text();
 
 			expect(remoteEntryTextContent).toMatch(
-				/@rspack(-canary)?\/core\/hot\/dev-server\.js/,
+				/@rspack(-canary)?\/core\/hot\/dev-server\.js/
 			);
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -271,25 +271,25 @@ describe("Module federation", () => {
 
 		it("should contain hot script in main.js", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const mainEntryTextContent = await response.text();
 
 			expect(mainEntryTextContent).toMatch(
-				/@rspack(-canary)?\/core\/hot\/dev-server\.js/,
+				/@rspack(-canary)?\/core\/hot\/dev-server\.js/
 			);
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");

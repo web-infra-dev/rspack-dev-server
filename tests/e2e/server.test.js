@@ -14,12 +14,12 @@ const port = require("../helpers/ports-map")["server-option"];
 
 const httpsCertificateDirectory = path.resolve(
 	__dirname,
-	"../fixtures/https-certificate",
+	"../fixtures/https-certificate"
 );
 
 const staticDirectory = path.resolve(
 	__dirname,
-	"../fixtures/static-config/public",
+	"../fixtures/static-config/public"
 );
 
 describe("server option", () => {
@@ -39,12 +39,12 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: "http",
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -62,19 +62,19 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`http://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const HTTPVersion = await page.evaluate(
-					() => performance.getEntries()[0].nextHopProtocol,
+					() => performance.getEntries()[0].nextHopProtocol
 				);
 
 				expect(HTTPVersion).not.toEqual("h2");
@@ -83,9 +83,9 @@ describe("server option", () => {
 
 				expect(await response.text()).toMatchSnapshot("response text");
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
@@ -99,12 +99,12 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: path.resolve(__dirname, "../helpers/custom-http.js"),
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -122,19 +122,19 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`http://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const HTTPVersion = await page.evaluate(
-					() => performance.getEntries()[0].nextHopProtocol,
+					() => performance.getEntries()[0].nextHopProtocol
 				);
 
 				expect(HTTPVersion).not.toEqual("h2");
@@ -143,9 +143,9 @@ describe("server option", () => {
 
 				expect(await response.text()).toMatchSnapshot("response text");
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
@@ -159,12 +159,12 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: "https",
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -182,19 +182,19 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const HTTPVersion = await page.evaluate(
-					() => performance.getEntries()[0].nextHopProtocol,
+					() => performance.getEntries()[0].nextHopProtocol
 				);
 
 				expect(HTTPVersion).not.toEqual("h2");
@@ -203,9 +203,9 @@ describe("server option", () => {
 
 				expect(await response.text()).toMatchSnapshot("response text");
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
@@ -219,12 +219,12 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: "spdy",
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -242,19 +242,19 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const HTTPVersion = await page.evaluate(
-					() => performance.getEntries()[0].nextHopProtocol,
+					() => performance.getEntries()[0].nextHopProtocol
 				);
 
 				expect(HTTPVersion).toEqual("h2");
@@ -263,9 +263,9 @@ describe("server option", () => {
 
 				expect(await response.text()).toMatchSnapshot("response text");
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
@@ -291,29 +291,29 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
 							options: {
 								ca: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "ca.pem"),
+									path.join(httpsCertificateDirectory, "ca.pem")
 								),
 								pfx: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.pfx"),
+									path.join(httpsCertificateDirectory, "server.pfx")
 								),
 								key: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.key"),
+									path.join(httpsCertificateDirectory, "server.key")
 								),
 								cert: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.crt"),
+									path.join(httpsCertificateDirectory, "server.crt")
 								),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -333,25 +333,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -374,37 +374,37 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
 							options: {
 								ca: [
 									fs.readFileSync(
-										path.join(httpsCertificateDirectory, "ca.pem"),
-									),
+										path.join(httpsCertificateDirectory, "ca.pem")
+									)
 								],
 								pfx: [
 									fs.readFileSync(
-										path.join(httpsCertificateDirectory, "server.pfx"),
-									),
+										path.join(httpsCertificateDirectory, "server.pfx")
+									)
 								],
 								key: [
 									fs.readFileSync(
-										path.join(httpsCertificateDirectory, "server.key"),
-									),
+										path.join(httpsCertificateDirectory, "server.key")
+									)
 								],
 								cert: [
 									fs.readFileSync(
-										path.join(httpsCertificateDirectory, "server.crt"),
-									),
+										path.join(httpsCertificateDirectory, "server.crt")
+									)
 								],
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -424,25 +424,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -465,7 +465,7 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
@@ -476,24 +476,24 @@ describe("server option", () => {
 								// TODO
 								// pfx can't be string because it is binary format
 								pfx: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.pfx"),
+									path.join(httpsCertificateDirectory, "server.pfx")
 								),
 								key: fs
 									.readFileSync(
-										path.join(httpsCertificateDirectory, "server.key"),
+										path.join(httpsCertificateDirectory, "server.key")
 									)
 									.toString(),
 								cert: fs
 									.readFileSync(
-										path.join(httpsCertificateDirectory, "server.crt"),
+										path.join(httpsCertificateDirectory, "server.crt")
 									)
 									.toString(),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -513,25 +513,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -554,7 +554,7 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
@@ -562,36 +562,36 @@ describe("server option", () => {
 								ca: [
 									fs
 										.readFileSync(
-											path.join(httpsCertificateDirectory, "ca.pem"),
+											path.join(httpsCertificateDirectory, "ca.pem")
 										)
-										.toString(),
+										.toString()
 								],
 								// pfx can't be string because it is binary format
 								pfx: [
 									fs.readFileSync(
-										path.join(httpsCertificateDirectory, "server.pfx"),
-									),
+										path.join(httpsCertificateDirectory, "server.pfx")
+									)
 								],
 								key: [
 									fs
 										.readFileSync(
-											path.join(httpsCertificateDirectory, "server.key"),
+											path.join(httpsCertificateDirectory, "server.key")
 										)
-										.toString(),
+										.toString()
 								],
 								cert: [
 									fs
 										.readFileSync(
-											path.join(httpsCertificateDirectory, "server.crt"),
+											path.join(httpsCertificateDirectory, "server.crt")
 										)
-										.toString(),
+										.toString()
 								],
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -611,25 +611,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -652,7 +652,7 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
@@ -661,12 +661,12 @@ describe("server option", () => {
 								pfx: path.join(httpsCertificateDirectory, "server.pfx"),
 								key: path.join(httpsCertificateDirectory, "server.key"),
 								cert: path.join(httpsCertificateDirectory, "server.crt"),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -686,25 +686,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -727,7 +727,7 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
@@ -736,12 +736,12 @@ describe("server option", () => {
 								pfx: [path.join(httpsCertificateDirectory, "server.pfx")],
 								key: [path.join(httpsCertificateDirectory, "server.key")],
 								cert: [path.join(httpsCertificateDirectory, "server.crt")],
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -761,25 +761,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -806,7 +806,7 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
@@ -816,14 +816,14 @@ describe("server option", () => {
 								key: path.join(httpsCertificateDirectory, "server-symlink.key"),
 								cert: path.join(
 									httpsCertificateDirectory,
-									"server-symlink.crt",
+									"server-symlink.crt"
 								),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -843,20 +843,20 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(response.status()).toEqual(200);
 				expect(await response.text()).toContain("Heyo");
-				expect(consoleMessages.map((message) => message.text())).toEqual([]);
+				expect(consoleMessages.map(message => message.text())).toEqual([]);
 				expect(pageErrors).toEqual([]);
 			});
 		});
@@ -879,29 +879,29 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
 							options: {
 								ca: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "ca.pem"),
+									path.join(httpsCertificateDirectory, "ca.pem")
 								),
 								pfx: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.pfx"),
+									path.join(httpsCertificateDirectory, "server.pfx")
 								),
 								key: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.key"),
+									path.join(httpsCertificateDirectory, "server.key")
 								),
 								cert: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.crt"),
+									path.join(httpsCertificateDirectory, "server.crt")
 								),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -921,25 +921,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -962,37 +962,37 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
 							options: {
 								ca: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "ca.pem"),
+									path.join(httpsCertificateDirectory, "ca.pem")
 								),
 								pfx: [
 									{
 										buf: fs.readFileSync(
-											path.join(httpsCertificateDirectory, "server.pfx"),
-										),
-									},
+											path.join(httpsCertificateDirectory, "server.pfx")
+										)
+									}
 								],
 								key: [
 									{
 										pem: fs.readFileSync(
-											path.join(httpsCertificateDirectory, "server.key"),
-										),
-									},
+											path.join(httpsCertificateDirectory, "server.key")
+										)
+									}
 								],
 								cert: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.crt"),
+									path.join(httpsCertificateDirectory, "server.crt")
 								),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -1012,25 +1012,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -1053,7 +1053,7 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
@@ -1065,30 +1065,30 @@ describe("server option", () => {
 									{
 										// pfx can't be string because it is binary format
 										buf: fs.readFileSync(
-											path.join(httpsCertificateDirectory, "server.pfx"),
-										),
-									},
+											path.join(httpsCertificateDirectory, "server.pfx")
+										)
+									}
 								],
 								key: [
 									{
 										pem: fs
 											.readFileSync(
-												path.join(httpsCertificateDirectory, "server.key"),
+												path.join(httpsCertificateDirectory, "server.key")
 											)
-											.toString(),
-									},
+											.toString()
+									}
 								],
 								cert: fs
 									.readFileSync(
-										path.join(httpsCertificateDirectory, "server.crt"),
+										path.join(httpsCertificateDirectory, "server.crt")
 									)
 									.toString(),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -1108,25 +1108,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -1149,30 +1149,30 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
 							options: {
 								minVersion: "TLSv1.1",
 								ca: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "ca.pem"),
+									path.join(httpsCertificateDirectory, "ca.pem")
 								),
 								pfx: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.pfx"),
+									path.join(httpsCertificateDirectory, "server.pfx")
 								),
 								key: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.key"),
+									path.join(httpsCertificateDirectory, "server.key")
 								),
 								cert: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.crt"),
+									path.join(httpsCertificateDirectory, "server.crt")
 								),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -1192,25 +1192,25 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -1231,27 +1231,27 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "https",
 							options: {
 								requestCert: true,
 								pfx: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.pfx"),
+									path.join(httpsCertificateDirectory, "server.pfx")
 								),
 								key: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.key"),
+									path.join(httpsCertificateDirectory, "server.key")
 								),
 								cert: fs.readFileSync(
-									path.join(httpsCertificateDirectory, "server.crt"),
+									path.join(httpsCertificateDirectory, "server.crt")
 								),
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -1267,7 +1267,7 @@ describe("server option", () => {
 
 			it("should pass options to the 'https.createServer' method", async () => {
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 			});
 
@@ -1297,7 +1297,7 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: "spdy",
@@ -1307,12 +1307,12 @@ describe("server option", () => {
 								pfx: [path.join(httpsCertificateDirectory, "server.pfx")],
 								key: [path.join(httpsCertificateDirectory, "server.key")],
 								cert: [path.join(httpsCertificateDirectory, "server.crt")],
-								passphrase: "webpack-dev-server",
-							},
+								passphrase: "webpack-dev-server"
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -1332,30 +1332,30 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`https://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const HTTPVersion = await page.evaluate(
-					() => performance.getEntries()[0].nextHopProtocol,
+					() => performance.getEntries()[0].nextHopProtocol
 				);
 
 				expect(HTTPVersion).toEqual("h2");
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("https options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});
@@ -1378,17 +1378,17 @@ describe("server option", () => {
 					{
 						static: {
 							directory: staticDirectory,
-							watch: false,
+							watch: false
 						},
 						server: {
 							type: path.join(__dirname, "../helpers/custom-http.js"),
 							options: {
-								maxHeaderSize: 16384,
-							},
+								maxHeaderSize: 16384
+							}
 						},
-						port,
+						port
 					},
-					compiler,
+					compiler
 				);
 
 				await server.start();
@@ -1408,30 +1408,30 @@ describe("server option", () => {
 
 			it("should handle GET request to index route (/)", async () => {
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				const response = await page.goto(`http://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const HTTPVersion = await page.evaluate(
-					() => performance.getEntries()[0].nextHopProtocol,
+					() => performance.getEntries()[0].nextHopProtocol
 				);
 
 				expect(HTTPVersion).toEqual("http/1.1");
 				expect(
-					normalizeOptions(createServerSpy.mock.calls[0][0]),
+					normalizeOptions(createServerSpy.mock.calls[0][0])
 				).toMatchSnapshot("http options");
 				expect(response.status()).toMatchSnapshot("response status");
 				expect(await response.text()).toMatchSnapshot("response text");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			});
 		});

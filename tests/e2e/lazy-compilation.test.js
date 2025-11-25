@@ -20,17 +20,17 @@ describe("lazy compilation", () => {
 			const consoleMessages = [];
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message.text());
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			await page.goto(`http://127.0.0.1:${port}/test.html`, {
-				waitUntil: "domcontentloaded",
+				waitUntil: "domcontentloaded"
 			});
-			await new Promise((resolve) => {
+			await new Promise(resolve => {
 				const interval = setInterval(() => {
 					if (consoleMessages.includes("Hey.")) {
 						clearInterval(interval);
@@ -61,17 +61,17 @@ describe("lazy compilation", () => {
 			const consoleMessages = [];
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message.text());
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			await page.goto(`http://127.0.0.1:${port}/test-one.html`, {
-				waitUntil: "domcontentloaded",
+				waitUntil: "domcontentloaded"
 			});
-			await new Promise((resolve) => {
+			await new Promise(resolve => {
 				const interval = setInterval(() => {
 					console.log(consoleMessages);
 					if (consoleMessages.includes("One.")) {
@@ -83,9 +83,9 @@ describe("lazy compilation", () => {
 			});
 
 			await page.goto(`http://127.0.0.1:${port}/test-two.html`, {
-				waitUntil: "domcontentloaded",
+				waitUntil: "domcontentloaded"
 			});
-			await new Promise((resolve) => {
+			await new Promise(resolve => {
 				const interval = setInterval(() => {
 					console.log(consoleMessages);
 					if (consoleMessages.includes("Two.")) {

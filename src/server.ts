@@ -9,7 +9,7 @@
  */
 import type { Server } from "node:http";
 import type { Socket } from "node:net";
-import { type Compiler, MultiCompiler } from "@rspack/core";
+import { type Compiler, DefinePlugin, MultiCompiler } from "@rspack/core";
 import type { FSWatcher } from "chokidar";
 import WebpackDevServer from "webpack-dev-server";
 // @ts-ignore 'package.json' is not under 'rootDir'
@@ -79,6 +79,8 @@ export class RspackDevServer extends WebpackDevServer {
 				? this.compiler.compilers
 				: [this.compiler];
 
+		const compilerForDev = compilers[0];
+
 		for (const compiler of compilers) {
 			const mode = compiler.options.mode || process.env.NODE_ENV;
 			if (this.options.hot) {
@@ -100,6 +102,22 @@ export class RspackDevServer extends WebpackDevServer {
 
 		// @ts-expect-error
 		await super.initialize();
+
+		// now we have the exact URI
+		this.defineDevServerUri(compilerForDev);
+	}
+
+	defineDevServerUri(compiler: Compiler) {
+		new DefinePlugin({
+			__rspack_dev_server_uri: JSON.stringify(this.getDevServerUri())
+		}).apply(compiler);
+	}
+
+	getDevServerUri() {
+		const protocol = this.options.server.type;
+		const hostname = this.options.host || "127.0.0.1";
+		const port = this.options.port;
+		return `${protocol}://${hostname}:${port}`;
 	}
 
 	getClientEntry(): string {

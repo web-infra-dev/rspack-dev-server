@@ -25,6 +25,7 @@
     "lint": "biome check .",
     "lint:write": "biome check . --write",
     "format": "prettier --write .",
+    "prettier:ci": "prettier --check .",
     "test:install": "cross-env ./node_modules/.bin/puppeteer browsers install chrome",
     "test": "pnpm run test:install && pnpm run build && cross-env NO_COLOR=1 node --expose-gc --max-old-space-size=8192 --experimental-vm-modules ./node_modules/jest-cli/bin/jest --colors",
     "release": "node ./scripts/release.mjs"

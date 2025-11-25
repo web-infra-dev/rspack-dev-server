@@ -10,6 +10,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
@@ -47,3 +50,28 @@ jobs:
 
       - name: Run Test
         run: pnpm run test
+
+  check:
+    name: Check
+    runs-on:  ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Pnpm
+        run: |
+          npm install -g corepack@latest
+          corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Prettier
+        run: pnpm run prettier:ci

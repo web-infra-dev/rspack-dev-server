@@ -14,7 +14,7 @@ describe("port", () => {
 		`${port}`,
 		0,
 		"-1",
-		"99999",
+		"99999"
 	];
 
 	for (const testedPort of ports) {
@@ -76,20 +76,20 @@ describe("port", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://127.0.0.1:${address.port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				await browser.close();

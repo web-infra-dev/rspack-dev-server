@@ -26,9 +26,9 @@ describe("setupExitSignals option", () => {
 			server = new Server(
 				{
 					setupExitSignals: true,
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -65,24 +65,24 @@ describe("setupExitSignals option", () => {
 			await server.stop();
 		});
 
-		it.each(signals)("should close and exit on %s", async (signal) => {
+		it.each(signals)("should close and exit on %s", async signal => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
 			process.emit(signal);
 
-			await new Promise((resolve) => {
+			await new Promise(resolve => {
 				const interval = setInterval(() => {
 					if (doExit) {
 						expect(stopCallbackSpy.mock.calls.length).toEqual(1);
@@ -99,15 +99,15 @@ describe("setupExitSignals option", () => {
 			});
 
 			consoleMessages = consoleMessages.filter(
-				(message) =>
+				message =>
 					!(
 						message.text().includes("Trying to reconnect...") ||
 						message.text().includes("Disconnected")
-					),
+					)
 			);
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");

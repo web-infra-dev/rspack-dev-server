@@ -12,7 +12,7 @@ describe("server and client transport", () => {
 	it('should use default web socket server ("ws")', async () => {
 		const compiler = webpack(defaultConfig);
 		const devServerOptions = {
-			port,
+			port
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -23,22 +23,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -49,7 +47,7 @@ describe("server and client transport", () => {
 		const compiler = webpack(defaultConfig);
 		const devServerOptions = {
 			port,
-			webSocketServer: "ws",
+			webSocketServer: "ws"
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -60,22 +58,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -87,8 +83,8 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			webSocketServer: {
-				type: "ws",
-			},
+				type: "ws"
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -99,22 +95,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -125,7 +119,7 @@ describe("server and client transport", () => {
 		const compiler = webpack(sockjsConfig);
 		const devServerOptions = {
 			port,
-			webSocketServer: "sockjs",
+			webSocketServer: "sockjs"
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -136,22 +130,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -163,8 +155,8 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			webSocketServer: {
-				type: "sockjs",
-			},
+				type: "sockjs"
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -175,22 +167,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -202,9 +192,9 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "ws",
+				webSocketTransport: "ws"
 			},
-			webSocketServer: WebsocketServer,
+			webSocketServer: WebsocketServer
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -215,22 +205,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -242,11 +230,11 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "ws",
+				webSocketTransport: "ws"
 			},
 			webSocketServer: {
-				type: WebsocketServer,
-			},
+				type: WebsocketServer
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -257,22 +245,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -284,11 +270,11 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "ws",
+				webSocketTransport: "ws"
 			},
 			webSocketServer: require.resolve(
-				"webpack-dev-server/lib/servers/WebsocketServer",
-			),
+				"webpack-dev-server/lib/servers/WebsocketServer"
+			)
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -299,22 +285,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -326,11 +310,11 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "ws",
+				webSocketTransport: "ws"
 			},
 			webSocketServer: {
-				type: require.resolve("webpack-dev-server/lib/servers/WebsocketServer"),
-			},
+				type: require.resolve("webpack-dev-server/lib/servers/WebsocketServer")
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -341,22 +325,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -370,8 +352,8 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			webSocketServer: {
-				type: "/bad/path/to/implementation",
-			},
+				type: "/bad/path/to/implementation"
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -389,8 +371,8 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "sockjs",
-			},
+				webSocketTransport: "sockjs"
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -401,22 +383,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -428,8 +408,8 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "ws",
-			},
+				webSocketTransport: "ws"
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -440,22 +420,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -467,9 +445,9 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "sockjs",
+				webSocketTransport: "sockjs"
 			},
-			webSocketServer: "sockjs",
+			webSocketServer: "sockjs"
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -480,22 +458,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -507,9 +483,9 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "ws",
+				webSocketTransport: "ws"
 			},
-			webSocketServer: "ws",
+			webSocketServer: "ws"
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -520,22 +496,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -548,10 +522,10 @@ describe("server and client transport", () => {
 			port,
 			client: {
 				webSocketTransport: require.resolve(
-					"../fixtures/custom-client/CustomSockJSClient",
-				),
+					"../fixtures/custom-client/CustomSockJSClient"
+				)
 			},
-			webSocketServer: "sockjs",
+			webSocketServer: "sockjs"
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -562,22 +536,20 @@ describe("server and client transport", () => {
 		try {
 			const consoleMessages = [];
 
-			page.on("console", (message) => {
+			page.on("console", message => {
 				consoleMessages.push(message);
 			});
 
 			await page.goto(`http://localhost:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const isCorrectTransport = await page.evaluate(
-				() => window.injectedClient === window.expectedClient,
+				() => window.injectedClient === window.expectedClient
 			);
 
 			expect(isCorrectTransport).toBe(true);
-			expect(
-				consoleMessages.map((message) => message.text()),
-			).toMatchSnapshot();
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot();
 		} finally {
 			await browser.close();
 			await server.stop();
@@ -589,8 +561,8 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			webSocketServer: {
-				type: "invalid/path",
-			},
+				type: "invalid/path"
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 		await expect(async () => {
@@ -605,8 +577,8 @@ describe("server and client transport", () => {
 		const devServerOptions = {
 			port,
 			client: {
-				webSocketTransport: "invalid/path",
-			},
+				webSocketTransport: "invalid/path"
+			}
 		};
 		const server = new Server(devServerOptions, compiler);
 		await expect(async () => {

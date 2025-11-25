@@ -1,6 +1,6 @@
 const myWorker = new Worker("./worker.js");
 
-myWorker.onmessage = (event) => {
+myWorker.onmessage = event => {
 	console.log(`Worker said: ${event.data}`);
 };
 

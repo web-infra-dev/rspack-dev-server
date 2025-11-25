@@ -6,7 +6,7 @@ function normalizeOptions(options) {
 		let value = options[propertyName];
 
 		if (Array.isArray(value)) {
-			value = value.map((item) => {
+			value = value.map(item => {
 				if (Buffer.isBuffer(item)) {
 					return "<Buffer>";
 				}

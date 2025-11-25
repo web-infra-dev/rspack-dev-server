@@ -20,13 +20,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -39,20 +39,20 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("host", "my-test-host");
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -65,20 +65,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -99,14 +99,14 @@ describe("allowed hosts", () => {
 				client: {
 					webSocketURL: {
 						port: port2,
-						protocol: "ws",
-					},
+						protocol: "ws"
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
 				allowedHosts: "auto",
-				server: "https",
+				server: "https"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -119,21 +119,21 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("host", "my-test-host");
 						},
 						target: `https://${devServerHost}:${devServerPort}`,
 						secure: false,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -146,20 +146,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -179,13 +179,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -198,20 +198,20 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "http://my-test-origin.com/");
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -224,20 +224,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -257,13 +257,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -278,14 +278,14 @@ describe("allowed hosts", () => {
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -297,20 +297,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -330,13 +330,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -351,14 +351,14 @@ describe("allowed hosts", () => {
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -371,20 +371,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -404,13 +404,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -425,14 +425,14 @@ describe("allowed hosts", () => {
 						target: `http://[${devServerHost}]:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -445,20 +445,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://[${proxyHost}]:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -478,13 +478,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -497,19 +497,19 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						target: `http://${devServerHost}:${devServerPort}`,
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "file:///path/to/local/file.js");
 						},
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -522,20 +522,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -555,13 +555,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -574,19 +574,19 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						target: `http://${devServerHost}:${devServerPort}`,
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "chrome-extension:///abcdef");
 						},
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -599,20 +599,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -632,13 +632,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "all",
+				allowedHosts: "all"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -651,20 +651,20 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "http://my-test-origin.com/");
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -677,20 +677,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -710,13 +710,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: ["all"],
+				allowedHosts: ["all"]
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -729,20 +729,20 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "http://my-test-origin.com/");
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -755,20 +755,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -788,13 +788,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "my-test-origin.com",
+				allowedHosts: "my-test-origin.com"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -807,20 +807,20 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "http://my-test-origin.com/");
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -833,20 +833,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -866,13 +866,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: ".my-test-origin.com",
+				allowedHosts: ".my-test-origin.com"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -885,20 +885,20 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "http://my-test-origin.com/");
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -911,20 +911,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -944,13 +944,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: ".my-test-origin.com",
+				allowedHosts: ".my-test-origin.com"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -963,23 +963,23 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader(
 								"origin",
-								"http://foo.bar.baz.my-test-origin.com/",
+								"http://foo.bar.baz.my-test-origin.com/"
 							);
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -992,20 +992,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -1025,13 +1025,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: ["my-test-origin.com"],
+				allowedHosts: ["my-test-origin.com"]
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -1044,20 +1044,20 @@ describe("allowed hosts", () => {
 					"/",
 					createProxyMiddleware({
 						// Emulation
-						onProxyReqWs: (proxyReq) => {
+						onProxyReqWs: proxyReq => {
 							proxyReq.setHeader("origin", "http://my-test-origin.com/");
 						},
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -1070,20 +1070,20 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -1103,13 +1103,13 @@ describe("allowed hosts", () => {
 			const devServerOptions = {
 				client: {
 					webSocketURL: {
-						port: port2,
-					},
+						port: port2
+					}
 				},
 				webSocketServer,
 				port: devServerPort,
 				host: devServerHost,
-				allowedHosts: "auto",
+				allowedHosts: "auto"
 			};
 			const server = new Server(devServerOptions, compiler);
 
@@ -1129,14 +1129,14 @@ describe("allowed hosts", () => {
 						target: `http://${devServerHost}:${devServerPort}`,
 						ws: true,
 						changeOrigin: true,
-						logLevel: "warn",
-					}),
+						logLevel: "warn"
+					})
 				);
 
 				return app.listen(proxyPort, proxyHost, callback);
 			}
 
-			const proxy = await new Promise((resolve) => {
+			const proxy = await new Promise(resolve => {
 				const proxyCreated = startProxy(() => {
 					resolve(proxyCreated);
 				});
@@ -1149,23 +1149,23 @@ describe("allowed hosts", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${proxyHost}:${proxyPort}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
 				const html = await page.content();
 
 				expect(html).toMatchSnapshot("html");
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
 				proxy.close();
@@ -1198,11 +1198,11 @@ describe("allowed hosts", () => {
 		it("should always allow `localhost` if options.allowedHosts is auto", async () => {
 			const options = {
 				allowedHosts: "auto",
-				port: port1,
+				port: port1
 			};
 
 			const headers = {
-				host: "localhost",
+				host: "localhost"
 			};
 
 			server = new Server(options, compiler);
@@ -1212,15 +1212,15 @@ describe("allowed hosts", () => {
 			({ page, browser } = await runBrowser());
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port1}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			if (!server.checkHeader(headers, "host")) {
@@ -1229,8 +1229,8 @@ describe("allowed hosts", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -1239,11 +1239,11 @@ describe("allowed hosts", () => {
 		it("should always allow `localhost` subdomain if options.allowedHosts is auto", async () => {
 			const options = {
 				allowedHosts: "auto",
-				port: port1,
+				port: port1
 			};
 
 			const headers = {
-				host: "app.localhost",
+				host: "app.localhost"
 			};
 
 			server = new Server(options, compiler);
@@ -1253,15 +1253,15 @@ describe("allowed hosts", () => {
 			({ page, browser } = await runBrowser());
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port1}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			if (!server.checkHeader(headers, "host")) {
@@ -1270,8 +1270,8 @@ describe("allowed hosts", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -1282,11 +1282,11 @@ describe("allowed hosts", () => {
 			const options = {
 				host: networkIP,
 				allowedHosts: "auto",
-				port: port1,
+				port: port1
 			};
 
 			const headers = {
-				host: networkIP,
+				host: networkIP
 			};
 
 			server = new Server(options, compiler);
@@ -1296,15 +1296,15 @@ describe("allowed hosts", () => {
 			({ page, browser } = await runBrowser());
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://${networkIP}:${port1}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			if (!server.checkHeader(headers, "host")) {
@@ -1313,8 +1313,8 @@ describe("allowed hosts", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -1325,12 +1325,12 @@ describe("allowed hosts", () => {
 				allowedHosts: "auto",
 				port: port1,
 				client: {
-					webSocketURL: "ws://test.host:80",
-				},
+					webSocketURL: "ws://test.host:80"
+				}
 			};
 
 			const headers = {
-				host: "test.host",
+				host: "test.host"
 			};
 
 			server = new Server(options, compiler);
@@ -1340,15 +1340,15 @@ describe("allowed hosts", () => {
 			({ page, browser } = await runBrowser());
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port1}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			if (!server.checkHeader(headers, "host")) {
@@ -1357,8 +1357,8 @@ describe("allowed hosts", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -1367,10 +1367,10 @@ describe("allowed hosts", () => {
 		it("should always allow any host if options.allowedHosts is all", async () => {
 			const options = {
 				allowedHosts: "all",
-				port: port1,
+				port: port1
 			};
 			const headers = {
-				host: "bad.host",
+				host: "bad.host"
 			};
 
 			server = new Server(options, compiler);
@@ -1380,15 +1380,15 @@ describe("allowed hosts", () => {
 			({ page, browser } = await runBrowser());
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port1}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			if (!server.checkHeader(headers, "host")) {
@@ -1397,8 +1397,8 @@ describe("allowed hosts", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -1408,7 +1408,7 @@ describe("allowed hosts", () => {
 			const tests = ["test.host", "test2.host", "test3.host"];
 			const options = {
 				allowedHosts: tests,
-				port: port1,
+				port: port1
 			};
 
 			server = new Server(options, compiler);
@@ -1418,15 +1418,15 @@ describe("allowed hosts", () => {
 			({ page, browser } = await runBrowser());
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port1}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			for (const test of tests) {
@@ -1439,8 +1439,8 @@ describe("allowed hosts", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -1449,7 +1449,7 @@ describe("allowed hosts", () => {
 		it("should allow hosts that pass a wildcard in allowedHosts", async () => {
 			const options = {
 				allowedHosts: [".example.com"],
-				port: port1,
+				port: port1
 			};
 
 			server = new Server(options, compiler);
@@ -1459,15 +1459,15 @@ describe("allowed hosts", () => {
 			({ page, browser } = await runBrowser());
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port1}/main.js`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			const tests = [
@@ -1476,7 +1476,7 @@ describe("allowed hosts", () => {
 				"example.com",
 				"subsubcomain.subdomain.example.com",
 				"example.com:80",
-				"subdomain.example.com:80",
+				"subdomain.example.com:80"
 			];
 
 			for (const test of tests) {
@@ -1489,8 +1489,8 @@ describe("allowed hosts", () => {
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");

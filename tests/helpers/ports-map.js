@@ -78,7 +78,7 @@ const listOfTests = {
 	"normalize-option": 1,
 	"setup-middlewares-option": 1,
 	"options-request-response": 2,
-	app: 1,
+	app: 1
 };
 
 let startPort = 8089;
@@ -102,18 +102,18 @@ module.exports = new Proxy(ports, {
 	get(target, name) {
 		if (!target[name]) {
 			throw new Error(
-				`Requested "${name}" port(s) for tests not found, please update "test/ports-map.js".`,
+				`Requested "${name}" port(s) for tests not found, please update "test/ports-map.js".`
 			);
 		}
 
 		if (busy[name]) {
 			throw new Error(
-				`The "${name}" port is already in use in another test, please add a new one.`,
+				`The "${name}" port is already in use in another test, please add a new one.`
 			);
 		}
 
 		busy[name] = true;
 
 		return target[name];
-	},
+	}
 });

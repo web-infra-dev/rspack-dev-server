@@ -11,15 +11,15 @@ module.exports = [
 		context: __dirname,
 		stats: "none",
 		output: {
-			path: "/",
+			path: "/"
 		},
 		infrastructureLogging: {
 			level: "info",
 			stream: {
-				write: () => {},
-			},
+				write: () => {}
+			}
 		},
-		plugins: [new HTMLGeneratorPlugin()],
+		plugins: [new HTMLGeneratorPlugin()]
 	},
 	{
 		name: "worker",
@@ -31,13 +31,13 @@ module.exports = [
 		stats: "none",
 		output: {
 			path: "/",
-			filename: "worker.js",
+			filename: "worker.js"
 		},
 		infrastructureLogging: {
 			level: "info",
 			stream: {
-				write: () => {},
-			},
-		},
-	},
+				write: () => {}
+			}
+		}
+	}
 ];

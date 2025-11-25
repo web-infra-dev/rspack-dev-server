@@ -75,11 +75,11 @@ While starting the development server, you can specify the configuration by the 
 ```js
 // rspack.config.mjs
 export default {
-  // ...
-  devServer: {
-    // the configuration of the development server
-    port: 8080,
-  },
+	// ...
+	devServer: {
+		// the configuration of the development server
+		port: 8080
+	}
 };
 ```
 
@@ -96,15 +96,15 @@ import rspackConfig from "./rspack.config.mjs";
 
 const compiler = rspack(rspackConfig);
 const devServerOptions = {
-  ...rspackConfig.devServer,
-  // override
-  port: 8888,
+	...rspackConfig.devServer,
+	// override
+	port: 8888
 };
 
 const server = new RspackDevServer(devServerOptions, compiler);
 
 server.startCallback(() => {
-  console.log("Successfully started server on http://localhost:8888");
+	console.log("Successfully started server on http://localhost:8888");
 });
 ```
 

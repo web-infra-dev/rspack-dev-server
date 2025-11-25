@@ -40,7 +40,7 @@ const getFreePort = async function getFreePort(port: string, host: string) {
 			: 3;
 
 	return pRetry(() => getPort(basePort, host), {
-		retries: defaultPortRetry,
+		retries: defaultPortRetry
 	});
 };
 
@@ -85,15 +85,15 @@ export class RspackDevServer extends WebpackDevServer {
 				if (mode === "production") {
 					this.logger.warn(
 						"Hot Module Replacement (HMR) is enabled for the production build. \n" +
-							"Make sure to disable HMR for production by setting `devServer.hot` to `false` in the configuration.",
+							"Make sure to disable HMR for production by setting `devServer.hot` to `false` in the configuration."
 					);
 				}
 
 				compiler.options.resolve.alias = {
 					"ansi-html-community": require.resolve(
-						"@rspack/dev-server/client/utils/ansiHTML",
+						"@rspack/dev-server/client/utils/ansiHTML"
 					),
-					...compiler.options.resolve.alias,
+					...compiler.options.resolve.alias
 				};
 			}
 		}

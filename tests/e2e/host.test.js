@@ -28,14 +28,14 @@ async function getAddress(host, hostname) {
 			res.end("Hello World\n");
 		});
 
-		await new Promise((resolve) => {
+		await new Promise(resolve => {
 			server.listen({ host: "localhost", port: 23100 }, resolve);
 		});
 
 		address = server.address().address;
 
 		await new Promise((resolve, reject) => {
-			server.close((err) => {
+			server.close(err => {
 				if (err) {
 					reject(err);
 					return;
@@ -65,7 +65,7 @@ describe("host", () => {
 		"127.0.0.1",
 		"local-ip",
 		"local-ipv4",
-		"local-ipv6",
+		"local-ipv6"
 	];
 
 	for (const host of hosts) {
@@ -101,7 +101,7 @@ describe("host", () => {
 			await server.start();
 
 			expect(server.server.address()).toMatchObject(
-				await getAddress(host, hostname),
+				await getAddress(host, hostname)
 			);
 
 			const { page, browser } = await runBrowser();
@@ -111,20 +111,20 @@ describe("host", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${hostname}:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
@@ -165,7 +165,7 @@ describe("host", () => {
 			await server.start();
 
 			expect(server.server.address()).toMatchObject(
-				await getAddress(host, hostname),
+				await getAddress(host, hostname)
 			);
 
 			const { page, browser } = await runBrowser();
@@ -175,20 +175,20 @@ describe("host", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${hostname}:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {
@@ -232,7 +232,7 @@ describe("host", () => {
 			await server.start();
 
 			expect(server.server.address()).toMatchObject(
-				await getAddress(host, hostname),
+				await getAddress(host, hostname)
 			);
 
 			const address = server.server.address();
@@ -243,20 +243,20 @@ describe("host", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://${hostname}:${address.port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				expect(pageErrors).toMatchSnapshot("page errors");
 			} finally {

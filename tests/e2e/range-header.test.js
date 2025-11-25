@@ -25,7 +25,7 @@ describe("'Range' header", () => {
 
 		expect(response.status).toBe(200);
 		expect(response.headers["content-type"]).toBe(
-			"application/javascript; charset=utf-8",
+			"application/javascript; charset=utf-8"
 		);
 		expect(response.headers["accept-ranges"]).toBe("bytes");
 
@@ -36,7 +36,7 @@ describe("'Range' header", () => {
 
 		expect(responseRange.status).toBe(206);
 		expect(responseRange.headers["content-type"]).toBe(
-			"application/javascript; charset=utf-8",
+			"application/javascript; charset=utf-8"
 		);
 		expect(responseRange.headers["content-length"]).toBe("500");
 		expect(responseRange.headers["content-range"]).toMatch(/^bytes 0-499\//);
@@ -49,7 +49,7 @@ describe("'Range' header", () => {
 
 		expect(response.status).toBe(200);
 		expect(response.headers["content-type"]).toBe(
-			"application/javascript; charset=utf-8",
+			"application/javascript; charset=utf-8"
 		);
 		expect(response.headers["accept-ranges"]).toBe("bytes");
 
@@ -59,7 +59,7 @@ describe("'Range' header", () => {
 
 		expect(responseRange.status).toBe(206);
 		expect(responseRange.headers["content-type"]).toBe(
-			"application/javascript; charset=utf-8",
+			"application/javascript; charset=utf-8"
 		);
 		expect(responseRange.headers["content-length"]).toBe("500");
 		expect(responseRange.headers["content-range"]).toMatch(/^bytes 0-499\//);
@@ -70,7 +70,7 @@ describe("'Range' header", () => {
 
 		expect(response.status).toBe(200);
 		expect(response.headers["content-type"]).toBe(
-			"application/javascript; charset=utf-8",
+			"application/javascript; charset=utf-8"
 		);
 		expect(response.headers["accept-ranges"]).toBe("bytes");
 
@@ -80,7 +80,7 @@ describe("'Range' header", () => {
 
 		expect(responseRange.status).toBe(416);
 		expect(responseRange.headers["content-type"]).toBe(
-			"text/html; charset=utf-8",
+			"text/html; charset=utf-8"
 		);
 		expect(responseRange.headers["content-range"]).toMatch(/^bytes \*\//);
 	});
@@ -90,7 +90,7 @@ describe("'Range' header", () => {
 
 		expect(response.status).toBe(200);
 		expect(response.headers["content-type"]).toBe(
-			"application/javascript; charset=utf-8",
+			"application/javascript; charset=utf-8"
 		);
 		expect(response.headers["accept-ranges"]).toBe("bytes");
 
@@ -101,7 +101,7 @@ describe("'Range' header", () => {
 
 		expect(responseRange.status).toBe(200);
 		expect(responseRange.headers["content-type"]).toBe(
-			"application/javascript; charset=utf-8",
+			"application/javascript; charset=utf-8"
 		);
 		expect(responseRange.text).toBe(responseContent);
 		expect(responseRange.text.length).toBe(responseContent.length);

@@ -24,7 +24,7 @@ describe("target", () => {
 		"nwjs",
 		"node-webkit",
 		"es5",
-		["web", "es5"],
+		["web", "es5"]
 	];
 
 	for (const target of targets) {
@@ -34,9 +34,9 @@ describe("target", () => {
 				target,
 				...(target === false || target === "es5"
 					? {
-							output: { chunkFormat: "array-push", path: "/" },
+							output: { chunkFormat: "array-push", path: "/" }
 						}
-					: {}),
+					: {})
 			});
 			const server = new Server({ port }, compiler);
 
@@ -49,20 +49,20 @@ describe("target", () => {
 				const consoleMessages = [];
 
 				page
-					.on("console", (message) => {
+					.on("console", message => {
 						consoleMessages.push(message);
 					})
-					.on("pageerror", (error) => {
+					.on("pageerror", error => {
 						pageErrors.push(error);
 					});
 
 				await page.goto(`http://127.0.0.1:${port}/`, {
-					waitUntil: "networkidle0",
+					waitUntil: "networkidle0"
 				});
 
-				expect(
-					consoleMessages.map((message) => message.text()),
-				).toMatchSnapshot("console messages");
+				expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+					"console messages"
+				);
 
 				// TODO: check why require is defined in theses target
 				// if (
@@ -104,22 +104,22 @@ describe("target", () => {
 			const consoleMessages = [];
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(
 				sortByTerm(
-					consoleMessages.map((message) => message.text()),
-					"Worker said:",
-				),
+					consoleMessages.map(message => message.text()),
+					"Worker said:"
+				)
 			).toMatchSnapshot("console messages");
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -137,11 +137,11 @@ describe("target", () => {
 				static: {
 					directory: path.resolve(
 						__dirname,
-						"../fixtures/worker-config-dev-server-false/public/",
-					),
-				},
+						"../fixtures/worker-config-dev-server-false/public/"
+					)
+				}
 			},
-			compiler,
+			compiler
 		);
 
 		await server.start();
@@ -153,22 +153,22 @@ describe("target", () => {
 			const consoleMessages = [];
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(
 				sortByTerm(
-					consoleMessages.map((message) => message.text()),
-					"Worker said:",
-				),
+					consoleMessages.map(message => message.text()),
+					"Worker said:"
+				)
 			).toMatchSnapshot("console messages");
 
 			expect(pageErrors).toMatchSnapshot("page errors");

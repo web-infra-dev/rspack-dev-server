@@ -9,7 +9,7 @@ const port = require("../helpers/ports-map")["watch-files-option"];
 
 const watchDir = path.resolve(
 	__dirname,
-	"../fixtures/watch-files-config/public",
+	"../fixtures/watch-files-config/public"
 );
 
 describe("watchFiles option", () => {
@@ -28,9 +28,9 @@ describe("watchFiles option", () => {
 			server = new Server(
 				{
 					watchFiles: file,
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -49,21 +49,21 @@ describe("watchFiles option", () => {
 
 		it("should reload when file content is changed", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -71,8 +71,8 @@ describe("watchFiles option", () => {
 			// change file content
 			fs.writeFileSync(file, "Kurosaki Ichigo", "utf8");
 
-			await new Promise((resolve) => {
-				server.staticWatchers[0].on("change", async (changedPath) => {
+			await new Promise(resolve => {
+				server.staticWatchers[0].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -99,9 +99,9 @@ describe("watchFiles option", () => {
 			server = new Server(
 				{
 					watchFiles: watchDir,
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -120,21 +120,21 @@ describe("watchFiles option", () => {
 
 		it("should reload when file content is changed", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -142,8 +142,8 @@ describe("watchFiles option", () => {
 			// change file content
 			fs.writeFileSync(file, "Kurosaki Ichigo", "utf8");
 
-			await new Promise((resolve) => {
-				server.staticWatchers[0].on("change", async (changedPath) => {
+			await new Promise(resolve => {
+				server.staticWatchers[0].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -170,9 +170,9 @@ describe("watchFiles option", () => {
 			server = new Server(
 				{
 					watchFiles: `${watchDir}/**/*`,
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -191,21 +191,21 @@ describe("watchFiles option", () => {
 
 		it("should reload when file content is changed", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -213,8 +213,8 @@ describe("watchFiles option", () => {
 			// change file content
 			fs.writeFileSync(file, "Kurosaki Ichigo", "utf8");
 
-			await new Promise((resolve) => {
-				server.staticWatchers[0].on("change", async (changedPath) => {
+			await new Promise(resolve => {
+				server.staticWatchers[0].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -247,9 +247,9 @@ describe("watchFiles option", () => {
 			server = new Server(
 				{
 					watchFiles: nonExistFile,
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -267,27 +267,27 @@ describe("watchFiles option", () => {
 
 		it("should reload when file content is changed", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
 
-			await new Promise((resolve) => {
-				server.staticWatchers[0].on("change", async (changedPath) => {
+			await new Promise(resolve => {
+				server.staticWatchers[0].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -322,9 +322,9 @@ describe("watchFiles option", () => {
 			server = new Server(
 				{
 					watchFiles: { paths: file },
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -343,21 +343,21 @@ describe("watchFiles option", () => {
 
 		it("should reload when file content is changed", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -365,8 +365,8 @@ describe("watchFiles option", () => {
 			// change file content
 			fs.writeFileSync(file, "Kurosaki Ichigo", "utf8");
 
-			await new Promise((resolve) => {
-				server.staticWatchers[0].on("change", async (changedPath) => {
+			await new Promise(resolve => {
+				server.staticWatchers[0].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -394,9 +394,9 @@ describe("watchFiles option", () => {
 			server = new Server(
 				{
 					watchFiles: { paths: [file, other] },
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -416,21 +416,21 @@ describe("watchFiles option", () => {
 
 		it("should reload when file content is changed", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -439,11 +439,11 @@ describe("watchFiles option", () => {
 			fs.writeFileSync(file, "foo", "utf8");
 			fs.writeFileSync(other, "bar", "utf8");
 
-			await new Promise((resolve) => {
+			await new Promise(resolve => {
 				const expected = [file, other];
 				let changed = 0;
 
-				server.staticWatchers[0].on("change", async (changedPath) => {
+				server.staticWatchers[0].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -475,9 +475,9 @@ describe("watchFiles option", () => {
 			server = new Server(
 				{
 					watchFiles: [{ paths: [file] }, other],
-					port,
+					port
 				},
-				compiler,
+				compiler
 			);
 
 			await server.start();
@@ -497,21 +497,21 @@ describe("watchFiles option", () => {
 
 		it("should reload when file content is changed", async () => {
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const response = await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(response.status()).toMatchSnapshot("response status");
 
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 
 			expect(pageErrors).toMatchSnapshot("page errors");
@@ -520,10 +520,10 @@ describe("watchFiles option", () => {
 			fs.writeFileSync(file, "foo", "utf8");
 			fs.writeFileSync(other, "bar", "utf8");
 
-			await new Promise((resolve) => {
+			await new Promise(resolve => {
 				let changed = 0;
 
-				server.staticWatchers[0].on("change", async (changedPath) => {
+				server.staticWatchers[0].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -535,7 +535,7 @@ describe("watchFiles option", () => {
 						resolve();
 					}
 				});
-				server.staticWatchers[1].on("change", async (changedPath) => {
+				server.staticWatchers[1].on("change", async changedPath => {
 					// page reload
 					await page.waitForNavigation({ waitUntil: "networkidle0" });
 
@@ -558,43 +558,43 @@ describe("watchFiles option", () => {
 
 		const optionCases = [
 			{
-				poll: true,
+				poll: true
 			},
 			{
-				poll: 200,
+				poll: 200
+			},
+			{
+				usePolling: true
 			},
 			{
 				usePolling: true,
+				poll: 200
 			},
 			{
-				usePolling: true,
-				poll: 200,
-			},
-			{
-				usePolling: false,
+				usePolling: false
 			},
 			{
 				usePolling: false,
-				poll: 200,
+				poll: 200
 			},
 			{
 				usePolling: false,
-				poll: true,
+				poll: true
 			},
 			{
 				interval: 400,
-				poll: 200,
+				poll: 200
 			},
 			{
 				usePolling: true,
 				interval: 200,
-				poll: 400,
+				poll: 400
 			},
 			{
 				usePolling: false,
 				interval: 200,
-				poll: 400,
-			},
+				poll: 400
+			}
 		];
 
 		for (const optionCase of optionCases) {
@@ -615,11 +615,11 @@ describe("watchFiles option", () => {
 						{
 							watchFiles: {
 								paths: file,
-								options: optionCase,
+								options: optionCase
 							},
-							port,
+							port
 						},
-						compiler,
+						compiler
 					);
 
 					await server.start();
@@ -638,15 +638,15 @@ describe("watchFiles option", () => {
 
 				it("should reload when file content is changed", async () => {
 					page
-						.on("console", (message) => {
+						.on("console", message => {
 							consoleMessages.push(message);
 						})
-						.on("pageerror", (error) => {
+						.on("pageerror", error => {
 							pageErrors.push(error);
 						});
 
 					const response = await page.goto(`http://127.0.0.1:${port}/`, {
-						waitUntil: "networkidle0",
+						waitUntil: "networkidle0"
 					});
 
 					// should pass correct options to chokidar config
@@ -655,7 +655,7 @@ describe("watchFiles option", () => {
 					expect(response.status()).toMatchSnapshot("response status");
 
 					expect(
-						consoleMessages.map((message) => message.text()),
+						consoleMessages.map(message => message.text())
 					).toMatchSnapshot("console messages");
 
 					expect(pageErrors).toMatchSnapshot("page errors");
@@ -663,8 +663,8 @@ describe("watchFiles option", () => {
 					// change file content
 					fs.writeFileSync(file, "Kurosaki Ichigo", "utf8");
 
-					await new Promise((resolve) => {
-						server.staticWatchers[0].on("change", async (changedPath) => {
+					await new Promise(resolve => {
+						server.staticWatchers[0].on("change", async changedPath => {
 							// page reload
 							await page.waitForNavigation({ waitUntil: "networkidle0" });
 

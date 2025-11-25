@@ -35,7 +35,8 @@
   },
   "nano-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": [
-      "biome check --write --no-errors-on-unmatched"
+      "npm run format",
+      "biome lint --write --no-errors-on-unmatched"
     ]
   },
   "files": ["dist", "client"],

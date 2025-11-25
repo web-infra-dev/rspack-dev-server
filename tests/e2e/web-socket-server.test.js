@@ -12,7 +12,7 @@ describe("web socket server", () => {
 		const compiler = webpack(config);
 		const devServerOptions = {
 			webSocketServer: false,
-			port: devServerPort,
+			port: devServerPort
 		};
 		const server = new Server(devServerOptions, compiler);
 
@@ -25,35 +25,35 @@ describe("web socket server", () => {
 			const consoleMessages = [];
 
 			page
-				.on("console", (message) => {
+				.on("console", message => {
 					consoleMessages.push(message);
 				})
-				.on("pageerror", (error) => {
+				.on("pageerror", error => {
 					pageErrors.push(error);
 				});
 
 			const webSocketRequests = [];
 			const session = await page.target().createCDPSession();
 
-			session.on("Network.webSocketCreated", (test) => {
+			session.on("Network.webSocketCreated", test => {
 				webSocketRequests.push(test);
 			});
 
 			await session.send("Target.setAutoAttach", {
 				autoAttach: true,
 				flatten: true,
-				waitForDebuggerOnStart: true,
+				waitForDebuggerOnStart: true
 			});
 
 			sessionSubscribe(session);
 
 			await page.goto(`http://127.0.0.1:${port}/`, {
-				waitUntil: "networkidle0",
+				waitUntil: "networkidle0"
 			});
 
 			expect(webSocketRequests).toHaveLength(0);
-			expect(consoleMessages.map((message) => message.text())).toMatchSnapshot(
-				"console messages",
+			expect(consoleMessages.map(message => message.text())).toMatchSnapshot(
+				"console messages"
 			);
 			expect(pageErrors).toMatchSnapshot("page errors");
 		} finally {

@@ -15,7 +15,7 @@ const currentVersion = pkg.version;
 const nextVersion = inc(currentVersion, RELEASE_VERSION_TYPE);
 if (!nextVersion) {
 	throw new Error(
-		`Failed to generate next version from "${currentVersion}" with type "${RELEASE_VERSION_TYPE}"`,
+		`Failed to generate next version from "${currentVersion}" with type "${RELEASE_VERSION_TYPE}"`
 	);
 }
 

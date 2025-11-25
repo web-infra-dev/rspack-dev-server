@@ -12,7 +12,7 @@ const HTMLContentForIndex = `
 </html>
 `;
 
-const HTMLContentForAssets = (assetName) => `
+const HTMLContentForAssets = assetName => `
 <!DOCTYPE html>
 <html>
   <head>
@@ -44,13 +44,13 @@ module.exports = class HTMLGeneratorPlugin {
 	apply(compiler) {
 		const pluginName = "html-generator-plugin";
 
-		compiler.hooks.thisCompilation.tap(pluginName, (compilation) => {
+		compiler.hooks.thisCompilation.tap(pluginName, compilation => {
 			const { RawSource } = compiler.webpack.sources;
 
 			compilation.hooks.processAssets.tap(
 				{
 					name: pluginName,
-					stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+					stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL
 				},
 				() => {
 					const indexSource = new RawSource(HTMLContentForIndex);
@@ -65,15 +65,15 @@ module.exports = class HTMLGeneratorPlugin {
 
 						if (assetName !== "main.js" && assetName.endsWith(".js")) {
 							const assetSource = new RawSource(
-								HTMLContentForAssets(assetName),
+								HTMLContentForAssets(assetName)
 							);
 							compilation.emitAsset(
 								assetName.replace(".js", ".html"),
-								assetSource,
+								assetSource
 							);
 						}
 					}
-				},
+				}
 			);
 		});
 	}

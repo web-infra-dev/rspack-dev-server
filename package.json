@@ -34,6 +34,7 @@
     "pre-commit": "npx nano-staged"
   },
   "nano-staged": {
+    "*.{yaml,yml,json,md,json5}": ["npm rum format"],
     "*.{js,jsx,ts,tsx,mjs,cjs}": [
       "npm run format",
       "biome lint --write --no-errors-on-unmatched"

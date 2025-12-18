@@ -37,8 +37,8 @@ importers:
         specifier: ^29.7.0
         version: 29.7.0
       '@rspack/core':
-        specifier: npm:@rspack-canary/core@1.4.3-canary-98b815e4-20250703091256
-        version: '@rspack-canary/core@1.4.3-canary-98b815e4-20250703091256'
+        specifier: 1.7.0-beta.0
+        version: 1.7.0-beta.0
       '@rspack/plugin-react-refresh':
         specifier: 1.0.0
         version: 1.0.0(react-refresh@0.14.0)
@@ -62,7 +62,7 @@ importers:
         version: 7.0.3
       css-loader:
         specifier: ^7.1.2
-        version: 7.1.2(@rspack-canary/core@1.4.3-canary-98b815e4-20250703091256)(webpack@5.94.0)
+        version: 7.1.2(@rspack/core@1.7.0-beta.0)(webpack@5.94.0)
       execa:
         specifier: 9.3.0
         version: 9.3.0
@@ -501,96 +501,95 @@ packages:
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
 
-  '@module-federation/error-codes@0.15.0':
-    resolution: {integrity: sha512-CFJSF+XKwTcy0PFZ2l/fSUpR4z247+Uwzp1sXVkdIfJ/ATsnqf0Q01f51qqSEA6MYdQi6FKos9FIcu3dCpQNdg==}
+  '@module-federation/error-codes@0.21.6':
+    resolution: {integrity: sha512-MLJUCQ05KnoVl8xd6xs9a5g2/8U+eWmVxg7xiBMeR0+7OjdWUbHwcwgVFatRIwSZvFgKHfWEiI7wsU1q1XbTRQ==}
 
-  '@module-federation/runtime-core@0.15.0':
-    resolution: {integrity: sha512-RYzI61fRDrhyhaEOXH3AgIGlHiot0wPFXu7F43cr+ZnTi+VlSYWLdlZ4NBuT9uV6JSmH54/c+tEZm5SXgKR2sQ==}
+  '@module-federation/runtime-core@0.21.6':
+    resolution: {integrity: sha512-5Hd1Y5qp5lU/aTiK66lidMlM/4ji2gr3EXAtJdreJzkY+bKcI5+21GRcliZ4RAkICmvdxQU5PHPL71XmNc7Lsw==}
 
-  '@module-federation/runtime-tools@0.15.0':
-    resolution: {integrity: sha512-kzFn3ObUeBp5vaEtN1WMxhTYBuYEErxugu1RzFUERD21X3BZ+b4cWwdFJuBDlsmVjctIg/QSOoZoPXRKAO0foA==}
+  '@module-federation/runtime-tools@0.21.6':
+    resolution: {integrity: sha512-fnP+ZOZTFeBGiTAnxve+axGmiYn2D60h86nUISXjXClK3LUY1krUfPgf6MaD4YDJ4i51OGXZWPekeMe16pkd8Q==}
 
-  '@module-federation/runtime@0.15.0':
-    resolution: {integrity: sha512-dTPsCNum9Bhu3yPOcrPYq0YnM9eCMMMNB1wuiqf1+sFbQlNApF0vfZxooqz3ln0/MpgE0jerVvFsLVGfqvC9Ug==}
+  '@module-federation/runtime@0.21.6':
+    resolution: {integrity: sha512-+caXwaQqwTNh+CQqyb4mZmXq7iEemRDrTZQGD+zyeH454JAYnJ3s/3oDFizdH6245pk+NiqDyOOkHzzFQorKhQ==}
 
-  '@module-federation/sdk@0.15.0':
-    resolution: {integrity: sha512-PWiYbGcJrKUD6JZiEPihrXhV3bgXdll4bV7rU+opV7tHaun+Z0CdcawjZ82Xnpb8MCPGmqHwa1MPFeUs66zksw==}
+  '@module-federation/sdk@0.21.6':
+    resolution: {integrity: sha512-x6hARETb8iqHVhEsQBysuWpznNZViUh84qV2yE7AD+g7uIzHKiYdoWqj10posbo5XKf/147qgWDzKZoKoEP2dw==}
 
-  '@module-federation/webpack-bundler-runtime@0.15.0':
-    resolution: {integrity: sha512-i+3wu2Ljh2TmuUpsnjwZVupOVqV50jP0ndA8PSP4gwMKlgdGeaZ4VH5KkHAXGr2eiYUxYLMrJXz1+eILJqeGDg==}
+  '@module-federation/webpack-bundler-runtime@0.21.6':
+    resolution: {integrity: sha512-7zIp3LrcWbhGuFDTUMLJ2FJvcwjlddqhWGxi/MW3ur1a+HaO8v5tF2nl+vElKmbG1DFLU/52l3PElVcWf/YcsQ==}
 
-  '@napi-rs/wasm-runtime@0.2.12':
-    resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
+  '@napi-rs/wasm-runtime@1.0.7':
+    resolution: {integrity: sha512-SeDnOO0Tk7Okiq6DbXmmBODgOAb9dp9gjlphokTUxmt8U3liIP1ZsozBahH69j/RJv+Rfs6IwUKHTgQYJ/HBAw==}
 
   '@puppeteer/browsers@2.4.0':
     resolution: {integrity: sha512-x8J1csfIygOwf6D6qUAZ0ASk3z63zPb7wkNeHRerCMh82qWKUrOgkuP005AJC8lDL6/evtXETGEJVcwykKT4/g==}
     engines: {node: '>=18'}
     hasBin: true
 
-  '@rspack-canary/binding-darwin-arm64@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-x8CAVBOeunQBftEwOOHJSVRTUXlfK9jQCaJS7inNE47G7SaVFtFAOGw6DBTTUplmX8eJ+QapVBaPVg95gYELQg==}
+  '@rspack/binding-darwin-arm64@1.7.0-beta.0':
+    resolution: {integrity: sha512-RNx24rYyTzwfyVrziKv+c53+DveLZm5mtybVJ4YvU6upjPXpU/WDQAGvx6iQH5VMjsQutwbqJ9CR3XEIhXVh+g==}
     cpu: [arm64]
     os: [darwin]
 
-  '@rspack-canary/binding-darwin-x64@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-kZsoki8s+6s1KGp7qhjLeqfI1toolqfhXCfNGV5V2Gyw8bFCUpwcfXvfoR4DFgVdqhLj6Fd10BBbfbM6kNILtw==}
+  '@rspack/binding-darwin-x64@1.7.0-beta.0':
+    resolution: {integrity: sha512-qq6viM+IpaaMYCxopqSAMHh3hkmryh5dfC5oJMfqmad9/4PhI9JVMniPFk1i4GTT9U2bLAuzXLXebEH09OYCbA==}
     cpu: [x64]
     os: [darwin]
 
-  '@rspack-canary/binding-linux-arm64-gnu@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-fn88EEKfJrC94e4Zi57prT53NSPey+hTe6ZI9mFlm9pkGXgWAvMdzxy/sc061ct88yn0oezfFEzuNHtby0HeuA==}
+  '@rspack/binding-linux-arm64-gnu@1.7.0-beta.0':
+    resolution: {integrity: sha512-r3XgKeDsCimyfbL3d0S41CrzPtFp0UEBHZ20XNXPph7LjzmjdTi6HXvnbFEooqpbIq1M5zbS0/JEdQVk6hqqwA==}
     cpu: [arm64]
     os: [linux]
 
-  '@rspack-canary/binding-linux-arm64-musl@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-0285DQ2fRf3cZlGKVRA8Ab4Y9t6bhPZnJPxo3oDrKddxNPOLVzrXBAZDlb4uwHFIcQd11OrgecNvNcCKI0zL9Q==}
+  '@rspack/binding-linux-arm64-musl@1.7.0-beta.0':
+    resolution: {integrity: sha512-mE2kXg7dUPjSYAAHvuXXiqPxz52zQ14C5bH3/UMd5FlqqzdSoXvjX5XfDnUZBJbe2nXG0K4fa0D0xxfkQsIWcA==}
     cpu: [arm64]
     os: [linux]
 
-  '@rspack-canary/binding-linux-x64-gnu@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-Ls8Yhe2ZS79OxDaK3bn2i2QF6nZKCRxpAy6XB7lbD0dDG2JW9/ON+iKpltwinTtwIO2d7K2qKJwubDzqTYnQIA==}
+  '@rspack/binding-linux-x64-gnu@1.7.0-beta.0':
+    resolution: {integrity: sha512-fKTZX2vhbWQ739UwhLAjBpeKmSJyKe2CawX5QE7pptejmufAW+NTvhBG1PWXfFuRjEG4LAKmWIdgR1v+uTBrMQ==}
     cpu: [x64]
     os: [linux]
 
-  '@rspack-canary/binding-linux-x64-musl@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-svXr4ryHICO9F7K5+muG3r5ErjnceiyhgBjbP0pVg2uftATuJBeBLsoB4FDrTtM4TWI78leB9VNmQyKF3FsSVg==}
+  '@rspack/binding-linux-x64-musl@1.7.0-beta.0':
+    resolution: {integrity: sha512-j02S008XaOrfjULVSSAOP1f6MgxnGLMof1As9M1y8/+8cSn6znkQlpzAZD8spikvEnTas0lsBNke8tuoXVaD3g==}
     cpu: [x64]
     os: [linux]
 
-  '@rspack-canary/binding-wasm32-wasi@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-quXMvknMtfnsblnocDNDYK/HNmUQq22CYjqQSRKiUFnIxTbTwsXu1vGs/186PXTQUQZctFNSJnoKbRSt3SN1TQ==}
+  '@rspack/binding-wasm32-wasi@1.7.0-beta.0':
+    resolution: {integrity: sha512-w4woaM32c0OP0e+TNwrkHSM3J6e/9LBuqQQqiy1HfNn4ahCV0fVR3fb/ejCkOsaTq12Q/p4r6Ln5omtnSwiXcg==}
     cpu: [wasm32]
 
-  '@rspack-canary/binding-win32-arm64-msvc@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-SI0WhzKK2gjvBBBQFCX3RSNLw/UWo7MKyqKir/bFfxiv/DksIPEbXB2IZ8bjd6vtYTcg3ZprCqcuJdnLARvQ/A==}
+  '@rspack/binding-win32-arm64-msvc@1.7.0-beta.0':
+    resolution: {integrity: sha512-GAaLwZ9/bW9on+kUm1D2a1KWnY005oXJy7RVkapME4sBTOcnhL32F0qbZgNQK1lut5Y5j35Yf8o/vGwZk3iM2Q==}
     cpu: [arm64]
     os: [win32]
 
-  '@rspack-canary/binding-win32-ia32-msvc@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-Zci5Oo3A+Go5O2QIXBzypwokEtBTyQaoLvqppCl4olcD/a63+vGiKCh/GWYBxLIcYiqFyLWJyEG1IgeRwYJGDg==}
+  '@rspack/binding-win32-ia32-msvc@1.7.0-beta.0':
+    resolution: {integrity: sha512-0mx6jbKrW2HiAtH+JhwnN6vNwpRKma8HWZp9ytrzohK18bkZLtAv6R6GzrwXdux9dIJwQbNROrbZKvbvWXh58A==}
     cpu: [ia32]
     os: [win32]
 
-  '@rspack-canary/binding-win32-x64-msvc@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-FPrOiNyfoLJRfOn/7NeHO2Be7451+dVbJwFIYYLjWgGtZZBvWKY3/EQDlm/YDkSo1wzMKfu8XLee8jjHKhYF5A==}
+  '@rspack/binding-win32-x64-msvc@1.7.0-beta.0':
+    resolution: {integrity: sha512-Txh7yOnbpF/5Q+eEe6tvrdHrQMu3NDkHTQJI37mc4acigNvqJrZf2PvWT/DC1PDLAXOBdjJNmTW9HgKc9Rv/0g==}
     cpu: [x64]
     os: [win32]
 
-  '@rspack-canary/binding@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-cwJ5WjPmQQ+quuA4wYkIPTAEOt7VeRZP7x2sgxJDjLRyooC1OJtS00XFqNWjLAerrE0jskFWFKV4rgIeKymw8Q==}
+  '@rspack/binding@1.7.0-beta.0':
+    resolution: {integrity: sha512-tB6XViDOrTt0Qgv7AuYitJFIq2+fABkOlcQQ2K5X/EFbdP9JYuTqk8tHNog7CP4dkIf2fsVkH34zuHYgwTvBOg==}
 
-  '@rspack-canary/core@1.4.3-canary-98b815e4-20250703091256':
-    resolution: {integrity: sha512-ge9y0DyVi8IW3AkKKlS8BeFy9Xq1Sbftt632RIM/7ExVwuBTZg/w5y9Uf1RbiWpWfNjMZnnxZSOFI3VXmF6UOQ==}
-    engines: {node: '>=16.0.0'}
+  '@rspack/core@1.7.0-beta.0':
+    resolution: {integrity: sha512-NEzCwXR3qvtTIEEXFWGLI7H+TGFExyL8+s59viInnXQH9yO1oegjt9mPcQFqgFqgbNNHUzk3NdcPfyEOXyDZUg==}
+    engines: {node: '>=18.12.0'}
     peerDependencies:
       '@swc/helpers': '>=0.5.1'
     peerDependenciesMeta:
       '@swc/helpers':
         optional: true
 
-  '@rspack/lite-tapable@1.0.1':
-    resolution: {integrity: sha512-VynGOEsVw2s8TAlLf/uESfrgfrq2+rcXB1muPJYBWbsm1Oa6r5qVQhjA5ggM6z/coYPrsVMgovl3Ff7Q7OCp1w==}
-    engines: {node: '>=16.0.0'}
+  '@rspack/lite-tapable@1.1.0':
+    resolution: {integrity: sha512-E2B0JhYFmVAwdDiG14+DW0Di4Ze4Jg10Pc4/lILUrd5DRCaklduz2OvJ5HYQ6G+hd+WTzqQb3QnDNfK4yvAFYw==}
 
   '@rspack/plugin-react-refresh@1.0.0':
     resolution: {integrity: sha512-WvXkLewW5G0Mlo5H1b251yDh5FFiH4NDAbYlFpvFjcuXX2AchZRf9zdw57BDE/ADyWsJgA8kixN/zZWBTN3iYA==}
@@ -3387,32 +3386,32 @@ snapshots:
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
-  '@module-federation/error-codes@0.15.0': {}
+  '@module-federation/error-codes@0.21.6': {}
 
-  '@module-federation/runtime-core@0.15.0':
+  '@module-federation/runtime-core@0.21.6':
     dependencies:
-      '@module-federation/error-codes': 0.15.0
-      '@module-federation/sdk': 0.15.0
+      '@module-federation/error-codes': 0.21.6
+      '@module-federation/sdk': 0.21.6
 
-  '@module-federation/runtime-tools@0.15.0':
+  '@module-federation/runtime-tools@0.21.6':
     dependencies:
-      '@module-federation/runtime': 0.15.0
-      '@module-federation/webpack-bundler-runtime': 0.15.0
+      '@module-federation/runtime': 0.21.6
+      '@module-federation/webpack-bundler-runtime': 0.21.6
 
-  '@module-federation/runtime@0.15.0':
+  '@module-federation/runtime@0.21.6':
     dependencies:
-      '@module-federation/error-codes': 0.15.0
-      '@module-federation/runtime-core': 0.15.0
-      '@module-federation/sdk': 0.15.0
+      '@module-federation/error-codes': 0.21.6
+      '@module-federation/runtime-core': 0.21.6
+      '@module-federation/sdk': 0.21.6
 
-  '@module-federation/sdk@0.15.0': {}
+  '@module-federation/sdk@0.21.6': {}
 
-  '@module-federation/webpack-bundler-runtime@0.15.0':
+  '@module-federation/webpack-bundler-runtime@0.21.6':
     dependencies:
-      '@module-federation/runtime': 0.15.0
-      '@module-federation/sdk': 0.15.0
+      '@module-federation/runtime': 0.21.6
+      '@module-federation/sdk': 0.21.6
 
-  '@napi-rs/wasm-runtime@0.2.12':
+  '@napi-rs/wasm-runtime@1.0.7':
     dependencies:
       '@emnapi/core': 1.6.0
       '@emnapi/runtime': 1.6.0
@@ -3432,58 +3431,58 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@rspack-canary/binding-darwin-arm64@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-darwin-arm64@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-darwin-x64@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-darwin-x64@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-linux-arm64-gnu@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-linux-arm64-gnu@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-linux-arm64-musl@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-linux-arm64-musl@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-linux-x64-gnu@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-linux-x64-gnu@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-linux-x64-musl@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-linux-x64-musl@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-wasm32-wasi@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-wasm32-wasi@1.7.0-beta.0':
     dependencies:
-      '@napi-rs/wasm-runtime': 0.2.12
+      '@napi-rs/wasm-runtime': 1.0.7
     optional: true
 
-  '@rspack-canary/binding-win32-arm64-msvc@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-win32-arm64-msvc@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-win32-ia32-msvc@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-win32-ia32-msvc@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding-win32-x64-msvc@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding-win32-x64-msvc@1.7.0-beta.0':
     optional: true
 
-  '@rspack-canary/binding@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/binding@1.7.0-beta.0':
     optionalDependencies:
-      '@rspack/binding-darwin-arm64': '@rspack-canary/binding-darwin-arm64@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-darwin-x64': '@rspack-canary/binding-darwin-x64@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-linux-arm64-gnu': '@rspack-canary/binding-linux-arm64-gnu@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-linux-arm64-musl': '@rspack-canary/binding-linux-arm64-musl@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-linux-x64-gnu': '@rspack-canary/binding-linux-x64-gnu@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-linux-x64-musl': '@rspack-canary/binding-linux-x64-musl@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-wasm32-wasi': '@rspack-canary/binding-wasm32-wasi@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-win32-arm64-msvc': '@rspack-canary/binding-win32-arm64-msvc@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-win32-ia32-msvc': '@rspack-canary/binding-win32-ia32-msvc@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/binding-win32-x64-msvc': '@rspack-canary/binding-win32-x64-msvc@1.4.3-canary-98b815e4-20250703091256'
+      '@rspack/binding-darwin-arm64': 1.7.0-beta.0
+      '@rspack/binding-darwin-x64': 1.7.0-beta.0
+      '@rspack/binding-linux-arm64-gnu': 1.7.0-beta.0
+      '@rspack/binding-linux-arm64-musl': 1.7.0-beta.0
+      '@rspack/binding-linux-x64-gnu': 1.7.0-beta.0
+      '@rspack/binding-linux-x64-musl': 1.7.0-beta.0
+      '@rspack/binding-wasm32-wasi': 1.7.0-beta.0
+      '@rspack/binding-win32-arm64-msvc': 1.7.0-beta.0
+      '@rspack/binding-win32-ia32-msvc': 1.7.0-beta.0
+      '@rspack/binding-win32-x64-msvc': 1.7.0-beta.0
 
-  '@rspack-canary/core@1.4.3-canary-98b815e4-20250703091256':
+  '@rspack/core@1.7.0-beta.0':
     dependencies:
-      '@module-federation/runtime-tools': 0.15.0
-      '@rspack/binding': '@rspack-canary/binding@1.4.3-canary-98b815e4-20250703091256'
-      '@rspack/lite-tapable': 1.0.1
+      '@module-federation/runtime-tools': 0.21.6
+      '@rspack/binding': 1.7.0-beta.0
+      '@rspack/lite-tapable': 1.1.0
 
-  '@rspack/lite-tapable@1.0.1': {}
+  '@rspack/lite-tapable@1.1.0': {}
 
   '@rspack/plugin-react-refresh@1.0.0(react-refresh@0.14.0)':
     dependencies:
@@ -4135,7 +4134,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  css-loader@7.1.2(@rspack-canary/core@1.4.3-canary-98b815e4-20250703091256)(webpack@5.94.0):
+  css-loader@7.1.2(@rspack/core@1.7.0-beta.0)(webpack@5.94.0):
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.47)
       postcss: 8.4.47
@@ -4146,7 +4145,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.6.3
     optionalDependencies:
-      '@rspack/core': '@rspack-canary/core@1.4.3-canary-98b815e4-20250703091256'
+      '@rspack/core': 1.7.0-beta.0
       webpack: 5.94.0
 
   cssesc@3.0.0: {}

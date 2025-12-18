@@ -1,9 +1,4 @@
 (() => {
-	// webpackBootstrap
-
-	/*!*******************!*\
-  !*** ./worker.js ***!
-  \*******************/
 	postMessage("I'm working before postMessage");
 
 	onmessage = event => {

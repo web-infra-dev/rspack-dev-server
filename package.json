@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "rs lib",
-    "bump": "pnpx bumpp",
+    "bump": "pnpm version -m \"release: v%s\"",
     "check": "rs check",
     "dev": "rs lib -w",
     "format": "rs fmt",
